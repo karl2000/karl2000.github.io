@@ -177,7 +177,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -187,7 +187,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -207,7 +207,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            Kategorien
+            Categories
           </a>
         </li>
       
@@ -217,7 +217,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            Über
+            About
           </a>
         </li>
       
@@ -283,7 +283,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-01T21:14:34+08:00" content="2016-09-01">
               2016-09-01
             </time>
@@ -311,7 +311,7 @@
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
-               <span class="post-meta-item-text">visitors </span>
+               <span class="post-meta-item-text">방문객 </span>
                <span class="leancloud-visitors-count"></span>
               </span>
           
@@ -330,12 +330,8 @@
       
         
           
-            <hr>
-<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><hr>
-<p>出于工作、兴趣、分享等各种原因，很多人想搭建自己的一个博客，本文就来介绍如何利用github+hexo搭建免费的个人博客。</p>
-<hr>
-<h2 id="主要步骤"><a href="#主要步骤" class="headerlink" title="主要步骤"></a>主要步骤</h2><hr>
-<p>1.安装node.js，用于生成静态页面（node-v0.12.3-x64.msi）<br>2.安装git，将本地hexo内容提交到github上去（msysgit为windows版本，Git-2.5.1-64-bit.exe）<br>3.申请github账号，作为博客的远程仓库，免费挂在网上提供访问的，配置好SSH Keys之后提交不需再手动输入账号密码<br>  设置用户信息命令<br>                   git config –global user.name “karl2000”//用户名<br>                     git config –global user.name “karl2000@qq.com”//邮箱<br>4.安装hexo（npm install -g hexo-cli）<br>5.初始化文件夹（hexo init）</p>
+            <h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>出于工作、兴趣、分享等各种原因，很多人想搭建自己的一个博客，本文就来介绍如何利用github+hexo搭建免费的个人博客。</p>
+<h2 id="主要步骤"><a href="#主要步骤" class="headerlink" title="主要步骤"></a>主要步骤</h2><p>1.安装node.js，用于生成静态页面（node-v0.12.3-x64.msi）<br>2.安装git，将本地hexo内容提交到github上去（msysgit为windows版本，Git-2.5.1-64-bit.exe）<br>3.申请github账号，作为博客的远程仓库，免费挂在网上提供访问的，配置好SSH Keys之后提交不需再手动输入账号密码<br>  设置用户信息命令<br>                   git config –global user.name “karl2000”//用户名<br>                     git config –global user.name “karl2000@qq.com”//邮箱<br>4.安装hexo（npm install -g hexo-cli）<br>5.初始化文件夹（hexo init）</p>
 <p>6.运行命令npm install hexo-deployer-git –save<br>避免出现如下错误提示<br>ERROR Deployer not found : github</p>
 <p>7.清除缓存文件 (db.json) 和已生成的静态文件 (public)。（hexo clean，本机调试时可不用）<br>8.生成静态页面（hexo generate或者hexo g）<br>9.本地启动（hexo server或者hexo s）<br>10.上传（hexo deploy或者hexo d）</p>
 <p>11.新建博客（hexo new 标题或者hexo n 标题）</p>
@@ -414,7 +410,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">1</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -479,7 +475,7 @@
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
