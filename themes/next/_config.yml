@@ -6,7 +6,7 @@
 favicon: /favicon.ico  #站标  可以放在hexo文件夹下的/source里
 
 # Set default keywords (Use a comma to separate)
-keywords: "FPGA, 旅游,嵌入式"  #网站关键字
+keywords: "FPGA,旅游,嵌入式"  #网站关键字
 
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
@@ -51,7 +51,6 @@ menu_icons:  #icon图标
   categories: th
   about: user
   commonweal: heartbeat
-
 
 
 
