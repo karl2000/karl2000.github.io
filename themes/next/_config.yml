@@ -28,15 +28,13 @@ canonical: true
 # ---------------------------------------------------------------
 
 # When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash (/archives -> archives)
-menu:
+menu: #菜单路径设置 如果hexo在二级目录放置要去掉/
   home: /
-  #categories: /categories
-  #about: /about
   archives: /archives #归档
   tags: /tags #标签
   categories: /categories  #分类
   about: /about #关于我
-  commonweal: /404.html
+  commonweal: /404.html #公益404
 
 
 # Enable/Disable menu icons.
@@ -48,10 +46,10 @@ menu_icons:  #icon图标
   enable: true
   #KeyMapsToMenuItemKey: NameOfTheIconFromFontAwesome
   home: home
-  about: user
-  categories: th
-  tags: tags
   archives: archive
+  tags: tags
+  categories: th
+  about: user
   commonweal: heartbeat
 
 
@@ -220,7 +218,9 @@ scroll_to_more: true
 auto_excerpt:
   enable: false
   length: 150
-
+# Use Lato font
+use_font_lato: true
+# 
 
 # Wechat Subscriber
 #wechat_subscriber:

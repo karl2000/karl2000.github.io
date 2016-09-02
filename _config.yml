@@ -8,12 +8,14 @@ title: OneWalker's blog #网站标题
 subtitle: 爱技术 爱生活
 description: 博观而约取，厚积而薄发
 author: 一行
-language: zh-CN
+email: canfa2008@qq.com
+language: zh-Hans #语言选择
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://karl2000.github.io
+#url: https://karl2000.github.io
+url: owker.pw
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -84,6 +86,5 @@ feed:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-#  repo: git@github.com:karl2000/test0901.git
-  repo: git@github.com:karl2000/karl2000.github.io.git
+  repo: git@github.com:karl2000/karl2000.github.io.git #此处复制github仓库地址后再加上“.git”
   branch: master
