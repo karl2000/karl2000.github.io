@@ -33,9 +33,9 @@ menu: #菜单路径设置 如果hexo在二级目录放置要去掉/
   archives: /archives #归档
   tags: /tags #标签
   categories: /categories  #分类
-  about: /about #关于我
-  commonweal: /404.html #公益404
-
+  #about: /about #关于我
+  #commonweal: /404.html #公益404
+  guestbook: /guestbook
 
 # Enable/Disable menu icons.
 # Icon Mapping:
@@ -49,9 +49,9 @@ menu_icons:  #icon图标
   archives: archive
   tags: tags
   categories: th
-  about: user
-  commonweal: heartbeat
-
+  #about: user
+  #commonweal: heartbeat
+  guestbook: user
 
 
 # ---------------------------------------------------------------
