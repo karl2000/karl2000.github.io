@@ -86,19 +86,19 @@
 
 
 
-<meta name="description" content="本文为解决异地更新博客问题，处理如何将文档托管于github上。">
+<meta name="description" content="本文为解决hexo异地更新博客问题，处理如何将文档托管于github上，要求有通过hexo+github搭建的个人博客。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用hexo异地更新博客解决办法">
+<meta property="og:title" content="使用hexo异地更新博客解决办法（Windows）">
 <meta property="og:url" content="owker.pw/2016/09/03/使用hexo异地更新博客解决办法/index.html">
 <meta property="og:site_name" content="OneWalker's blog">
-<meta property="og:description" content="本文为解决异地更新博客问题，处理如何将文档托管于github上。">
+<meta property="og:description" content="本文为解决hexo异地更新博客问题，处理如何将文档托管于github上，要求有通过hexo+github搭建的个人博客。">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/a8fc9690gw1f7g9sros1ij20be0cdmyj.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/a8fc9690gw1f7g9yjzanxj20rx0brjt5.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/a8fc9690gw1f7gaatsrbbj20ew01ldgd.jpg">
-<meta property="og:updated_time" content="2016-09-03T04:24:06.794Z">
+<meta property="og:updated_time" content="2016-09-03T12:53:13.087Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用hexo异地更新博客解决办法">
-<meta name="twitter:description" content="本文为解决异地更新博客问题，处理如何将文档托管于github上。">
+<meta name="twitter:title" content="使用hexo异地更新博客解决办法（Windows）">
+<meta name="twitter:description" content="本文为解决hexo异地更新博客问题，处理如何将文档托管于github上，要求有通过hexo+github搭建的个人博客。">
 <meta name="twitter:image" content="http://ww4.sinaimg.cn/large/a8fc9690gw1f7g9sros1ij20be0cdmyj.jpg">
 
 
@@ -122,7 +122,7 @@
 
   <link rel="canonical" href="owker.pw/2016/09/03/使用hexo异地更新博客解决办法/"/>
 
-  <title> 使用hexo异地更新博客解决办法 | OneWalker's blog </title>
+  <title> 使用hexo异地更新博客解决办法（Windows） | OneWalker's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -262,7 +262,7 @@
             
             
               
-                使用hexo异地更新博客解决办法
+                使用hexo异地更新博客解决办法（Windows）
               
             
           </h1>
@@ -315,7 +315,7 @@
 
           
           
-             <span id="/2016/09/03/使用hexo异地更新博客解决办法/" class="leancloud_visitors" data-flag-title="使用hexo异地更新博客解决办法">
+             <span id="/2016/09/03/使用hexo异地更新博客解决办法/" class="leancloud_visitors" data-flag-title="使用hexo异地更新博客解决办法（Windows）">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -338,19 +338,23 @@
 
       
         <blockquote>
-<p>本文为解决异地更新博客问题，处理如何将文档托管于github上。</p>
+<p>本文为解决hexo异地更新博客问题，处理如何将文档托管于github上，要求有通过hexo+github搭建的个人博客。</p>
 </blockquote>
 <a id="more"></a>
 <h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><ol>
 <li>在github工程上创建branch分支hexo，该仓库创建时提示由master上复制过来<br><img src="http://ww4.sinaimg.cn/large/a8fc9690gw1f7g9sros1ij20be0cdmyj.jpg" alt=""></li>
 <li>将默认分支设置成hexo，此处为git clone做准备<br><img src="http://ww4.sinaimg.cn/large/a8fc9690gw1f7g9yjzanxj20rx0brjt5.jpg" alt=""></li>
 <li>在电脑上执行git clone命令，生成karl2000.github.io文件夹<br><code>git clone git@github.com:karl2000/karl2000.github.io.git</code></li>
-<li>删除文件夹所有内容，执行git add;git commit -m “说明”;git push origin hexo命令（其中origin指代远程仓库，hexo为本地分支），将本地hexo分支（空文件夹）推送到远程origin，使得远程origin（默认分支hexo）更新为空目录。</li>
+<li>使用git pull origin hexo，同步本地与远程库</li>
+<li>删除文件夹（除.git外）所有内容，执行git add;git commit -m “说明”;git push origin hexo命令（其中origin指代远程仓库，hexo为本地分支），将本地hexo分支（空文件夹）推送到远程origin，使得远程origin（默认分支hexo）更新为空目录。</li>
+</ol>
+<ol>
 <li>将之前的hexo工程文件夹的内容复制到karl2000.github.io文件夹</li>
 <li>在karl2000.github.io文件夹尝试使用hexo命令，出现提示输入npm install hexo –save<br><img src="http://ww1.sinaimg.cn/large/a8fc9690gw1f7gaatsrbbj20ew01ldgd.jpg" alt=""></li>
 <li>运行命令npm install hexo-deployer-git –save，并使用hexo s命令检验工程是否完善</li>
 <li>执行git add .;git commit -m “说明”;git push origin hexo命令，将工程文件推送到远程仓库origin/hexo下保存。</li>
 </ol>
+<p>注：由于Windows下文件名长度问题，博客源文件下部分文件无法复制移动，因此上传到github上的文件不全，待解决。<br>手动hexo init一遍</p>
 
       
     </div>
@@ -404,7 +408,7 @@
     <div class="post-spread">
       
         <div class="ds-share flat" data-thread-key="2016/09/03/使用hexo异地更新博客解决办法/"
-     data-title="使用hexo异地更新博客解决办法"
+     data-title="使用hexo异地更新博客解决办法（Windows）"
      data-content=""
      data-url="owker.pw/2016/09/03/使用hexo异地更新博客解决办法/">
   <div class="ds-share-inline">
@@ -434,7 +438,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/09/03/使用hexo异地更新博客解决办法/"
-           data-title="使用hexo异地更新博客解决办法" data-url="owker.pw/2016/09/03/使用hexo异地更新博客解决办法/">
+           data-title="使用hexo异地更新博客解决办法（Windows）" data-url="owker.pw/2016/09/03/使用hexo异地更新博客解决办法/">
       </div>
     
   </div>

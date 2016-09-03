@@ -92,7 +92,7 @@
 <meta property="og:url" content="owker.pw/2016/09/03/git常用语法小结/index.html">
 <meta property="og:site_name" content="OneWalker's blog">
 <meta property="og:description" content="本文对git常用语法进行小结，持续更新中。">
-<meta property="og:updated_time" content="2016-09-03T02:32:06.494Z">
+<meta property="og:updated_time" content="2016-09-03T10:02:23.068Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git常用语法小结">
 <meta name="twitter:description" content="本文对git常用语法进行小结，持续更新中。">
@@ -318,14 +318,38 @@
 <p>本文对git常用语法进行小结，持续更新中。</p>
 </blockquote>
 <a id="more"></a>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><ol>
-<li><p>初始化文件夹<br>git init</p>
-</li>
-<li><p>保存到暂存区<br>git add .（保存文件夹所有文件，也可以指定特定文件）</p>
-</li>
-<li><p>提交到本地仓库master<br>git commit -m “提交说明”</p>
-</li>
-</ol>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>工作区<br>暂存区<br>本地仓库<br>远程仓库</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><ul>
+<li>初始化文件夹<br>git init</li>
+<li>保存到暂存区<br>git add .（保存文件夹所有文件，也可以指定特定文件）</li>
+<li>提交到本地仓库master<br>git commit -m “提交说明”</li>
+<li>查看本地仓库与工作区是否有更改<br>git status</li>
+<li>查看更改内容<br>git diff</li>
+<li>查看历史记录<br>git log （–pretty=oneline可加）</li>
+<li>记录每一次操作<br>git reflog</li>
+<li>退回上一版本<br>git reset –hard HEAD^（HEAD表示当前版本）</li>
+<li>退回某一版本<br>git reset –hard b97fa9d（版本编号）</li>
+<li>关联远程库<br>git remote add origin + (github上复制的地址)</li>
+<li>把当前分支master推送到远程库origin（origin为上面关联的库）<br>git push （-u首次推送） origin master</li>
+<li>复制远程库，拷贝项目文件夹，不需要另外新建文件夹，后续cd到该文件夹进行操作<br>git clone + (github上复制的地址)</li>
+</ul>
+<h3 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h3><ul>
+<li>查看当前分支情况<br>git branch</li>
+<li>创建dev分支<br>git branch dev</li>
+<li>切换到dev分支<br>git checkout dev</li>
+<li>创建并切换到dev分支<br>git checkout -b dev</li>
+<li>合并dev分支到当前分支(fast-forward)<br>git merge dev</li>
+<li>删除dev分支<br>git branch -d dev</li>
+</ul>
+<hr>
+<ul>
+<li>查看分支合并情况<br>git log –graph –pretty=oneline –abbrev-commit</li>
+<li>比较工作区和版本的区别<br>git diff HEAD – readme.txt</li>
+<li>撤销工作区的修改<br>git checkout – readme.txt</li>
+<li>撤销暂存区的修改<br>git reset HEAD readme.txt</li>
+<li>删除暂存区和工作区文件<br>git rm test.txt</li>
+</ul>
+<p>参考文件：<br><a href="https://yunpan.cn/cMbGQdJpfmRvc" target="_blank" rel="external">https://yunpan.cn/cMbGQdJpfmRvc</a>  访问密码 b04e<br><a href="https://yunpan.cn/cMbGdpRMmCSdt" target="_blank" rel="external">https://yunpan.cn/cMbGdpRMmCSdt</a>  访问密码 6823</p>
 
       
     </div>
@@ -359,8 +383,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/09/03/使用hexo异地更新博客解决办法/" rel="prev" title="使用hexo异地更新博客解决办法">
-                使用hexo异地更新博客解决办法 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/09/03/使用hexo异地更新博客解决办法/" rel="prev" title="使用hexo异地更新博客解决办法（Windows）">
+                使用hexo异地更新博客解决办法（Windows） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -516,7 +540,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#语法"><span class="nav-number">1.</span> <span class="nav-text">语法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法"><span class="nav-number">2.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本操作"><span class="nav-number">2.1.</span> <span class="nav-text">基本操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支操作"><span class="nav-number">2.2.</span> <span class="nav-text">分支操作</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
