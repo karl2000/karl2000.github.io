@@ -5,7 +5,7 @@ tags:
 categories:
 ---
 
-
+![](http://ww4.sinaimg.cn/large/a8fc9690gw1f7gvpotmqmj21kw16oe2m.jpg)
 
 
 >本文对git常用语法进行小结，持续更新中。
@@ -73,7 +73,7 @@ git diff HEAD -- readme.txt
 * 撤销工作区的修改
 git checkout -- readme.txt
 * 撤销暂存区的修改
-git reset HEAD readme.txt
+git reset (--hard可有) HEAD readme.txt
 * 删除暂存区和工作区文件
 git rm test.txt
 
