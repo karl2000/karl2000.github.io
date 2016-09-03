@@ -14,13 +14,13 @@ categories: 技术
 
 ## 主要步骤
 
-1.安装node.js，用于生成静态页面（node-v0.12.3-x64.msi）
+1.安装node.js，用于生成静态页面（node-v4.4.4-x64.msi）[node.js中文网](http://nodejs.cn/)，确认版本用node -v
 2.安装git，将本地hexo内容提交到github上去（msysgit为windows版本，Git-2.5.1-64-bit.exe）
 3.申请github账号，作为博客的远程仓库，免费挂在网上提供访问的，配置好SSH Keys之后提交不需再手动输入账号密码，检查是否有ssh keys（cd ~/.ssh若提示No such file or directory则要生成）
 设置用户信息命令
 git config --global user.name "karl2000"//用户名
 git config --global user.name "karl2000@qq.com"//邮箱
-4.安装hexo（npm install -g hexo-cli）
+4.安装hexo（npm install hexo-cli -g），确认版本用hexo -v
 5.初始化文件夹（hexo init）
 6.运行命令npm install hexo-deployer-git --save
 避免出现如下错误提示
@@ -46,11 +46,30 @@ hexo使用参考官方教程https://hexo.io/zh-cn/
 github下载他人的博客样本，git clone git@github.com:xhay1122/xhayblog-next.git BLOG/xhayblgo
 直接下载似乎无法使用
 
-经验：
-1.如果修改_config.yml过程中出现一堆乱码，很有可能在冒号后面没有加空格引起
-2.公益404网页无法显示解决办法：使用独立域名
-3.hexo d -g命令不报错但是网页打不开，请尝试hexo clean
+思路：安装node.js->安装git->安装hexo
 
+经验：
+1. 如果修改_config.yml过程中出现一堆乱码，很有可能在冒号后面没有加空格引起
+2. 公益404网页无法显示解决办法：使用独立域名
+3. hexo d -g命令不报错但是网页打不开，请尝试hexo clean
+4. 出现如下错误，原因是无意中对package.json进行了修改，利用`git checkout -- package.json`撤销对工作区的修改
+```
+Administrator@FVJOP6VIOYE3H4W MINGW64 /e/CODE/git/BLOG/karl2000githubio (master)
+$ hexo
+FATAL Cannot read property 'code' of undefined
+TypeError: Cannot read property 'code' of undefined
+    at C:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo-cli\lib\find_pkg.js:23:25
+    at tryCatcher (C:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo-cli\node_modules\bluebird\js\release\util.js:16:23)
+    at Promise._settlePromiseFromHandler (C:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo-cli\node_modules\bluebird\js\release\promise.js:510:31)
+    at Promise._settlePromise (C:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo-cli\node_modules\bluebird\js\release\promise.js:567:18)
+    at Promise._settlePromise0 (C:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo-cli\node_modules\bluebird\js\release\promise.js:612:10)
+    at Promise._settlePromises (C:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo-cli\node_modules\bluebird\js\release\promise.js:687:18)
+    at Async._drainQueue (C:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo-cli\node_modules\bluebird\js\release\async.js:138:16)
+    at Async._drainQueues (C:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo-cli\node_modules\bluebird\js\release\async.js:148:10)
+    at Immediate.Async.drainQueues [as _onImmediate] (C:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo-cli\node_modules\bluebird\js\release\async.js:17:14)
+    at processImmediate [as _immediateCallback] (timers.js:383:17)
+
+```
 
 思维导图
 

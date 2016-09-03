@@ -10,7 +10,7 @@ description: 博观而约取，厚积而薄发
 author: 一行
 email: canfa2008@qq.com
 language: zh-Hans #语言选择
-timezone:
+timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
