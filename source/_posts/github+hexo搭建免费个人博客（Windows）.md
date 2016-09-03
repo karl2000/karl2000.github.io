@@ -42,6 +42,8 @@ deploy:
 步骤1-4只配置一次即可，以后操作只需后面的步骤。
 
 
+理解：网页github上的master分支是自动维护的，由hexo d进行部署，不要手动git对其操作
+
 更改主题，
 可到https://hexo.io/themes/搜索合适的主题
 复制下载主题git clone https://github.com/tufu9441/maupassant-hexo.git themes/maupassant
