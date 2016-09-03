@@ -5,7 +5,7 @@ tags: hexo
 categories: 技术
 ---
 
-
+![](http://ww2.sinaimg.cn/large/a8fc9690gw1f7gvnkz7kyj21kw16o7gs.jpg)
 
 
 >出于工作、兴趣、分享等各种原因，很多人想搭建自己的一个博客，本文将介绍如何利用github+hexo搭建免费的个人博客。
@@ -137,6 +137,4 @@ or you can check the docs: http://hexo.io/docs/
 思维导图
 
 
-改善博客效果部分
-* 隐藏全文，增加阅读全文效果
-在需要隐藏部分前增加代码`<!-- more -->`
+
