@@ -14,6 +14,7 @@ categories: 技术
 
 ## 主要步骤
 
+
 1.安装node.js，用于生成静态页面（node-v4.4.4-x64.msi）[node.js中文网](http://nodejs.cn/)，确认版本用node -v
 2.安装git，将本地hexo内容提交到github上去（msysgit为windows版本，Git-2.5.1-64-bit.exe）
 3.申请github账号，作为博客的远程仓库，免费挂在网上提供访问的，配置好SSH Keys之后提交不需再手动输入账号密码，检查是否有ssh keys（cd ~/.ssh若提示No such file or directory则要生成）
@@ -45,6 +46,7 @@ hexo使用参考官方教程https://hexo.io/zh-cn/
 
 github下载他人的博客样本，git clone git@github.com:xhay1122/xhayblog-next.git BLOG/xhayblgo
 直接下载似乎无法使用
+
 
 思路：安装node.js->安装git->安装hexo
 

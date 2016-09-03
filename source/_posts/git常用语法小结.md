@@ -11,6 +11,7 @@ categories:
 >本文对git常用语法进行小结，持续更新中。
 
 <!-- more -->
+
 ## 概念
 工作区
 暂存区
@@ -53,11 +54,18 @@ git branch
 git branch dev
 * 切换到dev分支
 git checkout dev
-*创建并切换到dev分支
+* 创建并切换到dev分支
 git checkout -b dev
+* 合并dev分支到当前分支(fast-forward)
+git merge dev
+* 删除dev分支
+git branch -d dev
 
 
 
+
+* 查看分支合并情况
+git log --graph --pretty=oneline --abbrev-commit
 
 
 * 比较工作区和版本的区别
@@ -72,3 +80,8 @@ git rm test.txt
 参考文件：
 https://yunpan.cn/cMbGQdJpfmRvc  访问密码 b04e
 https://yunpan.cn/cMbGdpRMmCSdt  访问密码 6823
+
+
+
+
+
