@@ -6,10 +6,11 @@ categories: 技术
 ---
 
 
-## 前言
 
-出于工作、兴趣、分享等各种原因，很多人想搭建自己的一个博客，本文将介绍如何利用github+hexo搭建免费的个人博客。
 
+>出于工作、兴趣、分享等各种原因，很多人想搭建自己的一个博客，本文将介绍如何利用github+hexo搭建免费的个人博客。
+
+<!-- more -->
 
 ## 主要步骤
 
@@ -51,7 +52,6 @@ github下载他人的博客样本，git clone git@github.com:xhay1122/xhayblog-n
 3.hexo d -g命令不报错但是网页打不开，请尝试hexo clean
 
 
-https://yunpan.cn/cMGs2MrQhXGFN  访问密码 379b
 思维导图
 
 
@@ -77,4 +77,6 @@ https://yunpan.cn/cMGs2MrQhXGFN  访问密码 379b
 思维导图
 
 
-
+改善博客效果部分
+* 隐藏全文，增加阅读全文效果
+在需要隐藏部分前增加代码`<!-- more -->`
