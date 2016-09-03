@@ -21,7 +21,7 @@ categories: 技术
 设置用户信息命令
 git config --global user.name "karl2000"//用户名
 git config --global user.name "karl2000@qq.com"//邮箱
-4.安装hexo（npm install hexo-cli -g），确认版本用hexo -v
+4.安装hexo（npm install hexo-cli -g）（npm install hexo --save），确认版本用hexo -v
 5.初始化文件夹（hexo init）
 6.运行命令npm install hexo-deployer-git --save
 避免出现如下错误提示
@@ -30,6 +30,13 @@ ERROR Deployer not found : github
 8.生成静态页面（hexo generate或者hexo g）
 9.本地启动（hexo server或者hexo s）
 10.部署（hexo deploy或者hexo d）
+打开站点_config.yml，修改deploy指向
+```
+deploy:
+  type: git
+  repo: git@github.com:karl2000/karl2000.github.io.git #此处复制github仓库地址后再加上“.git”
+  branch: master
+  ```
 11.新建博客（hexo new 标题或者hexo n 标题）
 12.新建页面（hexo new page "tags"新建标签页面）
 步骤1-4只配置一次即可，以后操作只需后面的步骤。
@@ -54,7 +61,7 @@ github下载他人的博客样本，git clone git@github.com:xhay1122/xhayblog-n
 1. 如果修改_config.yml过程中出现一堆乱码，很有可能在冒号后面没有加空格引起
 2. 公益404网页无法显示解决办法：使用独立域名
 3. hexo d -g命令不报错但是网页打不开，请尝试hexo clean
-4. 出现如下错误，原因是无意中对package.json进行了修改，利用`git checkout -- package.json`撤销对工作区的修改
+4. 出现如下错误，原因是对package.json进行了修改（可能由于git merge或者git pull产生），利用`git checkout -- package.json`撤销对工作区的修改，或者打开文件直接修改
 ```
 Administrator@FVJOP6VIOYE3H4W MINGW64 /e/CODE/git/BLOG/karl2000githubio (master)
 $ hexo
@@ -72,7 +79,37 @@ TypeError: Cannot read property 'code' of undefined
     at processImmediate [as _immediateCallback] (timers.js:383:17)
 
 ```
+5. 出现如下错误，输入`npm install hexo-server --save`
+```
+Administrator@FVJOP6VIOYE3H4W MINGW64 /d/karl2000.github.io (hexo)
+$ hexo s
+Usage: hexo <command>
 
+Commands:
+  clean     Removed generated files and cache.
+  config    Get or set configurations.
+  deploy    Deploy your website.
+  generate  Generate static files.
+  help      Get help on a command.
+  init      Create a new Hexo folder.
+  list      List the information of the site
+  migrate   Migrate your site from other system to Hexo.
+  new       Create a new post.
+  publish   Moves a draft post from _drafts to _posts folder.
+  render    Render files with renderer plugins.
+  version   Display version information.
+
+Global Options:
+  --config  Specify config file instead of using _config.yml
+  --cwd     Specify the CWD
+  --debug   Display all verbose messages in the terminal
+  --draft   Display draft posts
+  --safe    Disable all plugins and scripts
+  --silent  Hide output on console
+
+For more help, you can use 'hexo help [command]' for the detailed information
+or you can check the docs: http://hexo.io/docs/
+```
 思维导图
 
 

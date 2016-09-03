@@ -64,10 +64,10 @@ git branch -d dev
 
 
 
+---
+
 * 查看分支合并情况
 git log --graph --pretty=oneline --abbrev-commit
-
-
 * 比较工作区和版本的区别
 git diff HEAD -- readme.txt
 * 撤销工作区的修改
