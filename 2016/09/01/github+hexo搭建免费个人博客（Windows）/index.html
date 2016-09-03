@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/a8fc9690gw1f7f7qm6bclj20ik0ch0u2.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/a8fc9690gw1f7f8hgettxj20o40ecn0e.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/mw690/a8fc9690gw1f7f8kyd5idj20r90f776l.jpg">
-<meta property="og:updated_time" content="2016-09-03T06:37:24.928Z">
+<meta property="og:updated_time" content="2016-09-03T06:41:09.171Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="github+hexo搭建免费个人博客（Windows）">
 <meta name="twitter:description" content="出于工作、兴趣、分享等各种原因，很多人想搭建自己的一个博客，本文将介绍如何利用github+hexo搭建免费的个人博客。">
@@ -350,7 +350,8 @@
 <li>如果修改_config.yml过程中出现一堆乱码，很有可能在冒号后面没有加空格引起</li>
 <li>公益404网页无法显示解决办法：使用独立域名</li>
 <li>hexo d -g命令不报错但是网页打不开，请尝试hexo clean</li>
-<li></li>
+<li>出现如下错误，原因是无意中对package.json进行了修改，利用<code>git checkout -- package.json</code>撤销对工作区的修改<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Administrator@FVJOP6VIOYE3H4W MINGW64 /e/CODE/git/BLOG/karl2000githubio (master)</div><div class="line">$ hexo</div><div class="line">FATAL Cannot read property &apos;code&apos; of undefined</div><div class="line">TypeError: Cannot read property &apos;code&apos; of undefined</div><div class="line">    at C:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo-cli\lib\find_pkg.js:23:25</div><div class="line">    at tryCatcher (C:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo-cli\node_modules\bluebird\js\release\util.js:16:23)</div><div class="line">    at Promise._settlePromiseFromHandler (C:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo-cli\node_modules\bluebird\js\release\promise.js:510:31)</div><div class="line">    at Promise._settlePromise (C:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo-cli\node_modules\bluebird\js\release\promise.js:567:18)</div><div class="line">    at Promise._settlePromise0 (C:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo-cli\node_modules\bluebird\js\release\promise.js:612:10)</div><div class="line">    at Promise._settlePromises (C:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo-cli\node_modules\bluebird\js\release\promise.js:687:18)</div><div class="line">    at Async._drainQueue (C:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo-cli\node_modules\bluebird\js\release\async.js:138:16)</div><div class="line">    at Async._drainQueues (C:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo-cli\node_modules\bluebird\js\release\async.js:148:10)</div><div class="line">    at Immediate.Async.drainQueues [as _onImmediate] (C:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo-cli\node_modules\bluebird\js\release\async.js:17:14)</div><div class="line">    at processImmediate [as _immediateCallback] (timers.js:383:17)</div></pre></td></tr></table></figure>
+</li>
 </ol>
 <p>思维导图</p>
 <h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><p>1.购买独立域名（owker.pw），这里是在百度开放云上购买的<br><img src="http://ww3.sinaimg.cn/large/a8fc9690gw1f7f7qm6bclj20ik0ch0u2.jpg" alt="" title="百度开放云购买独立域名截图"></p>
