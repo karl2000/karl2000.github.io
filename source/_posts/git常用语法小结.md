@@ -49,6 +49,12 @@ git clone + (github上复制的地址)
 ### 分支操作
 * 查看当前分支情况
 git branch
+* 创建dev分支
+git branch dev
+* 切换到dev分支
+git checkout dev
+*创建并切换到dev分支
+git checkout -b dev
 
 
 
