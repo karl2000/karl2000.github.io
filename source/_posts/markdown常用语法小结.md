@@ -90,5 +90,5 @@ I get 10 times more traffic from [Google][1] than from [Yahoo][2] or [MSN][3].
 ### 脚注
 编辑.md文件可用sublime text3，安装Markdown Editing和Markdown Preview插件
 
-本文参考：Markdown 语法说明(简体中文版).pdf
+参考文件：
 https://yunpan.cn/cMGfkIUtwmjV4  访问密码 581f
