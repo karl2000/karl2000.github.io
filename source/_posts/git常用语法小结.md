@@ -75,6 +75,16 @@ git checkout -- readme.txt
 git reset (--hard可有) HEAD readme.txt
 * 删除暂存区和工作区文件
 git rm test.txt
+* `--no-off`方式合并分支dev
+git merge --no-off -m "说明" dev
+* 保存现场
+git stash;git stash pop
+* 查看远程库信息
+git remote -v
+* 第一次使用Git，需要设置署名和邮箱：
+git config --global user.name "用户名"
+git config --global user.email "电子邮箱"
+
 
 参考文件：
 https://yunpan.cn/cMbGQdJpfmRvc  访问密码 b04e

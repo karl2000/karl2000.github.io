@@ -1,8 +1,10 @@
 ---
 title: github+hexo搭建免费个人博客（Windows）
 date: 2016-09-01 21:14:34
-tags: hexo
-categories: 技术
+tags:
+- hexo
+categories: 
+- 博客搭建
 ---
 
 ![](http://ww1.sinaimg.cn/large/a8fc9690gw1f7hdxrjygjj20zk0npwlx.jpg)
@@ -52,9 +54,6 @@ deploy:
     npm install hexo-renderer-sass --save
 hexo使用参考官方教程https://hexo.io/zh-cn/
 
-
-github下载他人的博客样本，git clone git@github.com:xhay1122/xhayblog-next.git BLOG/xhayblgo
-直接下载似乎无法使用
 
 
 思路：安装node.js->安装git->安装hexo
@@ -116,25 +115,6 @@ or you can check the docs: http://hexo.io/docs/
 
 
 
-
-## 绑定域名
-1.购买独立域名（owker.pw），这里是在百度开放云上购买的
-![](http://ww3.sinaimg.cn/large/a8fc9690gw1f7f7qm6bclj20ik0ch0u2.jpg "百度开放云购买独立域名截图")
-
-2.设置域名与相应ip的对应关系
-由于只购买域名并没有购买服务器，即没有自己的独立空间，这个独立空间是github提供的，因此需将独立域名与github提供的ip相对应
-
-查询https://karl2000.github.io的ip地址
-![](http://ww2.sinaimg.cn/large/a8fc9690gw1f7f8hgettxj20o40ecn0e.jpg "查询ip")
-
-在百度开放云上设置域名与ip（151.101.36.133）的对应
-![](http://ww3.sinaimg.cn/mw690/a8fc9690gw1f7f8kyd5idj20r90f776l.jpg "设置参考图")
-
-3.在source文件夹下增加CNAME文件，用notepad++编辑域名地址，即owker.pw
-
-4.修改站点目录下的_config.yml文件，将url指定到owker.pw（url: owker.pw）
-
-思维导图
 
 
 

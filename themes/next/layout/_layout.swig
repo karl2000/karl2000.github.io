@@ -8,7 +8,7 @@
 <html class="{{ html_class | lower }}">
 <head>
   {% include '_partials/head.swig' %}
-  <title>{% block title %}{% endblock %}</title>
+  <title>{% block title %}{% endblock %} - {{ config.description }} </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="{{ config.language }}">
@@ -50,8 +50,11 @@
       </div>
     </footer>
 
+	{% if theme.mobile_code.enabled %}
+	  {% include '_macro/mobile-code.swig' %}
+	{% endif %}
     <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
+      <i class="fa fa-arrow-up fa-2x"></i>
     </div>
   </div>
 

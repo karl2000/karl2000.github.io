@@ -101,9 +101,11 @@
             </div>
             <ul class="links-of-blogroll-list">
               {% for name, link in theme.links %}
-                <li class="links-of-blogroll-item">
-                  <a href="{{ link }}" title="{{ name }}" target="_blank">{{ name }}</a>
-                </li>
+				<span class="links-of-author-item" style="text-align:left">
+					<a href="{{ link }}" title="{{ name }}" target="_blank">
+						{{ name }}
+					</a>
+				</span>
               {% endfor %}
             </ul>
           </div>

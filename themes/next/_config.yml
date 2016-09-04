@@ -6,7 +6,7 @@
 favicon: /favicon.ico  #站标  可以放在hexo文件夹下的/source里
 
 # Set default keywords (Use a comma to separate)
-keywords: "FPGA,旅游,嵌入式"  #网站关键字
+keywords:   #网站关键字
 
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
@@ -16,6 +16,7 @@ rss:  #rss这里不设置 引文站点配置文件已经配置了 需要安装�
 
 # Specify the date when the site was setup
 since: 2016  #网站时间 从xx开始 类似 1990-2016
+
 
 # Canonical, set a canonical link tag in your hexo, you could use it for your SEO of blog.
 # See: https://support.google.com/webmasters/answer/139066
@@ -46,12 +47,13 @@ menu_icons:  #icon图标
   enable: true
   #KeyMapsToMenuItemKey: NameOfTheIconFromFontAwesome
   home: home
-  archives: archive
+  archives: calendar-check-o
   tags: tags
   categories: th
   #about: user
   #commonweal: heartbeat
-  guestbook: user
+  #mylove: heart
+  guestbook: envelope
 
 
 # ---------------------------------------------------------------
@@ -124,7 +126,7 @@ font:
   #LinkLabel: Link
 social:
   GitHub: https://github.com/karl2000
-  #Weibo:
+  Weibo: http://weibo.com/owker
   #Others:
 
 # Social Links Icons
@@ -139,6 +141,14 @@ social_icons:
   GitHub: github
   Twitter: twitter
   Weibo: weibo
+
+# Blogrolls
+links_title: 友情链接
+links_layout: inline
+links_icon: link  # 设置图标
+links:
+  xiaoke: http://xiaoke.tech
+  
 
 
 # Sidebar Avatar
@@ -205,7 +215,7 @@ custom_logo:
 # Available value:
 #    normal | night | night eighties | night blue | night bright
 # https://github.com/chriskempson/tomorrow-theme
-highlight_theme: normal
+highlight_theme: night
 
 
 # Automatically scroll page to section which is under <!-- more --> mark.
@@ -273,9 +283,9 @@ duoshuo_share: true
 # Google Analytics
 #google_analytics:
 
-# CNZZ count
-#cnzz_siteid:
 
+# CNZZ count
+cnzz_siteid: 1260309017
 
 # Make duoshuo show UA
 # user_id must NOT be null when admin_enable is true!
@@ -342,11 +352,17 @@ baidu_push: true
 ## 文章末尾是否显示打赏按钮
 donate: 
   enable: true
-  text: Enjoy it ? Donate me !  欣赏此文？求鼓励，求支持！
-  alipay: 
-  wechat: 
+  text: 共勉！
+  #alipay: 
+  wechat: /images/owker.png
 
-
+  
+  
+# 文章末尾添加“本文结束”标记
+passage_end_tag:
+  enabled: true
+  
+  
 #! ---------------------------------------------------------------
 #! DO NOT EDIT THE FOLLOWING SETTINGS
 #! UNLESS YOU KNOW WHAT YOU ARE DOING
