@@ -5,7 +5,7 @@ tags: hexo
 categories: 技术
 ---
 
-![](http://ww4.sinaimg.cn/large/a8fc9690gw1f7gvodylpsj21kw16o4qp.jpg)
+![](http://ww3.sinaimg.cn/large/a8fc9690gw1f7he37ihtsj20zk0k0jvb.jpg)
 
 >本文对常用markdown语法进行小结，按使用频率排序，持续更新中。
 

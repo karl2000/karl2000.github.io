@@ -4,8 +4,7 @@ date: 2016-09-03 02:48:04
 tags:
 categories:
 ---
-
-![](http://ww4.sinaimg.cn/large/a8fc9690gw1f7gvpotmqmj21kw16oe2m.jpg)
+![](http://ww1.sinaimg.cn/large/a8fc9690gw1f7he16zfhjj20zk0npago.jpg)
 
 
 >本文对git常用语法进行小结，持续更新中。

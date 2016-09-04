@@ -4,8 +4,7 @@ date: 2016-09-03 11:58:38
 tags: hexo
 categories: 技术
 ---
-
-![](http://ww1.sinaimg.cn/large/a8fc9690gw1f7gvfa4vypj21kw0d4tem.jpg)
+![](http://ww4.sinaimg.cn/large/a8fc9690gw1f7he0wwox9j21hc0zk4qp.jpg)
 
 >本文为解决hexo异地更新博客问题，处理如何将文档托管于github上，要求有通过hexo+github搭建的个人博客。
 适用于已经通过hexo搭建好博客，希望通过git对版本进行控制的。
