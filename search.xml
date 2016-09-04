@@ -121,6 +121,7 @@
 <li><code>--no-off</code>方式合并分支dev<br>git merge –no-off -m “说明” dev</li>
 <li>保存现场<br>git stash;git stash pop</li>
 <li>查看远程库信息<br>git remote -v</li>
+<li>第一次使用Git，需要设置署名和邮箱：<br>git config –global user.name “用户名”<br>git config –global user.email “电子邮箱”</li>
 </ul>
 <p>参考文件：<br><a href="https://yunpan.cn/cMbGQdJpfmRvc" target="_blank" rel="external">https://yunpan.cn/cMbGQdJpfmRvc</a>  访问密码 b04e<br><a href="https://yunpan.cn/cMbGdpRMmCSdt" target="_blank" rel="external">https://yunpan.cn/cMbGdpRMmCSdt</a>  访问密码 6823</p>
 ]]></content>
