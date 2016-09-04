@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+    
+    <entry>
+      <title><![CDATA[个人博客绑定独立域名]]></title>
+      <url>owker.pw/2016/09/04/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BB%91%E5%AE%9A%E7%8B%AC%E7%AB%8B%E5%9F%9F%E5%90%8D/</url>
+      <content type="html"><![CDATA[<p><img src="http://ww1.sinaimg.cn/large/a8fc9690gw1f7hn1aitemj21hc0zkgv3.jpg" alt=""></p>
+<blockquote>
+<p>此文介绍如何将个人博客绑定到独立域名上。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><ol>
+<li><p>购买独立域名（owker.pw），这里是在百度开放云上购买的<br><img src="http://ww3.sinaimg.cn/large/a8fc9690gw1f7f7qm6bclj20ik0ch0u2.jpg" alt="" title="百度开放云购买独立域名截图"></p>
+</li>
+<li><p>设置域名与相应ip的对应关系<br>由于只购买域名并没有购买服务器，即没有自己的独立空间，这个独立空间是github提供的，因此需将独立域名与github提供的ip相对应</p>
+</li>
+</ol>
+<p>查询<a href="https://karl2000.github.io的ip地址" target="_blank" rel="external">https://karl2000.github.io的ip地址</a></p>
+<p><img src="http://ww2.sinaimg.cn/large/a8fc9690gw1f7f8hgettxj20o40ecn0e.jpg" alt="" title="查询ip"></p>
+<p>在百度开放云上设置域名与ip（151.101.36.133）的对应<br><img src="http://ww3.sinaimg.cn/mw690/a8fc9690gw1f7f8kyd5idj20r90f776l.jpg" alt="" title="设置参考图"></p>
+<ol>
+<li><p>在source文件夹下增加CNAME文件，用notepad++编辑域名地址，即owker.pw</p>
+</li>
+<li><p>修改站点目录下的_config.yml文件，将url指定到owker.pw（url: owker.pw）</p>
+</li>
+</ol>
+<p>思维导图</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[hexo主题效果优化]]></title>
+      <url>owker.pw/2016/09/04/hexo%E4%B8%BB%E9%A2%98%E6%95%88%E6%9E%9C%E4%BC%98%E5%8C%96/</url>
+      <content type="html"><![CDATA[<p><img src="http://ww2.sinaimg.cn/large/a8fc9690gw1f7he0hb35zj21hc0zb4g5.jpg" alt=""></p>
+<blockquote>
+<p>为改善阅读体验，需对主题部分功能进行完善。</p>
+</blockquote>
+<a id="more"></a>
+<ul>
+<li>隐藏全文，增加阅读全文效果<br>在.md文件中需要隐藏部分前增加代码<code>&lt;!-- more --&gt;</code>，效果如下；<br><img src="http://ww2.sinaimg.cn/large/a8fc9690gw1f7he5wkx60j20bi0370sq.jpg" alt=""></li>
+<li><p>代码黑底白字，高亮显示<br>在主题_config.yml文件中设置highlight_theme: night，效果如下：<br><img src="http://ww4.sinaimg.cn/large/a8fc9690gw1f7gx4ncjwej20kj06aaax.jpg" alt=""></p>
+</li>
+<li><p>添加背景图片或背景颜色</p>
+<blockquote>
+<p>首先找到一个背景图片放到 hexo（hexo工程文件）-&gt; themes -&gt; next -&gt; source -&gt; images 的路径下；<br>然后在hexo（hexo工程文件）-&gt; themes -&gt; next -&gt; source -&gt; css -&gt; _schemes -&gt;Pisces（或Mist或Muse），找到路径下的index.styl文件，在文件的最上方加上一代码 body { background:url(/images/background.jpg（这是你之前加的背景图片的名字）);} 或者设置背景颜色body { background: #f5f7f9; }。</p>
+</blockquote>
+</li>
+<li><p>关闭新建页面的评论功能<br>当集成了评论系统，如 多说 或者 Disqus，所有新建的页面都将自动开启评论。若你不需要评论，请在页面的 Front-matter 里添加 comments 字段，并将值设置为 false。如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">title: All tags</div><div class="line">date: 2015-12-16 17:05:24</div><div class="line">type: &quot;tags&quot;</div><div class="line">comments: false</div><div class="line">---</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>参考：<br><a href="http://theme-next.iissnan.com/faqs.html" target="_blank" rel="external">nexT常见问题</a><br><a href="https://github.com/iissnan/hexo-theme-next/issues" target="_blank" rel="external">nexT主题优化</a><br><a href="http://www.wuxubj.cn/2016/08/Hexo-nexT-build-personal-blog/" target="_blank" rel="external">Hexo+nexT主题搭建个人博客</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[使用hexo异地更新博客解决办法（Windows）]]></title>
+      <url>owker.pw/2016/09/03/%E4%BD%BF%E7%94%A8hexo%E5%BC%82%E5%9C%B0%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
+      <content type="html"><![CDATA[<p><img src="http://ww4.sinaimg.cn/large/a8fc9690gw1f7he0wwox9j21hc0zk4qp.jpg" alt=""></p>
+<blockquote>
+<p>本文为解决hexo异地更新博客问题，处理如何将文档托管于github上，要求有通过hexo+github搭建的个人博客。<br>适用于已经通过hexo搭建好博客，希望通过git对版本进行控制的。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><p>在已有的github远程库上创建branch分支hexo，该仓库创建时提示由master上复制过来<br><img src="http://ww4.sinaimg.cn/large/a8fc9690gw1f7g9sros1ij20be0cdmyj.jpg" alt=""></p>
+<hr>
+<p>在博客文件夹git操作：git init;git add .;git commit -m “说明”;实现文件夹的版本控制</p>
+<p>关联远程库：git remote add origin + 远程库地址</p>
+<p>创建分支hexo，分支名字与远程库分支名相同，两者是一一对应的：git branch hexo</p>
+<p>将本地hexo分支push到远程，确保博客源文件正确：git push origin master</p>
+<hr>
+<p>在另一台电脑上对文件夹进行hexo初始化：hexo init（过程中有问题请参考本博客其他博文）</p>
+<p>对该文件夹进行git初始化：git init</p>
+<p>关联远程库：git remote add origin + 远程库地址</p>
+<p>在该文件夹下执行git add .;git commit -m “说明”;目的在于确定一个master分支的版本</p>
+<p>在该文件夹下创建并切换hexo分支：git checkout -b hexo<br>pull远程库hexo到本地分支hexo：git pull origin hexo<br>对冲突文件进行修改，主要修改_config.yml，package.json，删除hello-world.md，然后commit提交hexo版本：git add .;git commit -m “说明” </p>
+<hr>
+<p>于是，在新的文件夹下也可以更新博客了。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[git常用语法小结]]></title>
+      <url>owker.pw/2016/09/03/git%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/</url>
+      <content type="html"><![CDATA[<p><img src="http://ww1.sinaimg.cn/large/a8fc9690gw1f7he16zfhjj20zk0npago.jpg" alt=""></p>
+<blockquote>
+<p>本文对git常用语法进行小结，持续更新中。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>工作区<br>暂存区<br>本地仓库<br>远程仓库</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><ul>
+<li>初始化文件夹<br>git init</li>
+<li>保存到暂存区<br>git add .（保存文件夹所有文件，也可以指定特定文件）</li>
+<li>提交到本地仓库master<br>git commit -m “提交说明”</li>
+<li>查看本地仓库与工作区是否有更改<br>git status</li>
+<li>查看更改内容<br>git diff</li>
+<li>查看历史记录<br>git log （–pretty=oneline可加）</li>
+<li>记录每一次操作<br>git reflog</li>
+<li>退回上一版本<br>git reset –hard HEAD^（HEAD表示当前版本）</li>
+<li>退回某一版本<br>git reset –hard b97fa9d（版本编号）</li>
+<li>关联远程库<br>git remote add origin + (github上复制的地址)</li>
+<li>把当前分支master推送到远程库origin（origin为上面关联的库）<br>git push （-u首次推送） origin master</li>
+<li>复制远程库，拷贝项目文件夹，不需要另外新建文件夹，后续cd到该文件夹进行操作<br>git clone + (github上复制的地址)</li>
+</ul>
+<h3 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h3><ul>
+<li>查看当前分支情况<br>git branch</li>
+<li>创建dev分支<br>git branch dev</li>
+<li>切换到dev分支<br>git checkout dev</li>
+<li>创建并切换到dev分支<br>git checkout -b dev</li>
+<li>合并dev分支到当前分支(fast-forward)<br>git merge dev</li>
+<li>删除dev分支<br>git branch -d dev</li>
+</ul>
+<hr>
+<ul>
+<li>查看分支合并情况<br>git log –graph –pretty=oneline –abbrev-commit</li>
+<li>比较工作区和版本的区别<br>git diff HEAD – readme.txt</li>
+<li>撤销工作区的修改<br>git checkout – readme.txt</li>
+<li>撤销暂存区的修改<br>git reset (–hard可有) HEAD readme.txt</li>
+<li>删除暂存区和工作区文件<br>git rm test.txt</li>
+<li><code>--no-off</code>方式合并分支dev<br>git merge –no-off -m “说明” dev</li>
+<li>保存现场<br>git stash;git stash pop</li>
+<li>查看远程库信息<br>git remote -v</li>
+</ul>
+<p>参考文件：<br><a href="https://yunpan.cn/cMbGQdJpfmRvc" target="_blank" rel="external">https://yunpan.cn/cMbGQdJpfmRvc</a>  访问密码 b04e<br><a href="https://yunpan.cn/cMbGdpRMmCSdt" target="_blank" rel="external">https://yunpan.cn/cMbGdpRMmCSdt</a>  访问密码 6823</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[markdown常用语法小结]]></title>
+      <url>owker.pw/2016/09/02/markdown%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/</url>
+      <content type="html"><![CDATA[<p><img src="http://ww3.sinaimg.cn/large/a8fc9690gw1f7he37ihtsj20zk0k0jvb.jpg" alt=""></p>
+<blockquote>
+<p>本文对常用markdown语法进行小结，按使用频率排序，持续更新中。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><h3 id="1-设置标题"><a href="#1-设置标题" class="headerlink" title="1.设置标题"></a>1.设置标题</h3><h1 id="文字下方放置若干“-”：一级标题"><a href="#文字下方放置若干“-”：一级标题" class="headerlink" title="文字下方放置若干“=”：一级标题"></a>文字下方放置若干“=”：一级标题</h1><h2 id="文字下方放置若干“-”：二级标题"><a href="#文字下方放置若干“-”：二级标题" class="headerlink" title="文字下方放置若干“-”：二级标题"></a>文字下方放置若干“-”：二级标题</h2><h3 id="文字前方放置1-6个“-空格”：1-6级标题（该示例为三级标题）"><a href="#文字前方放置1-6个“-空格”：1-6级标题（该示例为三级标题）" class="headerlink" title="文字前方放置1-6个“#+空格”：1-6级标题（该示例为三级标题）"></a>文字前方放置1-6个“#+空格”：1-6级标题（该示例为三级标题）</h3><p><img src="http://ww3.sinaimg.cn/mw690/a8fc9690gw1f7fp15hlyej20dj034t9f.jpg" alt="" title="标题"></p>
+<h3 id="2-添加列表"><a href="#2-添加列表" class="headerlink" title="2.添加列表"></a>2.添加列表</h3><h4 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h4><p>“*+空格”或“-+空格”或“++空格”放于列表前，同一列表使用符号应统一，效果如下：</p>
+<ul>
+<li>列表1</li>
+<li>列表2</li>
+<li>列表3<br><img src="http://ww2.sinaimg.cn/mw690/a8fc9690gw1f7fp21twtnj20en02pgm1.jpg" alt="" title="无序列表"></li>
+</ul>
+<h4 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h4><p>数字+“.”+空格放于列表前</p>
+<ol>
+<li>列表1</li>
+<li>列表2</li>
+<li>列表3</li>
+</ol>
+<h3 id="3-添加引用"><a href="#3-添加引用" class="headerlink" title="3.添加引用"></a>3.添加引用</h3><p>“&gt;”放于引用文字前，效果如下：</p>
+<blockquote>
+<p>引用1<br>引用2<br>引用3</p>
+</blockquote>
+<p><img src="http://ww2.sinaimg.cn/mw690/a8fc9690gw1f7fp4j23ngj206r02pglr.jpg" alt="" title="引用"></p>
+<h3 id="添加代码"><a href="#添加代码" class="headerlink" title="添加代码"></a>添加代码</h3><p>添加一行代码：在代码前后添加符号“`”<br>添加多行代码：在每一行代码前都添加Tab或4个空格</p>
+<pre><code>while(1){
+    for(i=0;i&lt;10;i++);
+}
+</code></pre><p>添加多行代码并增加行号：代码前后增加三个“`”+语言（例如cpp）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span>(<span class="number">1</span>)&#123;</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="插入链接"><a href="#插入链接" class="headerlink" title="插入链接:"></a>插入链接:</h3><p>内联方式：[显示的字] (对应的网址)<br><a href="http://baidu.com" target="_blank" rel="external">百度</a><br><img src="http://ww4.sinaimg.cn/mw690/a8fc9690gw1f7fpdwjzb9j208k01caa7.jpg" alt=""><br>引用方式<br>I get 10 times more traffic from <a href="http://google.com/" title="Google" target="_blank" rel="external">Google</a> than from <a href="http://search.yahoo.com/" title="Yahoo Search" target="_blank" rel="external">Yahoo</a> or <a href="http://search.msn.com/" title="MSN Search" target="_blank" rel="external">MSN</a>.  </p>
+<p><img src="http://ww2.sinaimg.cn/large/a8fc9690gw1f7g8xle9w5j20js03mjsh.jpg" alt=""></p>
+<h3 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片:"></a>插入图片:</h3><p>内联方式：![] (图片地址+空格+“图片标题”)<br><img src="http://ww4.sinaimg.cn/mw690/a8fc9690gw1f7fpikdwlfj20fo01ejru.jpg" alt=""><br>这里直接用谷歌扩展程序微博图床生成，也可用引用方式</p>
+<h3 id="文字加粗：在文字前后加符号“-”或者“-”"><a href="#文字加粗：在文字前后加符号“-”或者“-”" class="headerlink" title="文字加粗：在文字前后加符号“**”或者“__”"></a>文字加粗：在文字前后加符号“**”或者“__”</h3><p><strong>粗体</strong></p>
+<h3 id="文字斜体：在文字前后加符号“-”或者“-”"><a href="#文字斜体：在文字前后加符号“-”或者“-”" class="headerlink" title="文字斜体：在文字前后加符号“*”或者“_”"></a>文字斜体：在文字前后加符号“*”或者“_”</h3><p><em>斜体</em></p>
+<h3 id="下划线"><a href="#下划线" class="headerlink" title="下划线"></a>下划线</h3><p>在空白行下方添加三条“-”横线。（前面讲过在文字下方添加“-”，实现的2级标题）</p>
+<hr>
+<h3 id="引用方式"><a href="#引用方式" class="headerlink" title="引用方式"></a>引用方式</h3><h3 id="脚注"><a href="#脚注" class="headerlink" title="脚注"></a>脚注</h3><p>编辑.md文件可用sublime text3，安装Markdown Editing和Markdown Preview插件</p>
+<p>参考文件：<br><a href="https://yunpan.cn/cMGfkIUtwmjV4" target="_blank" rel="external">https://yunpan.cn/cMGfkIUtwmjV4</a>  访问密码 581f</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[github+hexo搭建免费个人博客（Windows）]]></title>
+      <url>owker.pw/2016/09/01/github+hexo%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88Windows%EF%BC%89/</url>
+      <content type="html"><![CDATA[<p><img src="http://ww1.sinaimg.cn/large/a8fc9690gw1f7hdxrjygjj20zk0npwlx.jpg" alt=""></p>
+<blockquote>
+<p>出于工作、兴趣、分享等各种原因，很多人想搭建自己的一个博客，本文将介绍如何利用github+hexo搭建免费的个人博客。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="主要步骤"><a href="#主要步骤" class="headerlink" title="主要步骤"></a>主要步骤</h2><p>1.安装node.js，用于生成静态页面（node-v4.4.4-x64.msi）<a href="http://nodejs.cn/" target="_blank" rel="external">node.js中文网</a>，确认版本用node -v<br>2.安装git，将本地hexo内容提交到github上去（msysgit为windows版本，Git-2.5.1-64-bit.exe）<br>3.申请github账号，作为博客的远程仓库，免费挂在网上提供访问的，配置好SSH Keys之后提交不需再手动输入账号密码，检查是否有ssh keys（cd ~/.ssh若提示No such file or directory则要生成）<br>设置用户信息命令，新建远程仓库karl2000.github.io(命名要求”用户名.github.io”)<br>git config –global user.name “karl2000”//用户名<br>git config –global user.name “karl2000@qq.com”//邮箱<br>4.安装hexo（npm install hexo-cli -g）（npm install hexo –save），确认版本用hexo -v<br>5.初始化文件夹（hexo init）<br>6.运行命令npm install hexo-deployer-git –save<br>避免出现如下错误提示<br>ERROR Deployer not found : github<br>7.清除缓存文件 (db.json) 和已生成的静态文件 (public)。（hexo clean，本机调试时可不用）<br>8.生成静态页面（hexo generate或者hexo g）<br>9.本地启动（hexo server或者hexo s）<br>10.部署（hexo deploy或者hexo d）<br>打开站点_config.yml，修改deploy指向<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: git@github.com:karl2000/karl2000.github.io.git #此处复制github仓库地址后再加上“.git”</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
+<p>11.新建博客（hexo new 标题或者hexo n 标题）<br>12.新建页面（hexo new page “tags”新建标签页面）<br>步骤1-4只配置一次即可，以后操作只需后面的步骤。</p>
+<p>理解：网页github上的master分支是自动维护的，由hexo d进行部署，不要手动git对其操作</p>
+<p>更改主题，<br>可到<a href="https://hexo.io/themes/搜索合适的主题" target="_blank" rel="external">https://hexo.io/themes/搜索合适的主题</a><br>复制下载主题git clone <a href="https://github.com/tufu9441/maupassant-hexo.git" target="_blank" rel="external">https://github.com/tufu9441/maupassant-hexo.git</a> themes/maupassant<br>安装渲染器（==）<br>    npm install hexo-renderer-jade –save<br>    npm install hexo-renderer-sass –save<br>hexo使用参考官方教程<a href="https://hexo.io/zh-cn/" target="_blank" rel="external">https://hexo.io/zh-cn/</a></p>
+<p>思路：安装node.js-&gt;安装git-&gt;安装hexo</p>
+<p>经验：</p>
+<ol>
+<li>如果修改_config.yml过程中出现一堆乱码，很有可能在冒号后面没有加空格引起</li>
+<li>公益404网页无法显示解决办法：使用独立域名</li>
+<li>hexo d -g命令不报错但是网页打不开，请尝试hexo clean</li>
+<li><p>出现如下错误，原因是对package.json进行了修改（可能由于git merge或者git pull产生），利用<code>git checkout -- package.json</code>撤销对工作区的修改，或者打开文件直接修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Administrator@FVJOP6VIOYE3H4W MINGW64 /e/CODE/git/BLOG/karl2000githubio (master)</div><div class="line">$ hexo</div><div class="line">FATAL Cannot read property &apos;code&apos; of undefined</div><div class="line">TypeError: Cannot read property &apos;code&apos; of undefined</div><div class="line">    at C:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo-cli\lib\find_pkg.js:23:25</div><div class="line">    at tryCatcher (C:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo-cli\node_modules\bluebird\js\release\util.js:16:23)</div><div class="line">    at Promise._settlePromiseFromHandler (C:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo-cli\node_modules\bluebird\js\release\promise.js:510:31)</div><div class="line">    at Promise._settlePromise (C:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo-cli\node_modules\bluebird\js\release\promise.js:567:18)</div><div class="line">    at Promise._settlePromise0 (C:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo-cli\node_modules\bluebird\js\release\promise.js:612:10)</div><div class="line">    at Promise._settlePromises (C:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo-cli\node_modules\bluebird\js\release\promise.js:687:18)</div><div class="line">    at Async._drainQueue (C:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo-cli\node_modules\bluebird\js\release\async.js:138:16)</div><div class="line">    at Async._drainQueues (C:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo-cli\node_modules\bluebird\js\release\async.js:148:10)</div><div class="line">    at Immediate.Async.drainQueues [as _onImmediate] (C:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo-cli\node_modules\bluebird\js\release\async.js:17:14)</div><div class="line">    at processImmediate [as _immediateCallback] (timers.js:383:17)</div></pre></td></tr></table></figure>
+</li>
+<li><p>出现如下错误，输入<code>npm install hexo-server --save</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">Administrator@FVJOP6VIOYE3H4W MINGW64 /d/karl2000.github.io (hexo)</div><div class="line">$ hexo s</div><div class="line">Usage: hexo &lt;command&gt;</div><div class="line"></div><div class="line">Commands:</div><div class="line">  clean     Removed generated files and cache.</div><div class="line">  config    Get or set configurations.</div><div class="line">  deploy    Deploy your website.</div><div class="line">  generate  Generate static files.</div><div class="line">  help      Get help on a command.</div><div class="line">  init      Create a new Hexo folder.</div><div class="line">  list      List the information of the site</div><div class="line">  migrate   Migrate your site from other system to Hexo.</div><div class="line">  new       Create a new post.</div><div class="line">  publish   Moves a draft post from _drafts to _posts folder.</div><div class="line">  render    Render files with renderer plugins.</div><div class="line">  version   Display version information.</div><div class="line"></div><div class="line">Global Options:</div><div class="line">  --config  Specify config file instead of using _config.yml</div><div class="line">  --cwd     Specify the CWD</div><div class="line">  --debug   Display all verbose messages in the terminal</div><div class="line">  --draft   Display draft posts</div><div class="line">  --safe    Disable all plugins and scripts</div><div class="line">  --silent  Hide output on console</div><div class="line"></div><div class="line">For more help, you can use &apos;hexo help [command]&apos; for the detailed information</div><div class="line">or you can check the docs: http://hexo.io/docs/</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>思维导图</p>
+]]></content>
+    </entry>
+    
+  
+  
+</search>
