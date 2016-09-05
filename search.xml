@@ -4,6 +4,54 @@
   
     
     <entry>
+      <title><![CDATA[常用技巧整理]]></title>
+      <url>owker.pw/2016/09/05/%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/</url>
+      <content type="html"><![CDATA[<p>图片链接</p>
+<blockquote>
+<p>常用技巧</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="Shadowsocks代理共享给局域网内的移动设备-转"><a href="#Shadowsocks代理共享给局域网内的移动设备-转" class="headerlink" title="Shadowsocks代理共享给局域网内的移动设备[转]"></a>Shadowsocks代理共享给局域网内的移动设备[转]</h2><ol>
+<li>首先电脑启动shadowsocks客户端，右键托盘图标，把“允许来自局域网的连接”勾上。<br><img src="http://ww3.sinaimg.cn/large/a8fc9690gw1f7iqdrpfkuj205x06a74n.jpg" alt=""></li>
+<li>获取电脑的内网IP地址：win键+R输入cmd回车，输入ipconfig回车。<br><img src="http://ww1.sinaimg.cn/large/a8fc9690gw1f7ipryt5yyj20ff03mdgb.jpg" alt=""></li>
+<li>双击shadowsocks客户端托盘图标，记住本机代理的端口等会手机端要用。一般默认是1080<br><img src="http://ww4.sinaimg.cn/large/a8fc9690gw1f7iqh8mmk4j20cw07gdgj.jpg" alt=""></li>
+<li>手机端，我这里以iPhone为例，绝大部分设备都是支持http代理的，设置方法大同小异。<br>打开设置 - 无线局域网 - 点击你所连接的wifi旁边的“i”进入该网络的设置。<br>拉到最下面 - HTTP代理 - 点自动。<br>在URL里填写你的电脑内网IP地址+端口号+/pac，<br>例如我这里就是：<a href="http://192.168.1.57:1080/pac" target="_blank" rel="external">http://192.168.1.57:1080/pac</a><br>至此你的iPhone就可以通过电脑的代理了，无论是用手机浏览器上网，或者用Facebook、twitter、Instagram等app，都可以畅通无阻。<br>（若你的设备没法填URL地址，那么请参考步骤5的填法）<br><img src="http://ww2.sinaimg.cn/large/a8fc9690gw1f7iqj8dniuj20970cs3z6.jpg" alt=""></li>
+<li>如果局域网内另一台电脑也想通过本电脑进行翻墙浏览网页，那么就要在具体的软件设置http代理，这里以IE浏览器为例：<br>设置 - Internet选项 - 连接 - 局域网设置，在代理服务器一栏，勾上为lan使用代理服务器，填法和上面类似。<br>服务器地址填上面电脑的内网IP：192.168.1.57<br>端口填shadowsocks客户端的代理端口：1080</li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Linux技巧小结]]></title>
+      <url>owker.pw/2016/09/05/Linux%E6%8A%80%E5%B7%A7%E5%B0%8F%E7%BB%93/</url>
+      <content type="html"><![CDATA[<p>图片链接</p>
+<blockquote>
+<p>主要记录Linux使用过程遇到的需要处理的问题</p>
+</blockquote>
+<a id="more"></a>
+<ul>
+<li>修改IP永久生效</li>
+</ul>
+<ol>
+<li>切换到以下目录并打开编辑<br>vi /etc/sysconfig/network-scripts/ifcfg-eth0（eth0，第一块网卡，如果是第二块则为eth1）</li>
+<li>按如下修改ip<br>DEVICE=eth0（如果是第二块刚为eth1）<br>BOOTPROTO=static<br>IPADDR=192.168.0.11(改成要设置的IP)<br>NETMASK=255.255.255.0 (子网掩码)<br>GATEWAY=192.168.0.1(网关)<br>ONBOO=yes</li>
+<li>重启服务，通过ifconfig进行验证<br>service network restart</li>
+</ol>
+<p>注：如果是临时修改IP重启系统后恢复原始IP则用以下命令<br>ifconfig IP地址 netmask 子网掩码</p>
+<h2 id="局域网内远程登录Linux系统"><a href="#局域网内远程登录Linux系统" class="headerlink" title="局域网内远程登录Linux系统"></a>局域网内远程登录Linux系统</h2><ol>
+<li>安装SecureCRT软件<br><img src="http://ww1.sinaimg.cn/large/a8fc9690gw1f7ippub25vj20g408jtas.jpg" alt=""></li>
+<li>查询本机正在使用的网卡IP地址<br><code>win+R;cmd;ipconfig</code><br>结果为“192.168.1.100”<br><img src="http://ww1.sinaimg.cn/large/a8fc9690gw1f7ipryt5yyj20ff03mdgb.jpg" alt=""></li>
+<li>查询远端Linux系统IP地址<br><code>ifconfig</code><br>结果一定也在同一网段内，示例的结果是“192.168.1.108”</li>
+<li>通过SecureCRT新建连接并设置<br><img src="http://ww3.sinaimg.cn/large/a8fc9690gw1f7ipx8k56gj20f40bw0v1.jpg" alt=""></li>
+</ol>
+<p>注：同一台电脑通过VMware设置介绍，网络设置界面说明如下；<br><img src="http://ww3.sinaimg.cn/large/a8fc9690gw1f7ipzjlxmyj20jy0bndid.jpg" alt=""></p>
+<blockquote>
+<p>桥接模式：直接用真实网卡与虚拟机通信，需占用局域网内的IP地址<br>NAT模式：通过虚拟网卡VMnet8通信，只能与当前电脑通信，可以访问互联网<br>仅主机模式：通过虚拟网卡VMnet8通信，只能与当前电脑通信，不能访问互联网</p>
+</blockquote>
+<h2 id="Redhat-7-0使用CentOS-7-的Yum-网络源"><a href="#Redhat-7-0使用CentOS-7-的Yum-网络源" class="headerlink" title="Redhat 7.0使用CentOS 7 的Yum 网络源"></a><a href="http://www.centoscn.com/CentOS/config/2015/0328/5030.html" target="_blank" rel="external">Redhat 7.0使用CentOS 7 的Yum 网络源</a></h2>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[RedHat系统安装问题解决]]></title>
       <url>owker.pw/2016/09/05/RedHat%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
       <content type="html"><![CDATA[<p><img src="http://ww1.sinaimg.cn/large/a8fc9690gw1f7ijg6946lj21hc0zkk1d.jpg" alt=""></p>
