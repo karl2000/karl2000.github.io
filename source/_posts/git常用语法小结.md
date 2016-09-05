@@ -84,7 +84,9 @@ git remote -v
 * 第一次使用Git，需要设置署名和邮箱：
 git config --global user.name "用户名"
 git config --global user.email "电子邮箱"
-
+* 生成SSH keys
+ssh-keygen -t rsa -C "github网站邮箱"
+cat ~/.ssh/id_rsa.pub拷贝内容到网上生成SSH key
 
 参考文件：
 https://yunpan.cn/cMbGQdJpfmRvc  访问密码 b04e

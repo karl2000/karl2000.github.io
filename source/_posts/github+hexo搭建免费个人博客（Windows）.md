@@ -23,7 +23,7 @@ categories:
 设置用户信息命令，新建远程仓库karl2000.github.io(命名要求"用户名.github.io")
 git config --global user.name "karl2000"//用户名
 git config --global user.name "karl2000@qq.com"//邮箱
-4.安装hexo（npm install hexo-cli -g）（npm install hexo --save），确认版本用hexo -v
+4.安装hexo（npm install hexo-cli -g）（npm install hexo --save），确认版本用hexo -v（linux下还需另外安装npm:`curl http://npmjs.org/install.sh | sh`）
 5.初始化文件夹（hexo init）
 6.运行命令npm install hexo-deployer-git --save
 避免出现如下错误提示

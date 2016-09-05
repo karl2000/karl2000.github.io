@@ -53,3 +53,4 @@ ifconfig IP地址 netmask 子网掩码
 [Redhat 7.0使用CentOS 7 的Yum 网络源](http://www.centoscn.com/CentOS/config/2015/0328/5030.html)
 -----------------------------------
 
+>注：要将下载的repo文件内"$releasever"替换为相应版本号，去yum源核对路径，否则还会提示“This system is not registered to Red Hat Subscription Management”错误。
