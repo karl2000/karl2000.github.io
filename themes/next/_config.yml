@@ -53,7 +53,8 @@ menu_icons:  #icon图标
   #about: user
   #commonweal: heartbeat
   #mylove: heart
-  guestbook: envelope
+  guestbook: commenting
+  #envelope
 
 
 # ---------------------------------------------------------------
