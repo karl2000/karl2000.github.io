@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="OneWalker's blog">
 <meta property="og:description" content="本文对git常用语法进行小结，持续更新中。">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/a8fc9690gw1f7he16zfhjj20zk0npago.jpg">
-<meta property="og:updated_time" content="2016-09-05T15:14:28.037Z">
+<meta property="og:updated_time" content="2016-09-06T01:25:43.043Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git常用语法小结">
 <meta name="twitter:description" content="本文对git常用语法进行小结，持续更新中。">
@@ -369,7 +369,11 @@
 <li>切换到dev分支<br>git checkout dev</li>
 <li>创建并切换到dev分支<br>git checkout -b dev</li>
 <li>合并dev分支到当前分支(fast-forward)<br>git merge dev</li>
-<li>删除dev分支<br>git branch -d dev</li>
+<li><p>删除dev分支<br>git branch -d dev</p>
+</li>
+<li><p>git强制覆盖本地文件<br><code>git fetch --all  
+git reset --hard origin/master (远程分支名)</code></p>
+</li>
 </ul>
 <hr>
 <ul>
@@ -521,7 +525,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
