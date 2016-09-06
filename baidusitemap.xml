@@ -4,12 +4,12 @@
 
     
   <url>
-    <loc>owker.pw/2016/09/06/Quartus%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E8%A6%81%E7%82%B9%E8%AE%B0%E5%BD%95/</loc>
-    <lastmod>2016-09-06T14:23:12.692Z</lastmod>
+    <loc>owker.pw/2016/09/05/Linux%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/</loc>
+    <lastmod>2016-09-06T14:33:32.780Z</lastmod>
     <data>
         <display>
-        <title>Quartus软件安装要点记录</title>
-        <pubTime>2016-09-06T14:13:43.000Z</pubTime>
+        <title>Linux常用语法小结（redhat系列）</title>
+        <pubTime>2016-09-05T14:47:00.000Z</pubTime>
         
          
            
@@ -20,11 +20,26 @@
     
   <url>
     <loc>owker.pw/2016/09/05/Linux%E6%8A%80%E5%B7%A7%E5%B0%8F%E7%BB%93/</loc>
-    <lastmod>2016-09-06T11:45:23.168Z</lastmod>
+    <lastmod>2016-09-06T14:32:59.528Z</lastmod>
     <data>
         <display>
         <title>Linux技巧小结</title>
         <pubTime>2016-09-05T06:08:56.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>owker.pw/2016/09/06/Quartus%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E8%A6%81%E7%82%B9%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2016-09-06T14:32:09.072Z</lastmod>
+    <data>
+        <display>
+        <title>Quartus软件安装要点记录</title>
+        <pubTime>2016-09-06T14:13:43.000Z</pubTime>
         
          
            
@@ -78,21 +93,6 @@
              
               <breadCrumb title="博客搭建" url="owker.pw/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>owker.pw/2016/09/05/Linux%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/</loc>
-    <lastmod>2016-09-05T15:39:02.944Z</lastmod>
-    <data>
-        <display>
-        <title>Linux常用语法小结（redhat系列）</title>
-        <pubTime>2016-09-05T14:47:00.000Z</pubTime>
-        
-         
-           
         </display>
     </data>
     </url>
