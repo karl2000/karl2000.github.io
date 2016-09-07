@@ -92,7 +92,7 @@
 <meta property="og:description" content="RedHat系列（包括CentOS）系统在使用实际电脑安装时，出现“dev/root does not exist”的解决办法。">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/a8fc9690gw1f7ijg6946lj21hc0zkk1d.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/a8fc9690gw1f7iiwr0zkaj20zk0k078n.jpg">
-<meta property="og:updated_time" content="2016-09-06T10:18:02.196Z">
+<meta property="og:updated_time" content="2016-09-07T05:14:57.037Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RedHat系统安装问题解决">
 <meta name="twitter:description" content="RedHat系列（包括CentOS）系统在使用实际电脑安装时，出现“dev/root does not exist”的解决办法。">
@@ -359,9 +359,10 @@
 <ol>
 <li>系统安装</li>
 <li>连接WinScp</li>
-<li>设置yum源</li>
-<li>测试，yum install -y gcc;yum install -y gcc-c++</li>
+<li>设置yum源<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[Redhat 7.0使用CentOS 7 的Yum 网络源](http://www.centoscn.com/CentOS/config/2015/0328/5030.html)</div><div class="line">-----------------------------------</div><div class="line">`rpm -qa|grep yum|xargs rpm -e --nodeps`删除软件用该命令</div><div class="line"></div><div class="line">&gt;注：要将下载的repo文件内&quot;$releasever&quot;替换为相应版本号，去yum源核对路径，否则还会提示“This system is not registered to Red Hat Subscription Management”错误。</div><div class="line">测试，yum install -y gcc;yum install -y gcc-c++</div></pre></td></tr></table></figure>
+</li>
 </ol>
+<h2 id="linux系统删除zlib导致系统不能正常使用解决办法"><a href="#linux系统删除zlib导致系统不能正常使用解决办法" class="headerlink" title="linux系统删除zlib导致系统不能正常使用解决办法"></a>linux系统删除zlib导致系统不能正常使用解决办法</h2><p>重新下载安装包zlib-1.2.8.tar.gz<br>执行./configure;make;make install;<br>上述步骤会提示出错，由于缺少libz.so.1<br>找一台版本一致的系统，执行find / -name libz.so.1，复制相关的软连接和原文件到相同目录<br>然后重新安装zlib程序。</p>
 
       
     </div>
@@ -498,7 +499,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -587,7 +588,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#linux系统删除zlib导致系统不能正常使用解决办法"><span class="nav-number">1.</span> <span class="nav-text">linux系统删除zlib导致系统不能正常使用解决办法</span></a></li></ol></div>
             
           </div>
         </section>

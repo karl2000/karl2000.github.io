@@ -71,8 +71,6 @@
 
 
 
-  
-
 
   <link rel="alternate" href="/atom.xml" title="OneWalker's blog" type="application/atom+xml" />
 
@@ -86,16 +84,22 @@
 
 
 
-<meta name="description" content="404">
-<meta property="og:type" content="website">
-<meta property="og:title" content="OneWalker's blog">
-<meta property="og:url" content="owker.pw/404.html">
+<meta name="description" content="图片链接
+
+说明">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux教程笔记">
+<meta property="og:url" content="owker.pw/2016/09/07/Linux教程笔记/index.html">
 <meta property="og:site_name" content="OneWalker's blog">
-<meta property="og:description" content="404">
-<meta property="og:updated_time" content="2016-09-01T20:27:58.128Z">
+<meta property="og:description" content="图片链接
+
+说明">
+<meta property="og:updated_time" content="2016-09-07T10:48:15.719Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OneWalker's blog">
-<meta name="twitter:description" content="404">
+<meta name="twitter:title" content="Linux教程笔记">
+<meta name="twitter:description" content="图片链接
+
+说明">
 
 
 
@@ -116,15 +120,9 @@
 
 
 
-  <link rel="canonical" href="owker.pw/404.html"/>
+  <link rel="canonical" href="owker.pw/2016/09/07/Linux教程笔记/"/>
 
-  <title>
-  
-
-  
-     | OneWalker's blog
-  
- - 博观而约取，厚积而薄发 </title>
+  <title> Linux教程笔记 | OneWalker's blog  - 博观而约取，厚积而薄发 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -151,7 +149,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -274,18 +272,171 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
     
-      <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>404</title>
-	</head>
-	<body>
-		<script type="text/javascript" src="http://www.qq.com/404/search_children.js" charset="utf-8" homepageurl="https://karl2000.github.io" homepagename="�ҵĲ���"></script>
-	</body>
-</html>
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Linux教程笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-07T10:17:40+08:00" content="2016-09-07">
+              2016-09-07
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/07/Linux教程笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/07/Linux教程笔记/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/09/07/Linux教程笔记/" class="leancloud_visitors" data-flag-title="Linux教程笔记">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
     
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>图片链接</p>
+<blockquote>
+<p>说明</p>
+</blockquote>
+<a id="more"></a>
+<ol>
+<li>文件系统管理<br>9.1<br>分区：主分区总共4个，扩展分区1个（占用主分区数量），逻辑分区不限（在扩展分区中）<br>硬盘硬件接口：<br>IDE（淘汰hda）<br>SCSI(sda1,sda2,sda5（扩展分区）等)<br>9.2<br>df -h；查看分区情况<br>du -sh 目录名：统计目录大小<br>dumpe2fs /dev/sda1：看详细信息<br>挂载<br>建立挂载点 mkdir /mnt/cdrom<br>挂载命令<code>mount [-t 文件系统（iso9660/vfat）] [-o 特殊选项] 设备文件名（dev/cdrom） 挂载点（mnt/cdrom)</code><br>卸载 umount 设备文件名或挂载点（/mnt/cdrom或/dev/cdrom）</li>
+</ol>
+<p>fdisk -l :查看有多少可被识别的硬盘或优盘</p>
+<p>9.3<br>fdisk /dev/sdb(对新硬盘进行分区)<br>partprobe重新读取分区表信息<br>mkfs -t ext4 /dev/sdb1(格式化)<br>分区自动挂载要修改/etc/fstab</p>
+
+      
+    </div>
+
+	<div>
+      
+        
+<div style="text-align:center;color: #ccc;font-size:14px;">------------------------------ 本文结束 ------------------------------</div>
+
+      
+    </div>
+	
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+	
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/06/Quartus软件安装要点记录/" rel="next" title="Quartus软件安装要点记录">
+                <i class="fa fa-chevron-left"></i> Quartus软件安装要点记录
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/07/Linux下QuartusII常用命令小结/" rel="prev" title="Linux下QuartusII常用命令小结">
+                Linux下QuartusII常用命令小结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/09/07/Linux教程笔记/"
+     data-title="Linux教程笔记"
+     data-content=""
+     data-url="owker.pw/2016/09/07/Linux教程笔记/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
   </div>
 
 
@@ -296,8 +447,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="404.html"
-           data-title="" data-url="owker.pw/404.html">
+      <div class="ds-thread" data-thread-key="2016/09/07/Linux教程笔记/"
+           data-title="Linux教程笔记" data-url="owker.pw/2016/09/07/Linux教程笔记/">
       </div>
     
   </div>
@@ -321,8 +472,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://ww3.sinaimg.cn/large/a8fc9690gw1f7eopfxshdj20zk0qot9x.jpg"
@@ -415,6 +575,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -517,6 +688,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

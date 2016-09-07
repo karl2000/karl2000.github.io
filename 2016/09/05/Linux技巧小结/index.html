@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/a8fc9690gw1f7ipryt5yyj20ff03mdgb.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/a8fc9690gw1f7ipx8k56gj20f40bw0v1.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/a8fc9690gw1f7ipzjlxmyj20jy0bndid.jpg">
-<meta property="og:updated_time" content="2016-09-06T14:32:59.528Z">
+<meta property="og:updated_time" content="2016-09-07T10:47:44.941Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux技巧小结">
 <meta name="twitter:description" content="主要记录Linux使用过程遇到的需要处理的问题">
@@ -352,10 +352,7 @@
 <p>主要记录Linux使用过程遇到的需要处理的问题</p>
 </blockquote>
 <a id="more"></a>
-<ul>
-<li>修改IP永久生效</li>
-</ul>
-<ol>
+<h2 id="修改IP永久生效"><a href="#修改IP永久生效" class="headerlink" title="修改IP永久生效"></a>修改IP永久生效</h2><ol>
 <li>切换到以下目录并打开编辑<br>vi /etc/sysconfig/network-scripts/ifcfg-eth0（eth0，第一块网卡，如果是第二块则为eth1）</li>
 <li>按如下修改ip<br>DEVICE=eth0（如果是第二块刚为eth1）<br>BOOTPROTO=static<br>IPADDR=192.168.0.11(改成要设置的IP)<br>NETMASK=255.255.255.0 (子网掩码)<br>GATEWAY=192.168.0.1(网关)<br>ONBOO=yes</li>
 <li>重启服务，通过ifconfig进行验证<br>service network restart</li>
@@ -371,26 +368,39 @@
 <blockquote>
 <p>桥接模式：直接用真实网卡与虚拟机通信，需占用局域网内的IP地址<br>NAT模式：通过虚拟网卡VMnet8通信，只能与当前电脑通信，可以访问互联网<br>仅主机模式：通过虚拟网卡VMnet8通信，只能与当前电脑通信，不能访问互联网</p>
 </blockquote>
-<h2 id="Redhat-7-0使用CentOS-7-的Yum-网络源"><a href="#Redhat-7-0使用CentOS-7-的Yum-网络源" class="headerlink" title="Redhat 7.0使用CentOS 7 的Yum 网络源"></a><a href="http://www.centoscn.com/CentOS/config/2015/0328/5030.html" target="_blank" rel="external">Redhat 7.0使用CentOS 7 的Yum 网络源</a></h2><p><code>rpm -qa|grep yum|xargs rpm -e --nodeps</code>删除软件用该命令</p>
-<blockquote>
+<h2 id="Redhat-7-0使用CentOS-7-的Yum-网络源"><a href="#Redhat-7-0使用CentOS-7-的Yum-网络源" class="headerlink" title="Redhat 7.0使用CentOS 7 的Yum 网络源"></a><a href="http://www.centoscn.com/CentOS/config/2015/0328/5030.html" target="_blank" rel="external">Redhat 7.0使用CentOS 7 的Yum 网络源</a></h2><ol>
+<li>删除原yum包<br><code>rpm -qa|grep yum|xargs rpm -e --nodeps</code>删除软件用该命令</li>
+<li>电脑可上网</li>
+<li>下载CentOS可用yum包并安装</li>
+<li>修改repo文件<blockquote>
 <p>注：要将下载的repo文件内”$releasever”替换为相应版本号，去yum源核对路径，否则还会提示“This system is not registered to Red Hat Subscription Management”错误。</p>
 </blockquote>
+</li>
+<li>测试，yum install -y gcc;yum install -y gcc-c++</li>
+</ol>
 <p><a href="http://nameyjj.blog.51cto.com/788669/557424" target="_blank" rel="external">linux查看内核版本、系统版本、系统位数（32or64）</a></p>
-<p><a href="https://github.com/shadowsocks/shadowsocks-qt5/wiki" target="_blank" rel="external">安装linux下的ShadowSocks</a><br>以下方法可行，已验证:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">如果使用传统的yum包管理工具的话，需要从Copr下载相应版本的repo文件放到/etc/yum.repos.d/下，然后通过yum安装：</div><div class="line">sudo yum update</div><div class="line">sudo yum install shadowsocks-qt5</div><div class="line">RHEL/CentOS请确认已经添加了EPEL源。</div></pre></td></tr></table></figure></p>
-<p>RedHat软件安装小结</p>
-<ol>
+<h2 id="安装linux下的ShadowSocks"><a href="#安装linux下的ShadowSocks" class="headerlink" title="安装linux下的ShadowSocks"></a><a href="https://github.com/shadowsocks/shadowsocks-qt5/wiki" target="_blank" rel="external">安装linux下的ShadowSocks</a></h2><p>以下方法可安装成功，但是桌面系统受影响，进不了图形界面（正在处理）:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">如果使用传统的yum包管理工具的话，需要从Copr下载相应版本的repo文件放到/etc/yum.repos.d/下，然后通过yum安装：</div><div class="line">sudo yum update</div><div class="line">sudo yum install shadowsocks-qt5</div><div class="line">RHEL/CentOS请确认已经添加了EPEL源。</div></pre></td></tr></table></figure></p>
+<h2 id="chrome浏览器安装"><a href="#chrome浏览器安装" class="headerlink" title="chrome浏览器安装"></a><a href="https://www.google.com/chrome/browser/desktop/index.html" target="_blank" rel="external">chrome浏览器安装</a></h2><h2 id="chromium浏览器安装"><a href="#chromium浏览器安装" class="headerlink" title="chromium浏览器安装"></a><a href="https://pkgs.org/centos-7/epel-testing-x86_64/chromium-52.0.2743.116-11.el7.x86_64.rpm.html" target="_blank" rel="external">chromium浏览器安装</a></h2><h2 id="RedHat软件安装小结"><a href="#RedHat软件安装小结" class="headerlink" title="RedHat软件安装小结"></a>RedHat软件安装小结</h2><ol>
 <li>安装包名.rpm<br>rpm -ivh 安装包名.rpm<br>yum install -y 安装包名(安装yum源有的软件)</li>
-<li>安装包名.run<br>chmod 755 安装包名.run<br>./安装包名.run(直接安装)</li>
+<li>安装包名.run<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">chmod 755 安装包名.run</div><div class="line">./安装包名.run(直接安装)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>在终端中转到run文件所在的文件夹，执行  chmod +x ./文件.run  以赋予其可执行权限，最后输入  ./文件.run  执行文件，按所给的提示进行安装。<br>如果遇到赋予可执行权限后依旧无法执行的情况，可能是因为该run文件处于FAT或NTFS格式的磁盘分区中，不可直接对其赋值，最好的办法是将其移动至ext4的Linux分区中再赋值执行。FAT不支持POSIX权限，在NTFS分区中可使用  ntfs-config  软件赋予其可执行权限。</p>
+</blockquote>
+<ol>
 <li>iso文件</li>
 </ol>
 <blockquote>
 <p>如果拷贝到本地，可以使用mount<br>mount fileName mountPoint -o loop，fileName是镜像文件名(<em>.iso,</em>.img)，<br>用例：如我有一个/home/rhel5.2.iso光盘镜像文件，<br>mkdir /mnt/b<br>mount /home/rhel5.2.iso /mnt/b -o loop，这样进入目录/mnt/b 你就能浏览rhel5.2.iso的内容了，*.img文件的用法一样。 </p>
 </blockquote>
 <ol>
-<li>源码包</li>
+<li>源码包<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">./configure</div><div class="line">make</div><div class="line">make install</div></pre></td></tr></table></figure>
+</li>
 </ol>
 <p>5.脚本安装包</p>
-<p>./*.sh</p>
+<p><code>./*.sh</code></p>
+<p>Ctrl+Alt+F?(?为数字)：linux切换tty</p>
 
       
     </div>
@@ -527,7 +537,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -616,7 +626,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#局域网内远程登录Linux系统"><span class="nav-number">1.</span> <span class="nav-text">局域网内远程登录Linux系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redhat-7-0使用CentOS-7-的Yum-网络源"><span class="nav-number">2.</span> <span class="nav-text">Redhat 7.0使用CentOS 7 的Yum 网络源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#修改IP永久生效"><span class="nav-number">1.</span> <span class="nav-text">修改IP永久生效</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#局域网内远程登录Linux系统"><span class="nav-number">2.</span> <span class="nav-text">局域网内远程登录Linux系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redhat-7-0使用CentOS-7-的Yum-网络源"><span class="nav-number">3.</span> <span class="nav-text">Redhat 7.0使用CentOS 7 的Yum 网络源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装linux下的ShadowSocks"><span class="nav-number">4.</span> <span class="nav-text">安装linux下的ShadowSocks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chrome浏览器安装"><span class="nav-number">5.</span> <span class="nav-text">chrome浏览器安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chromium浏览器安装"><span class="nav-number">6.</span> <span class="nav-text">chromium浏览器安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RedHat软件安装小结"><span class="nav-number">7.</span> <span class="nav-text">RedHat软件安装小结</span></a></li></ol></div>
             
           </div>
         </section>
