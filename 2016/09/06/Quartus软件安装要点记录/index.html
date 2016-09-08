@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="OneWalker's blog">
 <meta property="og:description" content="说明">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/a8fc9690gw1f7k8tzta2hj20hs0dcmy9.jpg">
-<meta property="og:updated_time" content="2016-09-06T14:32:09.072Z">
+<meta property="og:updated_time" content="2016-09-08T02:50:31.790Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Quartus软件安装要点记录">
 <meta name="twitter:description" content="说明">
@@ -351,6 +351,7 @@
 <p><a href="https://www.altera.com.cn/downloads/download-center.html" target="_blank" rel="external">quartus系列软件下载地址</a><br>想要以前版本的可上<a href="ftp://ftp.altera.com/outgoing/release/" target="_blank" rel="external">altera官方ftp</a></p>
 <p>windows7系统装Quartus II 11.0sp1 (64-Bit)</p>
 <p>RedHat系统可安装QuartusSetup-16.0.0.211-linux.run，注意16版本支持器件不同，要先看看自己用什么规格的芯片，否则还得重新装<br>因此这里也装和win7相同版本的软件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">chmod 755 QuartusSetup-16.0.0.211-linux.run</div><div class="line">./QuartusSetup-16.0.0.211-linux.run</div></pre></td></tr></table></figure></p>
+<p>11.0sp1<br>在安装./11.0sp1_acds_linux.sh时，如果是远程登录，没有图形界面，如果顺利会出现<br>“altera_installer_gui: cannot connect to X server”提示出现问题，此时输入<br>export DISPLAY=:0.0<br>再进行安装./11.0sp1_acds_linux.sh<br>在受控电脑上有图形界面出现，按提示安装<br><a href="http://www.tuicool.com/articles/QJruE3" target="_blank" rel="external">Linux下解决cannot connect to X server :0.0 问题</a></p>
 
       
     </div>

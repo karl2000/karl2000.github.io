@@ -94,7 +94,7 @@
 <meta property="og:description" content="图片链接
 
 说明">
-<meta property="og:updated_time" content="2016-09-07T10:48:15.719Z">
+<meta property="og:updated_time" content="2016-09-08T07:52:13.869Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux教程笔记">
 <meta name="twitter:description" content="图片链接
@@ -356,7 +356,8 @@
 <li>文件系统管理<br>9.1<br>分区：主分区总共4个，扩展分区1个（占用主分区数量），逻辑分区不限（在扩展分区中）<br>硬盘硬件接口：<br>IDE（淘汰hda）<br>SCSI(sda1,sda2,sda5（扩展分区）等)<br>9.2<br>df -h；查看分区情况<br>du -sh 目录名：统计目录大小<br>dumpe2fs /dev/sda1：看详细信息<br>挂载<br>建立挂载点 mkdir /mnt/cdrom<br>挂载命令<code>mount [-t 文件系统（iso9660/vfat）] [-o 特殊选项] 设备文件名（dev/cdrom） 挂载点（mnt/cdrom)</code><br>卸载 umount 设备文件名或挂载点（/mnt/cdrom或/dev/cdrom）</li>
 </ol>
 <p>fdisk -l :查看有多少可被识别的硬盘或优盘</p>
-<p>9.3<br>fdisk /dev/sdb(对新硬盘进行分区)<br>partprobe重新读取分区表信息<br>mkfs -t ext4 /dev/sdb1(格式化)<br>分区自动挂载要修改/etc/fstab</p>
+<p>9.3<br>fdisk /dev/sdb(对新硬盘进行分区)<br>(参数n新建,d删除,t更改分区，l查看类型，最后记得w)<br>partprobe重新读取分区表信息<br>mkfs -t ext4 /dev/sdb1(格式化，格式化swap分区用mkswap /dev/sdb1,swapon /dev/sdb1加入，swapoff /dev/sdb1取消  )<br>分区自动挂载要修改/etc/fstab<br>（swap要这么写：/dev/sdb1    swap    swap  defaults  0  0）<br>(编写过程可能用到的指令dumpe2fs -h /dev/sdb1，fdisk -l，mount，df)<br>修改好文件后需测试文件是否错误(一定不能错)<br>mount -a</p>
+<p>9.4<br>free -m 查询swap分区使用情况</p>
 
       
     </div>
