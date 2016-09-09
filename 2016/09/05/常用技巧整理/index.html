@@ -95,7 +95,8 @@
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/a8fc9690gw1f7ipryt5yyj20ff03mdgb.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/a8fc9690gw1f7iqh8mmk4j20cw07gdgj.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/a8fc9690gw1f7iqj8dniuj20970cs3z6.jpg">
-<meta property="og:updated_time" content="2016-09-06T14:44:02.253Z">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/a8fc9690gw1f7n7zm6unxj20hr01ewej.jpg">
+<meta property="og:updated_time" content="2016-09-09T08:42:33.301Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常用技巧整理">
 <meta name="twitter:description" content="常用技巧">
@@ -357,8 +358,22 @@
 <li>获取电脑的内网IP地址：win键+R输入cmd回车，输入ipconfig回车。<br><img src="http://ww1.sinaimg.cn/large/a8fc9690gw1f7ipryt5yyj20ff03mdgb.jpg" alt=""></li>
 <li>双击shadowsocks客户端托盘图标，记住本机代理的端口等会手机端要用。一般默认是1080<br><img src="http://ww4.sinaimg.cn/large/a8fc9690gw1f7iqh8mmk4j20cw07gdgj.jpg" alt=""></li>
 <li>手机端，我这里以iPhone为例，绝大部分设备都是支持http代理的，设置方法大同小异。<br>打开设置 - 无线局域网 - 点击你所连接的wifi旁边的“i”进入该网络的设置。<br>拉到最下面 - HTTP代理 - 点自动。<br>在URL里填写你的电脑内网IP地址+端口号+/pac，<br>例如我这里就是：<a href="http://192.168.1.57:1080/pac" target="_blank" rel="external">http://192.168.1.57:1080/pac</a><br>至此你的iPhone就可以通过电脑的代理了，无论是用手机浏览器上网，或者用Facebook、twitter、Instagram等app，都可以畅通无阻。<br>（若你的设备没法填URL地址，那么请参考步骤5的填法）<br><img src="http://ww2.sinaimg.cn/large/a8fc9690gw1f7iqj8dniuj20970cs3z6.jpg" alt=""></li>
-<li>如果局域网内另一台电脑也想通过本电脑进行翻墙浏览网页，那么就要在具体的软件设置http代理，这里以IE浏览器为例：<br>设置 - Internet选项 - 连接 - 局域网设置，在代理服务器一栏，勾上为lan使用代理服务器，填法和上面类似。<br>服务器地址填上面电脑的内网IP：192.168.1.57<br>端口填shadowsocks客户端的代理端口：1080</li>
+<li>如果局域网内另一台电脑也想通过本电脑进行浏览网页，那么就要在具体的软件设置http代理，这里以IE浏览器为例：<br>设置 - Internet选项 - 连接 - 局域网设置，在代理服务器一栏，勾上为lan使用代理服务器，填法和上面类似。<br>服务器地址填上面电脑的内网IP：192.168.1.57<br>端口填shadowsocks客户端的代理端口：1080</li>
 </ol>
+<h2 id="如何查看某个端口被谁占用"><a href="#如何查看某个端口被谁占用" class="headerlink" title="如何查看某个端口被谁占用"></a><a href="http://jingyan.baidu.com/article/3c48dd34491d47e10be358b8.html" target="_blank" rel="external">如何查看某个端口被谁占用</a></h2><p>开始—-&gt;运行—-&gt;cmd，或者是window+R组合键，调出命令窗口<br>输入命令：netstat -aon|findstr “1080”，查看被占用的端口PID，此例为3056<br><img src="http://ww4.sinaimg.cn/large/a8fc9690gw1f7n7zm6unxj20hr01ewej.jpg" alt=""><br>打开任务管理器，在进程中点击查看—&gt;选择列，将PID(进程标示符)前面的勾打上，点击确定，结束PID为3056的进程。</p>
+<p><a href="http://jingyan.baidu.com/article/455a99509eb6daa1662778b6.html" target="_blank" rel="external">如何使用Ghost对linux系统进行整盘备份恢复（不实用）</a><br>需要很大的硬盘空间，费时，没有实际使用</p>
+<ol>
+<li>制作大白菜启动盘</li>
+<li>进入Winpe系统界面，双击打开“Ghost32 115.1”程序，点击“local”，点击“Disk”，点击“To Image”</li>
+<li>选择需要备份的“Linux备份系统的源盘”，单击“OK”。</li>
+<li>择存放备份文件的移动硬盘，定义备份文件名称，单击“Save”。<br>恢复<br>点击“local”，点击“Disk”，点击“From Image”。</li>
+</ol>
+<p>以下更为实用一点<br><a href="http://www.linuxidc.com/Linux/2015-03/114458.htm" target="_blank" rel="external">Linux入门学习教程：如何备份Linux系统</a></p>
+<ol>
+<li>在linux下新建挂载点，<code>mkdir /mnt/usb</code></li>
+<li>挂载U盘mount /dev/sdb1 /mnt/usb<br>以上两步如果系统自动识别优盘，用df命令查看挂载点本例挂载点为<code>/run/media/root/60A7-F683/</code></li>
+</ol>
+<p>备份命令<code>rsync -Pa / /run/media/root/60A7-F683/backup_20160909 --exclude=/media/* --exclude=/sys/* --exclude=/proc/* --exclude=/mnt/* --exclude=/tmp/* --exclude=/run/media/root/60A7-F683/*</code><br>还原命令<code>rsync -Pa /run/media/root/60A7-F683/backup_20160909</code></p>
 
       
     </div>
@@ -584,7 +599,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Shadowsocks代理共享给局域网内的移动设备-转"><span class="nav-number">1.</span> <span class="nav-text">Shadowsocks代理共享给局域网内的移动设备[转]</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Shadowsocks代理共享给局域网内的移动设备-转"><span class="nav-number">1.</span> <span class="nav-text">Shadowsocks代理共享给局域网内的移动设备[转]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何查看某个端口被谁占用"><span class="nav-number">2.</span> <span class="nav-text">如何查看某个端口被谁占用</span></a></li></ol></div>
             
           </div>
         </section>

@@ -4,8 +4,43 @@
 
     
   <url>
+    <loc>owker.pw/2016/09/01/github+hexo%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88Windows%EF%BC%89/</loc>
+    <lastmod>2016-09-09T09:16:38.099Z</lastmod>
+    <data>
+        <display>
+        <title>github+hexo搭建免费个人博客（Windows）</title>
+        <pubTime>2016-09-01T13:14:34.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="博客搭建" url="owker.pw/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>owker.pw/2016/09/05/%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/</loc>
+    <lastmod>2016-09-09T08:42:33.301Z</lastmod>
+    <data>
+        <display>
+        <title>常用技巧整理</title>
+        <pubTime>2016-09-05T07:05:55.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>owker.pw/2016/09/06/Quartus%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E8%A6%81%E7%82%B9%E8%AE%B0%E5%BD%95/</loc>
-    <lastmod>2016-09-08T09:49:00.611Z</lastmod>
+    <lastmod>2016-09-09T07:51:17.307Z</lastmod>
     <data>
         <display>
         <title>Quartus软件安装要点记录</title>
@@ -20,7 +55,7 @@
     
   <url>
     <loc>owker.pw/2016/09/05/RedHat%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</loc>
-    <lastmod>2016-09-08T08:09:39.247Z</lastmod>
+    <lastmod>2016-09-09T07:06:47.451Z</lastmod>
     <data>
         <display>
         <title>RedHat7系统安装问题解决</title>
@@ -35,7 +70,7 @@
     
   <url>
     <loc>owker.pw/2016/09/07/Linux%E6%95%99%E7%A8%8B%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2016-09-08T07:52:13.869Z</lastmod>
+    <lastmod>2016-09-08T16:08:23.791Z</lastmod>
     <data>
         <display>
         <title>Linux教程笔记</title>
@@ -50,7 +85,7 @@
     
   <url>
     <loc>owker.pw/2016/09/05/Linux%E6%8A%80%E5%B7%A7%E5%B0%8F%E7%BB%93/</loc>
-    <lastmod>2016-09-07T12:00:50.100Z</lastmod>
+    <lastmod>2016-09-08T15:39:28.390Z</lastmod>
     <data>
         <display>
         <title>Linux技巧小结</title>
@@ -70,21 +105,6 @@
         <display>
         <title>Linux下QuartusII常用命令小结</title>
         <pubTime>2016-09-07T10:36:42.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>owker.pw/2016/09/05/%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/</loc>
-    <lastmod>2016-09-06T14:44:02.253Z</lastmod>
-    <data>
-        <display>
-        <title>常用技巧整理</title>
-        <pubTime>2016-09-05T07:05:55.000Z</pubTime>
         
          
            
@@ -118,26 +138,6 @@
         
          
            
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>owker.pw/2016/09/01/github+hexo%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88Windows%EF%BC%89/</loc>
-    <lastmod>2016-09-05T16:03:29.877Z</lastmod>
-    <data>
-        <display>
-        <title>github+hexo搭建免费个人博客（Windows）</title>
-        <pubTime>2016-09-01T13:14:34.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-         
-           
-             
-              <breadCrumb title="博客搭建" url="owker.pw/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
-          
         </display>
     </data>
     </url>

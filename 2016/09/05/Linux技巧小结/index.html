@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/a8fc9690gw1f7ipryt5yyj20ff03mdgb.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/a8fc9690gw1f7ipx8k56gj20f40bw0v1.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/a8fc9690gw1f7ipzjlxmyj20jy0bndid.jpg">
-<meta property="og:updated_time" content="2016-09-07T12:00:50.100Z">
+<meta property="og:updated_time" content="2016-09-08T15:39:28.390Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux技巧小结">
 <meta name="twitter:description" content="主要记录Linux使用过程遇到的需要处理的问题">
@@ -354,7 +354,7 @@
 <a id="more"></a>
 <h2 id="修改IP永久生效"><a href="#修改IP永久生效" class="headerlink" title="修改IP永久生效"></a>修改IP永久生效</h2><ol>
 <li>切换到以下目录并打开编辑<br>vi /etc/sysconfig/network-scripts/ifcfg-eth0（eth0，第一块网卡，如果是第二块则为eth1）</li>
-<li>按如下修改ip<br>DEVICE=eth0（如果是第二块刚为eth1）<br>BOOTPROTO=static<br>IPADDR=192.168.0.11(改成要设置的IP)<br>NETMASK=255.255.255.0 (子网掩码)<br>GATEWAY=192.168.0.1(网关)<br>ONBOO=yes</li>
+<li>按如下修改ip<br>DEVICE=eth0（如果是第二块刚为eth1）<br>BOOTPROTO=static<br>IPADDR=192.168.1.115(改成要设置的IP)<br>NETMASK=255.255.255.0 (子网掩码)<br>GATEWAY=192.168.1.1(网关)<br>ONBOO=yes</li>
 <li>重启服务，通过ifconfig进行验证<br>service network restart</li>
 </ol>
 <p>注：如果是临时修改IP重启系统后恢复原始IP则用以下命令<br>ifconfig IP地址 netmask 子网掩码</p>
