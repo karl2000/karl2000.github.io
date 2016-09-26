@@ -4,7 +4,36 @@
   
     
     <entry>
-      <title><![CDATA[C++深入详解学习总结]]></title>
+      <title><![CDATA[树莓派使用问题解决]]></title>
+      <url>owker.pw/2016/09/26/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
+      <content type="html"><![CDATA[<p>图片链接</p>
+<blockquote>
+<p>说明</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="解压-xz压缩包方法"><a href="#解压-xz压缩包方法" class="headerlink" title="解压.xz压缩包方法"></a>解压.xz压缩包方法</h2><p><code>xz -dk ubuntu-16.04-preinstalled-server-armhf+raspi2.img.xz</code><br>-d(解压) -k(保留源文件)</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Ubuntu使用问题解决]]></title>
+      <url>owker.pw/2016/09/25/Ubuntu%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
+      <content type="html"><![CDATA[<p>图片链接</p>
+<blockquote>
+<p>说明</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="SSH远程登录"><a href="#SSH远程登录" class="headerlink" title="SSH远程登录"></a>SSH远程登录</h2><ol>
+<li>更新源列表<code>sudo apt-get update</code></li>
+<li>安装SSH<code>sudo apt-get install openssh-server</code></li>
+<li>查看SSH是否启动：打开”终端窗口”，输入”sudo ps -e |grep ssh”–&gt;回车–&gt;有sshd,说明ssh服务已经启动，如果没有启动，输入”sudo service ssh start”–&gt;回车–&gt;ssh服务就会启动</li>
+<li>使用gedit修改配置文件”/etc/ssh/sshd_config”<br>打开”终端窗口”，输入”sudo gedit /etc/ssh/sshd_config”–&gt;回车–&gt;把配置文件中的”PermitRootLogin without-password”加一个”#”号,把它注释掉–&gt;再增加一句”PermitRootLogin yes”–&gt;保存，修改成功。</li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Cpp深入详解学习总结]]></title>
       <url>owker.pw/2016/09/22/Cpp%E6%B7%B1%E5%85%A5%E8%AF%A6%E8%A7%A3%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</url>
       <content type="html"><![CDATA[<p>图片链接</p>
 <blockquote>
@@ -46,12 +75,21 @@
 <p>基类，派生类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class Fish : public Animal  //Animal基类，Fish派生类</div><div class="line">&#123;</div><div class="line">public:</div><div class="line">	</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <p>public:都可访问<br>protected:子类可访问<br>private:只能在类中访问</p>
 <p>对函数参数进行初始化，可用如下方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Fish():Animal(300,400)    //子类向父类带参数的构造函数传递参数</div><div class="line">point():x(0),y(0)    //常数初始化</div></pre></td></tr></table></figure></p>
-<p>双冒号为作用域标识符，表示函数属于哪个类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Animal::sleep()</div></pre></td></tr></table></figure></p>
+<p>双冒号为作用域标识符，表示函数属于哪个类，如果之前没有类名则为全局函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Animal::sleep()</div><div class="line">::ShowWindow();//全局函数</div></pre></td></tr></table></figure></p>
 <p>父类对象与子类对象的首地址是一样的<br><img src="http://ww2.sinaimg.cn/large/a8fc9690gw1f82dntv0kbj20en07a74q.jpg" alt=""></p>
 <p>多态性：子类有的调用子类，子类没有的调用父类<br>虚函数virtual：在h文件中加，当函数实现放到c文件中不加virtual<br>纯虚函数virtual void breathe()=0;必须要实现纯虚函数功能才能实例化对象</p>
 <p>引用int &amp;b=a;    //b为变量a的别名，引用必须初始化，指针则不一定要初始化</p>
 <p>编译链接：编译单独的c文件生成.obj，然后链接生成.exe，h文件通过c文件中的包含直接加到c文件中（预处理）</p>
-<h2 id="第三章-MFC框架程序剖析"><a href="#第三章-MFC框架程序剖析" class="headerlink" title="第三章 MFC框架程序剖析"></a>第三章 MFC框架程序剖析</h2>]]></content>
+<h2 id="第三章-MFC框架程序剖析"><a href="#第三章-MFC框架程序剖析" class="headerlink" title="第三章 MFC框架程序剖析"></a>第三章 MFC框架程序剖析</h2><p>按照第一章流程分析</p>
+<h2 id="第七章-对话框"><a href="#第七章-对话框" class="headerlink" title="第七章 对话框"></a>第七章 对话框</h2><p>对话框创建</p>
+<blockquote>
+<p>模态对话框：需关闭才可执行其他任务<br>非模态对话框</p>
+</blockquote>
+<p>在MFC中，对资源的操作通常都是通过一个与资源相关的类来完成的</p>
+<p>在resource选项卡中添加DIALOG，布置相应资源；<br>创建类，可以View-&gt;ClassWizard创建，也可以双击创建，类名一般C开头</p>
+<p>if函数括号内可以逗号表达式，整个判断值为逗号后面的表达式值<br><code>if(GetDlgItem(IDC_NUMBER1)-&gt;GetWindowText(str),str==&quot;Number1:&quot;)</code></p>
+<p>七种访问对话框控件方式：<br><strong>GetDlgItem()-&gt;Get(Set)WindowText()</strong><br>GetDlgItemText()/SetDlgItemText()<br>GetDlgItemInt()/SetDlgItemInt()<br><strong>将控件和整型变量相关联</strong><br><strong>将控件和控件变量相关联</strong><br>SendMessage()<br>SendDlgItemMessage()</p>
+]]></content>
     </entry>
     
     <entry>
@@ -142,7 +180,7 @@
 <li>如果局域网内另一台电脑也想通过本电脑进行浏览网页，那么就要在具体的软件设置http代理，这里以IE浏览器为例：<br>设置 - Internet选项 - 连接 - 局域网设置，在代理服务器一栏，勾上为lan使用代理服务器，填法和上面类似。<br>服务器地址填上面电脑的内网IP：192.168.1.57<br>端口填shadowsocks客户端的代理端口：1080</li>
 </ol>
 <h2 id="如何查看某个端口被谁占用"><a href="#如何查看某个端口被谁占用" class="headerlink" title="如何查看某个端口被谁占用"></a><a href="http://jingyan.baidu.com/article/3c48dd34491d47e10be358b8.html" target="_blank" rel="external">如何查看某个端口被谁占用</a></h2><p>开始—-&gt;运行—-&gt;cmd，或者是window+R组合键，调出命令窗口<br>输入命令：netstat -aon|findstr “1080”，查看被占用的端口PID，此例为3056<br><img src="http://ww4.sinaimg.cn/large/a8fc9690gw1f7n7zm6unxj20hr01ewej.jpg" alt=""><br>打开任务管理器，在进程中点击查看—&gt;选择列，将PID(进程标示符)前面的勾打上，点击确定，结束PID为3056的进程。</p>
-<p><a href="http://jingyan.baidu.com/article/455a99509eb6daa1662778b6.html" target="_blank" rel="external">如何使用Ghost对linux系统进行整盘备份恢复（不实用）</a><br>需要很大的硬盘空间，费时，没有实际使用</p>
+<p><a href="http://jingyan.baidu.com/article/455a99 509eb6daa1662778b6.html" target="_blank" rel="external">如何使用Ghost对linux系统进行整盘备份恢复（不实用）</a><br>需要很大的硬盘空间，费时，没有实际使用</p>
 <ol>
 <li>制作大白菜启动盘</li>
 <li>进入Winpe系统界面，双击打开“Ghost32 115.1”程序，点击“local”，点击“Disk”，点击“To Image”</li>
@@ -230,15 +268,15 @@
 <p>经过上面的步骤，本应进入RedHat的安装界面。但实际上未能进入，而是出现了类似上图的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dracut-initqueue[624]:Warning: Could not boot.</div><div class="line">dracut-initqueue[624]:Warning: /dev/root does not exist.Starting Dracut EmergencyShell…</div><div class="line">Warning: /dev/root does not exist</div></pre></td></tr></table></figure></p>
 <p>该问题是由于安装程序未能找到安装文件所致。<br>可以在随后出现的 <code>dracut:/#</code> 输入命令 <code>find / -name RHEL*</code>(即在根目录下搜索RHEL开头的文件，本例装的是RedHat系统，CentOS可以搜CentOS*)，找到安装文件所在的位置，即<code>/dev/disk/by-labelRHEL-7.0\x20se</code>（即指向U盘的位置）,<br>重启后修改(在启动引导的地方输入 Tab（CentOS为输入e，界面有提示）进入编辑状态)启动配置，将<br><code>vmlinuz initrd=initrd.imginst.stage2=hd:LABEL=RHEL-7.0\x20server.x86_64 rd.live.check quiet 改为：</code><br><code>vmlinuz initrd=initrd.imginst.stage2=hd:LABEL=RHEL-7.0\x20se       quiet</code><br>这是由于文件名太长，导致识别错误，从而找不到文件。</p>
 <blockquote>
-<p>linux系统安装时，采用“大白菜”软件，制作USB启动盘ISO模式，将相应的iso文件导入即可。<br>VMware虚拟机安装时，如果直接跳过开头菜单，可以按F2、ESC、F12选择安装的系统。</p>
+<p>linux系统安装时，采用“大白菜”软件，制作USB启动盘ISO模式，将相应的iso文件导入即可。<br>VMware虚拟机安装时，如果直接跳过开头菜单，可以选择自定义（高级）中的“我以后再安装操作系统”，完成后再将iso指定好开始安装系统。</p>
 </blockquote>
 <p>步骤</p>
 <ol>
 <li>系统安装</li>
 <li>连接WinScp</li>
-<li>设置yum源<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[Redhat 7.0使用CentOS 7 的Yum 网络源](http://www.centoscn.com/CentOS/config/2015/0328/5030.html)</div><div class="line">-----------------------------------</div><div class="line">`rpm -qa|grep yum|xargs rpm -e --nodeps`删除软件用该命令</div><div class="line">安装删除的软件</div><div class="line">/etc/yum.repos.d这里改repo</div><div class="line">&gt;注：要将下载的repo文件内&quot;$releasever&quot;替换为相应版本号，去yum源核对路径，否则还会提示“This system is not registered to Red Hat Subscription Management”错误。</div><div class="line">测试，yum install -y gcc;yum install -y gcc-c++</div></pre></td></tr></table></figure>
-</li>
+<li>设置yum源</li>
 </ol>
+<h2 id="Redhat-7-0使用CentOS-7-的Yum-网络源"><a href="#Redhat-7-0使用CentOS-7-的Yum-网络源" class="headerlink" title="Redhat 7.0使用CentOS 7 的Yum 网络源"></a><a href="http://www.centoscn.com/CentOS/config/2015/0328/5030.html" target="_blank" rel="external">Redhat 7.0使用CentOS 7 的Yum 网络源</a></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">`rpm -qa|grep yum|xargs rpm -e --nodeps`删除软件用该命令</div><div class="line">安装删除的软件</div><div class="line">/etc/yum.repos.d这里改repo</div><div class="line">&gt;注：（有时候！！）要将下载的repo文件内&quot;$releasever&quot;替换为相应版本号，去yum源核对路径，否则还会提示“This system is not registered to Red Hat Subscription Management”错误。</div><div class="line">测试，yum install -y gcc;yum install -y gcc-c++</div></pre></td></tr></table></figure>
 <h2 id="CentOS-中-YUM-安装桌面环境"><a href="#CentOS-中-YUM-安装桌面环境" class="headerlink" title="CentOS 中 YUM 安装桌面环境"></a><a href="https://cnzhx.net/blog/centos-yum-install-desktop/" target="_blank" rel="external">CentOS 中 YUM 安装桌面环境</a></h2><h2 id="更新库文件后，重启系统，无法进入图形界面"><a href="#更新库文件后，重启系统，无法进入图形界面" class="headerlink" title="更新库文件后，重启系统，无法进入图形界面"></a>更新库文件后，重启系统，无法进入图形界面</h2><p>重新安装桌面环境<br>yum grouplist<br>yum groupinstall “KDE Plasma Workspaces”或yum groupinstall “GNOME Desktop”<br>systemctl get-default<br>systemctl set-default graphical.target<br>startx<br>yum groupremove<br>出现“xinit: unable to connect to X server: Connection refused”</p>
 <p>推测为显卡驱动问题，到官网下载相应驱动</p>
 <h2 id="linux下共享库损坏（libz-so-1）解决方案"><a href="#linux下共享库损坏（libz-so-1）解决方案" class="headerlink" title="linux下共享库损坏（libz.so.1）解决方案"></a>linux下共享库损坏（libz.so.1）解决方案</h2><p>安装quartus11.0sp1时需要卸载libz(有冲突需更新)，卸载后rpm命令无效<br>此时找另一台电脑，将（/usr/lib64/下的libz.so.1和libz.so.1.2.7）和（/usr/lib/下的libz.so.1和libz.so.1.2.7）拷贝到相同文件夹</p>
