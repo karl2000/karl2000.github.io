@@ -23,8 +23,9 @@
 </li>
 <li><p>打开控制台（WIN+R 输入cmd），输入以下命令查看网络接口信息：<br><code>arp -a</code><br><img src="http://ww4.sinaimg.cn/large/a8fc9690jw1f86vebe3kvj20ih0ca0vg.jpg" alt=""><br>可以找到树莓派IP地址为192.168.137.183</p>
 </li>
+<li><p>用SecureCRT建立SSH连接：<br>用户名：pi<br>密码：raspberry<br><img src="http://ww1.sinaimg.cn/large/a8fc9690gw1f86vgj5o88j20ng05wacw.jpg" alt=""></p>
+</li>
 </ol>
-<p>7.用SecureCRT建立SSH连接：<br>用户名：pi<br>密码：raspberry<br><img src="http://ww1.sinaimg.cn/large/a8fc9690gw1f86vgj5o88j20ng05wacw.jpg" alt=""></p>
 <p><a href="http://jingyan.baidu.com/article/f71d60376a58561ab741d168.html" target="_blank" rel="external">internet连接共享访问被启用时出现错误解决方法</a></p>
 <ol>
 <li>在左下角搜索一栏里面打上“服务”，点击打开</li>
