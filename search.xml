@@ -12,6 +12,25 @@
 </blockquote>
 <a id="more"></a>
 <h2 id="解压-xz压缩包方法"><a href="#解压-xz压缩包方法" class="headerlink" title="解压.xz压缩包方法"></a>解压.xz压缩包方法</h2><p><code>xz -dk ubuntu-16.04-preinstalled-server-armhf+raspi2.img.xz</code><br>-d(解压) -k(保留源文件)</p>
+<h2 id="笔记本SSH远程登录"><a href="#笔记本SSH远程登录" class="headerlink" title="笔记本SSH远程登录"></a>笔记本SSH远程登录</h2><ol>
+<li>下载raspbian系统<br><a href="https://www.raspberrypi.org/downloads/" target="_blank" rel="external">raspbian系统下载地址</a></li>
+<li>下载烧写SD卡软件Win32DiskImager</li>
+<li><p>解压raspbian系统生成.img镜像，将镜像烧录到SD卡</p>
+</li>
+<li><p>进入 “控制面板\所有控制面板项\网络和共享中心”，设置Internet连接共享（与本地有线网卡）<br><img src="http://ww1.sinaimg.cn/large/a8fc9690jw1f86vbv3vxnj210q0bw0y1.jpg" alt=""></p>
+</li>
+<li><p>进入 “控制面板\所有控制面板项\网络和共享中心”，树莓派启动完毕并连上有线之后，PC会显示出另一个本地连接（注意与loopback区别）<br><img src="http://ww2.sinaimg.cn/large/a8fc9690jw1f86v8l4dhnj21180abtd9.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/a8fc9690jw1f86v69t6v1j20vj0bg78v.jpg" alt=""><br>因此本机有线网卡的IP地址为192.168.137.1</p>
+</li>
+<li><p>打开控制台（WIN+R 输入cmd），输入以下命令查看网络接口信息：<br><code>arp -a</code><br><img src="http://ww4.sinaimg.cn/large/a8fc9690jw1f86vebe3kvj20ih0ca0vg.jpg" alt=""><br>可以找到树莓派IP地址为192.168.137.183</p>
+</li>
+</ol>
+<p>7.用SecureCRT建立SSH连接：<br>用户名：pi<br>密码：raspberry<br><img src="http://ww1.sinaimg.cn/large/a8fc9690gw1f86vgj5o88j20ng05wacw.jpg" alt=""></p>
+<p><a href="http://jingyan.baidu.com/article/f71d60376a58561ab741d168.html" target="_blank" rel="external">internet连接共享访问被启用时出现错误解决方法</a></p>
+<ol>
+<li>在左下角搜索一栏里面打上“服务”，点击打开</li>
+<li>找到windows firewall，即防火墙服务</li>
+<li>将防火墙服务设置成启动，自动状态</li>
+</ol>
 ]]></content>
     </entry>
     
