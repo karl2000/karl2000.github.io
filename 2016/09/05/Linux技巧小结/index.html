@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/a8fc9690gw1f7ipryt5yyj20ff03mdgb.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/a8fc9690gw1f7ipx8k56gj20f40bw0v1.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/a8fc9690gw1f7ipzjlxmyj20jy0bndid.jpg">
-<meta property="og:updated_time" content="2016-09-08T15:39:28.390Z">
+<meta property="og:updated_time" content="2016-09-29T03:07:40.172Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux技巧小结">
 <meta name="twitter:description" content="主要记录Linux使用过程遇到的需要处理的问题">
@@ -401,6 +401,20 @@
 <p>5.脚本安装包</p>
 <p><code>./*.sh</code></p>
 <p>Ctrl+Alt+F?(?为数字)：linux切换tty</p>
+<h2 id="Ubuntu增加SWAP分区大小【转】"><a href="#Ubuntu增加SWAP分区大小【转】" class="headerlink" title="Ubuntu增加SWAP分区大小【转】"></a>Ubuntu增加SWAP分区大小【转】</h2><p>Swap分区，即交换区<br>    Swap空间的作用可简单描述为：当系统的物理内存不够用的时候，就需要将物理内存中的一部分空间释放出来，以供当前运行的程序使用，那些被释放的空间可能来自一些很长时间没有什么操作的程序，这些被释放的空间被临时保存到Swap空间中，等到那些程序要运行时，再从Swap中恢复保存的数据到内存中。这样，系统总是在物理内存不够时，才进行Swap交换。<br>    通常情况下，Swap空间应大于或等于物理内存的大小，最小不应小于64M，通常Swap空间的大小应是物理内存的2-2.5倍，Swap的调整对Linux服务器，特别是Web服务器的性能至关重要，通过调整Swap，有时可以越过系统性能瓶颈，节省系统升级费用。</p>
+<p>一、查看已有swap空间<br>[root@test ~]# free -m<br>             total       used       free     shared    buffers     cached<br>Mem:          3949        244       3704          0         18        157<br>-/+ buffers/cache:         69       3880<br>Swap:         4275          0       4275</p>
+<p>二、新增swap分区空间<br>1、使用dd创建swapfile，bs单位bytes，也可以手动指定单位为M或者G，count为计数，例子为增加1M*1024=1G空间<br>[root@test swap]#pwd<br>/swap<br>[root@test swap]# dd if=/dev/zero of=swapfile bs=1M count=1024<br>1024+0 records in<br>1024+0 records out<br>1073741824 bytes (1.1 GB) copied, 2.27273 seconds, 472 MB/s<br>[root@test swap]# ll<br>total 1049604<br>-rw-r–r– 1 root root 1073741824 Sep 16 20:48 swapfile</p>
+<p>2、mkswap创建交换文件<br>[root@test swap]# mkswap swapfile<br>Setting up swapspace version 1, size = 1073737 kB</p>
+<p>3、swapon激活<br>[root@test swap]# swapon swapfile </p>
+<p>4、查看增加后swap空间<br>[root@test swap]# free -m<br>             total       used       free     shared    buffers     cached<br>Mem:          3949       1293       2655          0         17       1181<br>-/+ buffers/cache:         95       3854<br>Swap:         5299          0       5299</p>
+<p>5、开机启动<br>vim /etc/fstab 添加<br>/swap/swapfile         swap                    swap    defaults        0 0</p>
+<p>6、去掉增加swap</p>
+<h1 id="查看"><a href="#查看" class="headerlink" title="查看"></a>查看</h1><p>[root@test swap]# free -m</p>
+<h1 id="停用"><a href="#停用" class="headerlink" title="停用"></a>停用</h1><p>[root@test swap]# swapoff swapfile</p>
+<h1 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h1><p>[root@test swap]# rm swapfile -rf</p>
+<h1 id="确定"><a href="#确定" class="headerlink" title="确定"></a>确定</h1><p>[root@test swap]# free -m</p>
+<h1 id="删除随即启动swap"><a href="#删除随即启动swap" class="headerlink" title="删除随即启动swap"></a>删除随即启动swap</h1><p>[root@test swap]# vim /etc/fstab</p>
+<p>扩展阅读（来自百度百科）：<br>    需要说明一点，并不是所有从物理内存中交换出来的数据都会被放到Swap中（如果这样的话，Swap就会不堪重负），有相当一部分数据被直接交换到文件系统。例如，有的程序会打开一些文件，对文件进行读写（其实每个程序都至少要打开一个文件，那就是运行程序本身），当需要将这些程序的内存空间交换出去时，就没有必要将文件部分的数据放到Swap空间中了，而可以直接将其放到文件里去。如果是读文件操作，那么内存数据被直接释放，不需要交换出来，因为下次需要时，可直接从文件系统恢复；如果是写文件，只需要将变化的数据保存到文件中，以便恢复。但是那些用malloc和new函数生成的对象的数据则不同，它们需要Swap空间，因为它们在文件系统中没有相应的“储备”文件，因此被称作“匿名”(Anonymous)内存数据。这类数据还包括堆栈中的一些状态和变量数据等。所以说，Swap空间是“匿名”数据的交换空间。</p>
 
       
     </div>
@@ -537,7 +551,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -626,7 +640,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#修改IP永久生效"><span class="nav-number">1.</span> <span class="nav-text">修改IP永久生效</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#局域网内远程登录Linux系统"><span class="nav-number">2.</span> <span class="nav-text">局域网内远程登录Linux系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redhat-7-0使用CentOS-7-的Yum-网络源"><span class="nav-number">3.</span> <span class="nav-text">Redhat 7.0使用CentOS 7 的Yum 网络源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装linux下的ShadowSocks"><span class="nav-number">4.</span> <span class="nav-text">安装linux下的ShadowSocks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chrome浏览器安装"><span class="nav-number">5.</span> <span class="nav-text">chrome浏览器安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chromium浏览器安装"><span class="nav-number">6.</span> <span class="nav-text">chromium浏览器安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RedHat软件安装小结"><span class="nav-number">7.</span> <span class="nav-text">RedHat软件安装小结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#修改IP永久生效"><span class="nav-number">1.</span> <span class="nav-text">修改IP永久生效</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#局域网内远程登录Linux系统"><span class="nav-number">2.</span> <span class="nav-text">局域网内远程登录Linux系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redhat-7-0使用CentOS-7-的Yum-网络源"><span class="nav-number">3.</span> <span class="nav-text">Redhat 7.0使用CentOS 7 的Yum 网络源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装linux下的ShadowSocks"><span class="nav-number">4.</span> <span class="nav-text">安装linux下的ShadowSocks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chrome浏览器安装"><span class="nav-number">5.</span> <span class="nav-text">chrome浏览器安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chromium浏览器安装"><span class="nav-number">6.</span> <span class="nav-text">chromium浏览器安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RedHat软件安装小结"><span class="nav-number">7.</span> <span class="nav-text">RedHat软件安装小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ubuntu增加SWAP分区大小【转】"><span class="nav-number">8.</span> <span class="nav-text">Ubuntu增加SWAP分区大小【转】</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看"><span class="nav-number"></span> <span class="nav-text">查看</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#停用"><span class="nav-number"></span> <span class="nav-text">停用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除"><span class="nav-number"></span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#确定"><span class="nav-number"></span> <span class="nav-text">确定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除随即启动swap"><span class="nav-number"></span> <span class="nav-text">删除随即启动swap</span></a></div>
             
           </div>
         </section>

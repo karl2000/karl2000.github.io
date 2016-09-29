@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title><![CDATA[LFS搭建手记]]></title>
+      <url>owker.pw/2016/09/28/LFS%E6%90%AD%E5%BB%BA%E6%89%8B%E8%AE%B0/</url>
+      <content type="html"><![CDATA[<p>图片链接</p>
+<blockquote>
+<p>说明</p>
+</blockquote>
+<a id="more"></a>
+<p>参考LFS-BOOK-7.7-systemd .pdf进行搭建</p>
+<h2 id="第二章-准备新分区"><a href="#第二章-准备新分区" class="headerlink" title="第二章 准备新分区"></a>第二章 准备新分区</h2><p>创建新分区，格式化并挂载到/mnt/lfs</p>
+<p>设置环境变量<br>export LFS=/mnt/lfs<br>确保一直设置了  LFS  变量的一个方法是，同时编辑你的主目录下的.bash_profile 和  /root/.bash_profile ，把上方的导出命令输入进去。</p>
+<h2 id="第三章-软件包与补丁"><a href="#第三章-软件包与补丁" class="headerlink" title="第三章 软件包与补丁"></a>第三章 软件包与补丁</h2><p><code>mkdir -v $LFS/sources</code> 该文件夹保存软件包和补丁，同时作为工作目录</p>
+<p><code>chmod -v a+wt $LFS/sources</code>打开写权限和粘滞模式</p>
+<p>下载所有软件包和补丁的一个简单方式:<br><code>wget --input-file=wget-list --continue --directory-prefix=$LFS/sources</code></p>
+<p>下载所有软件包和补丁，通过以下代码检验，除了Linux (3.19) 会出现failed，其余都为OK<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pushd $LFS/sources</div><div class="line">md5sum -c md5sums</div><div class="line">popd</div></pre></td></tr></table></figure></p>
+<p>校验下载的文件是否正确，将md5sums拷入source目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pushd $LFS/sources</div><div class="line">md5sum -c md5sums</div><div class="line">popd</div></pre></td></tr></table></figure></p>
+<p>第四章 最后的准备工作</p>
+<p>创建tools文件夹<br><code>mkdir -v $LFS/tools</code></p>
+<p>su命令和su -命令最大的本质区别就是：前者只是切换了root身份，但Shell环境仍然是普通用户的Shell；而后者连用户和Shell环境一起切换成root身份了。只有切换了Shell环境才不会出现PATH环境变量错误。su切换成root用户以后，pwd一下，发现工作目录仍然是普通用户的工作目录；而用su -命令切换以后，工作目录变成root的工作目录了。用echo $PATH命令看一下su和su -以后的环境变量有何不同。以此类推，要从当前用户切换到其它用户也一样，应该使用su -命令。</p>
+<p>第五章 构建临时系统</p>
+<p>安装前确认宿主系统需求软件已安装(在软件要求的版本较低的情况下，降低软件版本的方法是将源指定到之前的版本，然后重新卸载安装软件)<br>备份源列表<br>sudo cp /etc/apt/sources.list /etc/apt/sources.list_backup<br>修改源后更新sudo apt-get update<br><code>dpkg -l binutils</code>查看binutils软件版本</p>
+<p>Binutils 软件包包括了一个链接器、汇编器和其它处理目标文件的工具。</p>
+<p>GCC 软件包是 GNU 编译器集合的一部分，其中包括 C 和 C++ 的编译器。<br>在编译GCC时如果出现“Makefile:xxx: recipe for target xxx failed”，可能是swap分区太小，需要增加其大小</p>
+<p>Ubuntu下缺省使用的是shell是dash，而不是bash。从/bin/sh软连接的指向可以看出这点。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">root@ubuntu:/# ls -l /bin/sh</div><div class="line">lrwxrwxrwx 1 root root 4 Sep 25 12:30 /bin/sh -&gt; dash</div></pre></td></tr></table></figure></p>
+<p><code>ln -sf /bin/bash /bin/sh</code></p>
+<p>5.11后软件安装直接看PDF即可</p>
+<h2 id="第六章-安装基本的系统软件"><a href="#第六章-安装基本的系统软件" class="headerlink" title="第六章 安装基本的系统软件"></a>第六章 安装基本的系统软件</h2>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[树莓派使用问题解决]]></title>
       <url>owker.pw/2016/09/26/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
       <content type="html"><![CDATA[<p>图片链接</p>
@@ -21,17 +50,43 @@
 </li>
 <li><p>进入 “控制面板\所有控制面板项\网络和共享中心”，树莓派启动完毕并连上有线之后，PC会显示出另一个本地连接（注意与loopback区别）<br><img src="http://ww2.sinaimg.cn/large/a8fc9690jw1f86v8l4dhnj21180abtd9.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/a8fc9690jw1f86v69t6v1j20vj0bg78v.jpg" alt=""><br>因此本机有线网卡的IP地址为192.168.137.1</p>
 </li>
-<li><p>打开控制台（WIN+R 输入cmd），输入以下命令查看网络接口信息：<br><code>arp -a</code><br><img src="http://ww4.sinaimg.cn/large/a8fc9690jw1f86vebe3kvj20ih0ca0vg.jpg" alt=""><br>可以找到树莓派IP地址为192.168.137.183</p>
+<li><p>打开控制台（WIN+R 输入cmd），输入以下命令查看网络接口信息：<br><code>arp -a</code><br><img src="http://ww4.sinaimg.cn/large/a8fc9690jw1f86vebe3kvj20ih0ca0vg.jpg" alt=""><br>可以找到树莓派IP地址为192.168.137.183<br>如果这一步，本地连接接口下找不到接入设备的IP，则修改SD卡根目录文件cmdline.txt，在最前方增加<code>ip=192.168.137.x</code>(x为其他地址，与原文件在同一行)</p>
 </li>
-<li><p>用SecureCRT建立SSH连接：<br>用户名：pi<br>密码：raspberry<br><img src="http://ww1.sinaimg.cn/large/a8fc9690gw1f86vgj5o88j20ng05wacw.jpg" alt=""></p>
+<li>用SecureCRT建立SSH连接：<br>用户名：pi<br>密码：raspberry<br><img src="http://ww1.sinaimg.cn/large/a8fc9690gw1f86vgj5o88j20ng05wacw.jpg" alt=""><br>重新开启root账号，可由pi用户登录后，在命令行下执行<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo passwd root</div></pre></td></tr></table></figure>
 </li>
 </ol>
+<p>执行此命令后系统会提示输入两遍的root密码，输入你想设的密码即可，然后在执行<br><code>sudo passwd --unlock root</code><br>这样就可以解锁root账户了。</p>
 <p><a href="http://jingyan.baidu.com/article/f71d60376a58561ab741d168.html" target="_blank" rel="external">internet连接共享访问被启用时出现错误解决方法</a></p>
 <ol>
-<li>在左下角搜索一栏里面打上“服务”，点击打开</li>
+<li>在左下角搜索一栏里面输入“服务”，点击打开</li>
 <li>找到windows firewall，即防火墙服务</li>
 <li>将防火墙服务设置成启动，自动状态</li>
 </ol>
+<h2 id="通过VNC连接-未实现"><a href="#通过VNC连接-未实现" class="headerlink" title="通过VNC连接(未实现)"></a>通过VNC连接(未实现)</h2><p>安装 tightvncserver：<br><code>sudo apt-get install tightvncserver</code></p>
+<p>写一个简单的启动脚本 /etc/init.d/tightvncserver：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">### BEGIN INIT INFO</div><div class="line"># Provides:          tightvncserver</div><div class="line"># Required-Start:    $syslog</div><div class="line"># Required-Stop:     $syslog</div><div class="line"># Default-Start:     2 3 4 5</div><div class="line"># Default-Stop:      0 1 6</div><div class="line"># Short-Description: vnc server</div><div class="line"># Description:</div><div class="line">#</div><div class="line">### END INIT INFO</div><div class="line"></div><div class="line"># Check the state of the command – this&apos;ll either be start or stop</div><div class="line">case &quot;$1&quot; in</div><div class="line">  start)</div><div class="line">    # if it&apos;s start, then start vncserver using the details below</div><div class="line">    sudo -u pi /usr/bin/vncserver :1 -geometry 1024x720 &gt;/dev/null 2&gt;&amp;1 &amp;</div><div class="line">    echo &quot;vncserver started&quot;</div><div class="line">    ;;</div><div class="line">  stop)</div><div class="line">    # if it&apos;s stop, then just kill the process</div><div class="line">    pkill Xtightvnc</div><div class="line">    echo &quot;vncserver stopped&quot;</div><div class="line">    ;;</div><div class="line">  *)</div><div class="line">    echo &quot;Usage: /etc/init.d/vncserver &#123;start|stop&#125;&quot;</div><div class="line">    exit 1</div><div class="line">    ;;</div><div class="line">esac</div><div class="line">exit 0</div></pre></td></tr></table></figure></p>
+<p>可以在启动参数里设置分辨率、位深、像素格式等，此处设置分辨率为 1024x720。</p>
+<p>然后，启动 vncserver 并设置成开机启动：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo chmod +x /etc/init.d/tightvncserver</div><div class="line">sudo service tightvncserver start</div><div class="line">sudo update-rc.d tightvncserver defaults</div></pre></td></tr></table></figure>
+<h2 id="更换软件源（apt-get-sources）【转】"><a href="#更换软件源（apt-get-sources）【转】" class="headerlink" title="更换软件源（apt-get sources）【转】"></a>更换软件源（apt-get sources）【转】</h2><p>树莓派的官方提供的源服务器访问起来实在太太太太太太慢了！会导致你安装一个几M的东西都要等大半天！肿么办！<br>好在树莓派官方有提供一个镜像列表：<a href="http://www.raspbian.org/RaspbianMirrors" target="_blank" rel="external">http://www.raspbian.org/RaspbianMirrors</a> </p>
+<p>中山大学<br>Raspbian <a href="http://mirror.sysu.edu.cn/raspbian/raspbian/" target="_blank" rel="external">http://mirror.sysu.edu.cn/raspbian/raspbian/</a></p>
+<p>中国科学技术大学<br>Raspbian <a href="http://mirrors.ustc.edu.cn/raspbian/raspbian/" target="_blank" rel="external">http://mirrors.ustc.edu.cn/raspbian/raspbian/</a></p>
+<p>清华大学<br>Raspbian <a href="http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/" target="_blank" rel="external">http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/</a></p>
+<p>华中科技大学<br>Raspbian <a href="http://mirrors.hustunique.com/raspbian/raspbian/" target="_blank" rel="external">http://mirrors.hustunique.com/raspbian/raspbian/</a><br>Arch Linux ARM <a href="http://mirrors.hustunique.com/archlinuxarm/" target="_blank" rel="external">http://mirrors.hustunique.com/archlinuxarm/</a></p>
+<p>大连东软信息学院源（北方用户）<br>Raspbian <a href="http://mirrors.neusoft.edu.cn/raspbian/raspbian/" target="_blank" rel="external">http://mirrors.neusoft.edu.cn/raspbian/raspbian/</a></p>
+<p>重庆大学源（中西部用户）<br>Raspbian <a href="http://mirrors.cqu.edu.cn/Raspbian/raspbian/" target="_blank" rel="external">http://mirrors.cqu.edu.cn/Raspbian/raspbian/</a></p>
+<p>在里面找到了几个国内的镜像，经过几番尝试，觉得来自中科大的速度非常不错~ 咱们就换成中科大的吧，镜像主页：<a href="https://lug.ustc.edu.cn/wiki/mirrors/help/raspbian" target="_blank" rel="external">https://lug.ustc.edu.cn/wiki/mirrors/help/raspbian</a></p>
+<ol>
+<li><p><code>sudo vi /etc/apt/sources.list</code>增加如下两行代码，注释掉其他的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">deb http://mirrors.ustc.edu.cn/raspbian/raspbian/ wheezy main non-free contrib</div><div class="line">deb-src http://mirrors.ustc.edu.cn/raspbian/raspbian/ wheezy main non-free contrib</div></pre></td></tr></table></figure>
+</li>
+<li><p>执行 <code>apt-get update</code> 命令更新软件列表</p>
+</li>
+</ol>
+<h2 id="软件安装与卸载"><a href="#软件安装与卸载" class="headerlink" title="软件安装与卸载"></a>软件安装与卸载</h2><p>apt-get<br>安装软件 apt-get install softname1 softname2 softname3……<br>卸载软件 apt-get remove softname1 softname2 softname3……<br>卸载并清除配置 apt-get remove -purge softname1<br>更新软件信息数据库 apt-get update<br>进行系统升级 apt-get upgrade<br>搜索软件包 apt-cache search softname1 softname2 softname3……</p>
+<p>如果使用 apt-get 遇到速度慢或者源不存在等错误，可能需要更换源<br>dpkg<br>安装deb软件包          dpkg -i xxx.deb<br>删除软件包             dpkg -r xxx.deb<br>连同配置文件一起删除   dpkg -r -purge xxx.deb<br>查看软件包信息         dpkg -info xxx.deb<br>查看文件拷贝详情       dpkg -L xxx.deb<br>查看系统中已安装软件包信息     dpkg -l<br>重新配置软件包         dpkg-reconfigure xxx</p>
+<p>常用命令<br>apt-cache search         # ——(package 搜索包)<br>apt-cache show           #——(package 获取包的相关信息，如说明、大小、版本等)<br>sudo apt-get install     # ——(package 安装包)<br>sudo apt-get reinstall     # —–(package - - reinstall 重新安装包)<br>sudo apt-get -f install  # —–(强制安装?#”-f = –fix-missing”当是修复安装吧…)<br>sudo apt-get remove      #—–(package 删除包)<br>sudo apt-get remove –purge # ——(package 删除包，包括删除配置文件等)<br>sudo apt-get autoremove –purge # —-(package 删除包及其依赖的软件包+配置文件等（只对6.10有效，强烈推荐）)</p>
+<p>sudo apt-get update      #——更新源信息数据库<br>sudo apt-get upgrade     #——更新已安装的包<br>sudo apt-get dist-upgrade # ———升级系统</p>
+<p>sudo apt-get dselect-upgrade #——使用 dselect 升级<br>apt-cache depends #——-(package 了解使用依赖)<br>apt-cache rdepends # ——(package 了解某个具体的依赖?#当是查看该包被哪些包依赖吧…)<br>sudo apt-get build-dep # ——(package 安装相关的编译环境)<br>apt-get source #——(package 下载该包的源代码)<br>sudo apt-get clean &amp;&amp; sudo apt-get autoclean # ——–清理下载文件的存档 &amp;&amp; 只清理过时的包<br>sudo apt-get check #——-检查是否有损坏的依赖</p>
 ]]></content>
     </entry>
     
@@ -143,7 +198,16 @@
 </ol>
 <p>fdisk -l :查看有多少可被识别的硬盘或优盘</p>
 <p>9.3<br>fdisk /dev/sdb(对新硬盘进行分区)<br>(参数n新建,d删除,t更改分区，l查看类型83为linux，5为extended，82为swap，最后记得w)<br>partprobe重新读取分区表信息<br>mkfs -t ext4 /dev/sdb1(格式化，格式化swap分区用mkswap /dev/sdb1,swapon /dev/sdb1加入，swapoff /dev/sdb1取消  )<br>分区自动挂载要修改/etc/fstab<br>（swap要这么写：/dev/sdb1    swap    swap  defaults  0  0）<br>(编写过程可能用到的指令dumpe2fs -h /dev/sdb1，fdisk -l，mount，df)<br>修改好文件后需测试文件是否错误(一定不能错)<br>mount -a</p>
-<p>9.4<br>free -m 查询swap分区使用情况</p>
+<p>实例：</p>
+<ol>
+<li>VMware新建虚拟盘（实际电脑直接挂载新硬盘），基本按照默认设置，磁盘大小自定义，这里设置为10G<br><img src="http://ww2.sinaimg.cn/large/a8fc9690gw1f88yt247frj20nx0idq6e.jpg" alt=""></li>
+<li><code>fdisk -l</code>查看新挂载磁盘，这里为/dev/sdb<br><img src="http://ww4.sinaimg.cn/large/a8fc9690gw1f88yvoo2jhj20n405ugov.jpg" alt=""></li>
+<li><code>fdisk /dev/sdb</code>对新磁盘进行分区（命令见上文，这里n-&gt;p-&gt;一直enter-&gt;最后w，新建一个10G主分区）<br><img src="http://ww3.sinaimg.cn/large/a8fc9690gw1f88yzzp29hj20o605mad3.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/a8fc9690gw1f88z0jkiqdj20fo02p0tg.jpg" alt=""></li>
+<li><code>partprobe</code>重新读取分区表信息</li>
+<li><code>mkfs -t ext4 /dev/sdb1</code>格式化新分区<br><img src="http://ww2.sinaimg.cn/large/a8fc9690gw1f88z1s4lavj20lr062tc8.jpg" alt=""></li>
+<li>自动加载<br><code>dumpe2fs -h /dev/sdb1</code>:查看sdb1的UUID<br><img src="http://ww3.sinaimg.cn/large/a8fc9690gw1f88zqdqpg5j20kr03l0uu.jpg" alt=""><br><code>vi /etc/fstab</code>修改启动配置文件<br><code>UUID=a63472f7-55d3-4ab1-92cb-159872bb81b3 /               ext4    defaults        0       0</code><br><img src="http://ww3.sinaimg.cn/large/a8fc9690gw1f88zs2jvk6j20tv07dn2o.jpg" alt=""></li>
+<li>检查修改是否有问题<br><code>mount -a</code><br>9.4<br>free -m 查询swap分区使用情况</li>
+</ol>
 ]]></content>
     </entry>
     
@@ -170,17 +234,29 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Linux常用语法小结（redhat系列）]]></title>
+      <title><![CDATA[Linux常用语法小结]]></title>
       <url>owker.pw/2016/09/05/Linux%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/</url>
       <content type="html"><![CDATA[<p><img src="http://ww1.sinaimg.cn/large/a8fc9690gw1f7k8vkx117j20zk0nj7i1.jpg" alt=""></p>
 <blockquote>
 <p>说明</p>
 </blockquote>
 <a id="more"></a>
-<p>软件安装git<br>yum install -y git </p>
-<p>rpm安装<br>rpm -ivh </p>
-<p>tar压缩解压缩<br>tar -zvcf a.tar.gz a<br>tar -zxvf a.tar.gz</p>
+<p>软件安装git(redhat)<br>yum install -y git </p>
+<p>rpm安装<br>rpm -ivh *.rpm</p>
+<h2 id="软件安装与卸载"><a href="#软件安装与卸载" class="headerlink" title="软件安装与卸载"></a>软件安装与卸载</h2><p>apt-get<br>安装软件 apt-get install softname1 softname2 softname3……<br>卸载软件 apt-get remove softname1 softname2 softname3……<br>卸载并清除配置 apt-get remove -purge softname1<br>更新软件信息数据库 apt-get update<br>进行系统升级 apt-get upgrade<br>搜索软件包 apt-cache search softname1 softname2 softname3……</p>
+<p>如果使用 apt-get 遇到速度慢或者源不存在等错误，可能需要更换源<br>dpkg<br>安装deb软件包          dpkg -i xxx.deb<br>删除软件包             dpkg -r xxx.deb<br>连同配置文件一起删除   dpkg -r -purge xxx.deb<br>查看软件包信息         dpkg -info xxx.deb<br>查看文件拷贝详情       dpkg -L xxx.deb<br>查看系统中已安装软件包信息     dpkg -l<br>重新配置软件包         dpkg-reconfigure xxx</p>
+<p>常用命令<br>apt-cache search         # ——(package 搜索包)<br>apt-cache show           #——(package 获取包的相关信息，如说明、大小、版本等)<br>sudo apt-get install     # ——(package 安装包)<br>sudo apt-get reinstall     # —–(package - - reinstall 重新安装包)<br>sudo apt-get -f install  # —–(强制安装?#”-f = –fix-missing”当是修复安装吧…)<br>sudo apt-get remove      #—–(package 删除包)<br>sudo apt-get remove –purge # ——(package 删除包，包括删除配置文件等)<br>sudo apt-get autoremove –purge # —-(package 删除包及其依赖的软件包+配置文件等（只对6.10有效，强烈推荐）)</p>
+<p>sudo apt-get update      #——更新源信息数据库<br>sudo apt-get upgrade     #——更新已安装的包<br>sudo apt-get dist-upgrade # ———升级系统</p>
+<p>sudo apt-get dselect-upgrade #——使用 dselect 升级<br>apt-cache depends #——-(package 了解使用依赖)<br>apt-cache rdepends # ——(package 了解某个具体的依赖?#当是查看该包被哪些包依赖吧…)<br>sudo apt-get build-dep # ——(package 安装相关的编译环境)<br>apt-get source #——(package 下载该包的源代码)<br>sudo apt-get clean &amp;&amp; sudo apt-get autoclean # ——–清理下载文件的存档 &amp;&amp; 只清理过时的包<br>sudo apt-get check #——-检查是否有损坏的依赖</p>
+<p>tar压缩解压缩<br>tar -zcvf a.tar.gz a<br>tar -zxvf a.tar.gz</p>
+<p>.tar.gz    格式解压为          tar   -zxvf   xx.tar.gz<br>.tar.bz2   格式解压为          tar   -jxvf    xx.tar.bz2<br>.tar.xz      xz -dk <em>.tar.xz  -&gt;   tar -xvf  </em>.tar</p>
+<p>tar -xf 可以解压.tar.xz和.tar.gz文件</p>
 <p>删除文件<br>rm -rf 文件名</p>
+<h2 id="Linux的五个查找命令"><a href="#Linux的五个查找命令" class="headerlink" title="Linux的五个查找命令"></a>Linux的五个查找命令</h2><p>find &lt;指定目录&gt; &lt;指定条件&gt; &lt;指定动作&gt;<br>find . -name ‘my*’</p>
+<p>locate /etc/sh</p>
+<p>whereis grep</p>
+<p>which grep</p>
+<p>type -p grep</p>
 ]]></content>
     </entry>
     
@@ -273,6 +349,20 @@
 <p>5.脚本安装包</p>
 <p><code>./*.sh</code></p>
 <p>Ctrl+Alt+F?(?为数字)：linux切换tty</p>
+<h2 id="Ubuntu增加SWAP分区大小【转】"><a href="#Ubuntu增加SWAP分区大小【转】" class="headerlink" title="Ubuntu增加SWAP分区大小【转】"></a>Ubuntu增加SWAP分区大小【转】</h2><p>Swap分区，即交换区<br>    Swap空间的作用可简单描述为：当系统的物理内存不够用的时候，就需要将物理内存中的一部分空间释放出来，以供当前运行的程序使用，那些被释放的空间可能来自一些很长时间没有什么操作的程序，这些被释放的空间被临时保存到Swap空间中，等到那些程序要运行时，再从Swap中恢复保存的数据到内存中。这样，系统总是在物理内存不够时，才进行Swap交换。<br>    通常情况下，Swap空间应大于或等于物理内存的大小，最小不应小于64M，通常Swap空间的大小应是物理内存的2-2.5倍，Swap的调整对Linux服务器，特别是Web服务器的性能至关重要，通过调整Swap，有时可以越过系统性能瓶颈，节省系统升级费用。</p>
+<p>一、查看已有swap空间<br>[root@test ~]# free -m<br>             total       used       free     shared    buffers     cached<br>Mem:          3949        244       3704          0         18        157<br>-/+ buffers/cache:         69       3880<br>Swap:         4275          0       4275</p>
+<p>二、新增swap分区空间<br>1、使用dd创建swapfile，bs单位bytes，也可以手动指定单位为M或者G，count为计数，例子为增加1M*1024=1G空间<br>[root@test swap]#pwd<br>/swap<br>[root@test swap]# dd if=/dev/zero of=swapfile bs=1M count=1024<br>1024+0 records in<br>1024+0 records out<br>1073741824 bytes (1.1 GB) copied, 2.27273 seconds, 472 MB/s<br>[root@test swap]# ll<br>total 1049604<br>-rw-r–r– 1 root root 1073741824 Sep 16 20:48 swapfile</p>
+<p>2、mkswap创建交换文件<br>[root@test swap]# mkswap swapfile<br>Setting up swapspace version 1, size = 1073737 kB</p>
+<p>3、swapon激活<br>[root@test swap]# swapon swapfile </p>
+<p>4、查看增加后swap空间<br>[root@test swap]# free -m<br>             total       used       free     shared    buffers     cached<br>Mem:          3949       1293       2655          0         17       1181<br>-/+ buffers/cache:         95       3854<br>Swap:         5299          0       5299</p>
+<p>5、开机启动<br>vim /etc/fstab 添加<br>/swap/swapfile         swap                    swap    defaults        0 0</p>
+<p>6、去掉增加swap</p>
+<h1 id="查看"><a href="#查看" class="headerlink" title="查看"></a>查看</h1><p>[root@test swap]# free -m</p>
+<h1 id="停用"><a href="#停用" class="headerlink" title="停用"></a>停用</h1><p>[root@test swap]# swapoff swapfile</p>
+<h1 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h1><p>[root@test swap]# rm swapfile -rf</p>
+<h1 id="确定"><a href="#确定" class="headerlink" title="确定"></a>确定</h1><p>[root@test swap]# free -m</p>
+<h1 id="删除随即启动swap"><a href="#删除随即启动swap" class="headerlink" title="删除随即启动swap"></a>删除随即启动swap</h1><p>[root@test swap]# vim /etc/fstab</p>
+<p>扩展阅读（来自百度百科）：<br>    需要说明一点，并不是所有从物理内存中交换出来的数据都会被放到Swap中（如果这样的话，Swap就会不堪重负），有相当一部分数据被直接交换到文件系统。例如，有的程序会打开一些文件，对文件进行读写（其实每个程序都至少要打开一个文件，那就是运行程序本身），当需要将这些程序的内存空间交换出去时，就没有必要将文件部分的数据放到Swap空间中了，而可以直接将其放到文件里去。如果是读文件操作，那么内存数据被直接释放，不需要交换出来，因为下次需要时，可直接从文件系统恢复；如果是写文件，只需要将变化的数据保存到文件中，以便恢复。但是那些用malloc和new函数生成的对象的数据则不同，它们需要Swap空间，因为它们在文件系统中没有相应的“储备”文件，因此被称作“匿名”(Anonymous)内存数据。这类数据还包括堆栈中的一些状态和变量数据等。所以说，Swap空间是“匿名”数据的交换空间。</p>
 ]]></content>
     </entry>
     
