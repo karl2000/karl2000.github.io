@@ -4,7 +4,25 @@
   
     
     <entry>
-      <title><![CDATA[LFS搭建手记]]></title>
+      <title><![CDATA[树莓派实践例程]]></title>
+      <url>owker.pw/2016/10/05/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%9E%E8%B7%B5%E4%BE%8B%E7%A8%8B/</url>
+      <content type="html"><![CDATA[<p>图片链接</p>
+<blockquote>
+<p>说明</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="安装编译器"><a href="#安装编译器" class="headerlink" title="安装编译器"></a>安装编译器</h2><ol>
+<li>下载树莓派交叉编译工具<a href="https://github.com/raspberrypi/tools" target="_blank" rel="external">https://github.com/raspberrypi/tools</a></li>
+<li>将源码放到各用户都能share的文件夹下，如/usr/toolsexe(建议放到tools中，这里我tools有其他用途因此放到toolsexe中)</li>
+<li>将交叉编译工具的路径加到环境变量中，为了以后启动不用再设置，我加到了~/.bashrc中<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$vi ~/.bashrc</div><div class="line">#在文件的末尾加上export PATH=$PATH:/usr/toolsexe/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin</div><div class="line">$source .bashrc</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>更改文件夹内所有文件属性<br>chmod -R 777 ./toolsexe</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[LFS（linux from scratch）搭建手记]]></title>
       <url>owker.pw/2016/09/28/LFS%E6%90%AD%E5%BB%BA%E6%89%8B%E8%AE%B0/</url>
       <content type="html"><![CDATA[<p>图片链接</p>
 <blockquote>
@@ -18,17 +36,31 @@
 <p><code>chmod -v a+wt $LFS/sources</code>打开写权限和粘滞模式</p>
 <p>下载所有软件包和补丁的一个简单方式:<br><code>wget --input-file=wget-list --continue --directory-prefix=$LFS/sources</code></p>
 <p>下载所有软件包和补丁，将md5sums拷入source目录，校验下载的文件是否正确<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pushd $LFS/sources</div><div class="line">md5sum -c md5sums</div><div class="line">popd</div></pre></td></tr></table></figure></p>
-<p>第四章 最后的准备工作</p>
-<p>创建tools文件夹<br><code>mkdir -v $LFS/tools</code></p>
+<h2 id="第四章-最后的准备工作"><a href="#第四章-最后的准备工作" class="headerlink" title="第四章 最后的准备工作"></a>第四章 最后的准备工作</h2><p>创建tools文件夹<br><code>mkdir -v $LFS/tools</code></p>
 <p>su命令和su -命令最大的本质区别就是：前者只是切换了root身份，但Shell环境仍然是普通用户的Shell；而后者连用户和Shell环境一起切换成root身份了。只有切换了Shell环境才不会出现PATH环境变量错误。su切换成root用户以后，pwd一下，发现工作目录仍然是普通用户的工作目录；而用su -命令切换以后，工作目录变成root的工作目录了。用echo $PATH命令看一下su和su -以后的环境变量有何不同。以此类推，要从当前用户切换到其它用户也一样，应该使用su -命令。</p>
-<p>第五章 构建临时系统</p>
-<p>安装前确认宿主系统需求软件已安装(在软件要求的版本较低的情况下，降低软件版本的方法是将源指定到之前的版本，然后重新卸载安装软件)<br>备份源列表<br>sudo cp /etc/apt/sources.list /etc/apt/sources.list_backup<br>修改源后更新sudo apt-get update<br><code>dpkg -l binutils</code>查看binutils软件版本</p>
+<h2 id="第五章-构建临时系统"><a href="#第五章-构建临时系统" class="headerlink" title="第五章 构建临时系统"></a>第五章 构建临时系统</h2><p>安装前确认宿主系统需求软件已安装(在软件要求的版本较低的情况下，降低软件版本的方法是将源指定到之前的版本，然后重新卸载安装软件)<br>备份源列表<br>sudo cp /etc/apt/sources.list /etc/apt/sources.list_backup<br>修改源后更新sudo apt-get update<br><code>dpkg -l binutils</code>查看binutils软件版本</p>
 <p>Binutils 软件包包括了一个链接器、汇编器和其它处理目标文件的工具。</p>
 <p>GCC 软件包是 GNU 编译器集合的一部分，其中包括 C 和 C++ 的编译器。<br>在编译GCC时如果出现“Makefile:xxx: recipe for target xxx failed”，可能是swap分区太小，需要增加其大小</p>
 <p>Ubuntu下缺省使用的是shell是dash，而不是bash。从/bin/sh软连接的指向可以看出这点。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">root@ubuntu:/# ls -l /bin/sh</div><div class="line">lrwxrwxrwx 1 root root 4 Sep 25 12:30 /bin/sh -&gt; dash</div></pre></td></tr></table></figure></p>
-<p><code>ln -sf /bin/bash /bin/sh</code></p>
+<p><code>ln -sf /bin/bash /bin/sh</code>：/bin/sh是指向/bin/bash的软链接</p>
 <p>5.11后软件安装直接看PDF即可</p>
-<h2 id="第六章-安装基本的系统软件"><a href="#第六章-安装基本的系统软件" class="headerlink" title="第六章 安装基本的系统软件"></a>第六章 安装基本的系统软件</h2>]]></content>
+<h2 id="第六章-安装基本的系统软件"><a href="#第六章-安装基本的系统软件" class="headerlink" title="第六章 安装基本的系统软件"></a>第六章 安装基本的系统软件</h2><p>基本都是安装PDF直接进行安装操作，比较费时，一步步来即可，注意有些指令从PDF直接复制是有问题的。</p>
+<h2 id="第七章-基本系统配置"><a href="#第七章-基本系统配置" class="headerlink" title="第七章 基本系统配置"></a>第七章 基本系统配置</h2><p>7.2通用网络配置<br>cat &gt; /etc/resolv.conf &lt;&lt; “EOF”</p>
+<h1 id="Begin-etc-resolv-conf"><a href="#Begin-etc-resolv-conf" class="headerlink" title="Begin /etc/resolv.conf"></a>Begin /etc/resolv.conf</h1><p>#domain <your domain="" name=""><br>nameserver  8.8.8.8</your></p>
+<p>#nameserver 114.114.114.114</p>
+<h1 id="End-etc-resolv-conf"><a href="#End-etc-resolv-conf" class="headerlink" title="End /etc/resolv.conf"></a>End /etc/resolv.conf</h1><p>EOF</p>
+<p>7.7系统区域设置</p>
+<p><code>locale -a</code>获取本地字符集<br><code>LC_ALL=zh_CN.utf8  locale charmap</code> 获取规范名称UTF-8<br><code>LC_ALL=zh_CN.utf8 locale language</code>获取规范名称Chinese<br><code>LC_ALL=zh_CN.utf8 locale int_curr_symbol</code>获取规范名称CNY<br><code>LC_ALL=zh_CN.utf8 locale int_prefix</code>获取规范名称86</p>
+<h2 id="第八章-让LFS系统可引导"><a href="#第八章-让LFS系统可引导" class="headerlink" title="第八章 让LFS系统可引导"></a>第八章 让LFS系统可引导</h2><p>cat &gt; /etc/fstab &lt;&lt; “EOF”</p>
+<h1 id="Begin-etc-fstab"><a href="#Begin-etc-fstab" class="headerlink" title="Begin /etc/fstab"></a>Begin /etc/fstab</h1><h1 id="文件系统-挂载点-文件类型-挂载选项-dump-fsck"><a href="#文件系统-挂载点-文件类型-挂载选项-dump-fsck" class="headerlink" title="文件系统    挂载点    文件类型       挂载选项              dump  fsck"></a>文件系统    挂载点    文件类型       挂载选项              dump  fsck</h1><h1 id="order"><a href="#order" class="headerlink" title="order"></a>order</h1><p>/dev/sdb1     /mnt/lfs             ext4    defaults            1     1</p>
+<p>#/dev/<yyy>     swap         swap     pri=1               0     0</yyy></p>
+<h1 id="End-etc-fstab"><a href="#End-etc-fstab" class="headerlink" title="End /etc/fstab"></a>End /etc/fstab</h1><p>EOF</p>
+<p>8.3安装内核</p>
+<p>输入<code>make LANG=zh_CN.utf8 LC_ALL= menuconfig</code>后出现设置界面<br><img src="http://ww2.sinaimg.cn/large/a8fc9690jw1f8cm9yblcoj20tj0fpqan.jpg" alt=""><br>根据PDF进行设置，命令见图片上部，注意选择用’y’，取消用’n’</p>
+<p>8.4创建grub配置文件（虚拟机sdb1）</p>
+<p>cat &gt; /boot/grub/grub.cfg &lt;&lt; “EOF”</p>
+<h1 id="Begin-boot-grub-grub-cfg"><a href="#Begin-boot-grub-grub-cfg" class="headerlink" title="Begin /boot/grub/grub.cfg"></a>Begin /boot/grub/grub.cfg</h1><p>set default=0<br>set timeout=5<br>insmod ext2<br>set root=(hd1,1)<br>menuentry “GNU/Linux, Linux 3.19-lfs-7.7-systemd” {<br>        linux   /boot/vmlinuz-3.19-lfs-7.7-systemd root=/dev/sdb1 ro<br>}<br>EOF</p>
+]]></content>
     </entry>
     
     <entry>
@@ -39,7 +71,7 @@
 <p>说明</p>
 </blockquote>
 <a id="more"></a>
-<h2 id="解压-xz压缩包方法"><a href="#解压-xz压缩包方法" class="headerlink" title="解压.xz压缩包方法"></a>解压.xz压缩包方法</h2><p><code>xz -dk ubuntu-16.04-preinstalled-server-armhf+raspi2.img.xz</code><br>-d(解压) -k(保留源文件)</p>
+<h2 id="解压-xz压缩包方法"><a href="#解压-xz压缩包方法" class="headerlink" title="解压.xz压缩包方法"></a>解压.xz压缩包方法</h2><p><code>xz -dk ubuntu-16.04-preinstalled-server-armhf+raspi2.img.xz</code><br>-d(解压) -k(保留源文件)<br>也可以直接<code>tar -xf ubuntu-16.04-preinstalled-server-armhf+raspi2.img.xz</code></p>
 <h2 id="笔记本SSH远程登录"><a href="#笔记本SSH远程登录" class="headerlink" title="笔记本SSH远程登录"></a>笔记本SSH远程登录</h2><ol>
 <li>下载raspbian系统<br><a href="https://www.raspberrypi.org/downloads/" target="_blank" rel="external">raspbian系统下载地址</a></li>
 <li>下载烧写SD卡软件Win32DiskImager</li>
@@ -61,11 +93,10 @@
 <li>找到windows firewall，即防火墙服务</li>
 <li>将防火墙服务设置成启动，自动状态</li>
 </ol>
-<h2 id="通过VNC连接-未实现"><a href="#通过VNC连接-未实现" class="headerlink" title="通过VNC连接(未实现)"></a>通过VNC连接(未实现)</h2><p>安装 tightvncserver：<br><code>sudo apt-get install tightvncserver</code></p>
-<p>写一个简单的启动脚本 /etc/init.d/tightvncserver：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">### BEGIN INIT INFO</div><div class="line"># Provides:          tightvncserver</div><div class="line"># Required-Start:    $syslog</div><div class="line"># Required-Stop:     $syslog</div><div class="line"># Default-Start:     2 3 4 5</div><div class="line"># Default-Stop:      0 1 6</div><div class="line"># Short-Description: vnc server</div><div class="line"># Description:</div><div class="line">#</div><div class="line">### END INIT INFO</div><div class="line"></div><div class="line"># Check the state of the command – this&apos;ll either be start or stop</div><div class="line">case &quot;$1&quot; in</div><div class="line">  start)</div><div class="line">    # if it&apos;s start, then start vncserver using the details below</div><div class="line">    sudo -u pi /usr/bin/vncserver :1 -geometry 1024x720 &gt;/dev/null 2&gt;&amp;1 &amp;</div><div class="line">    echo &quot;vncserver started&quot;</div><div class="line">    ;;</div><div class="line">  stop)</div><div class="line">    # if it&apos;s stop, then just kill the process</div><div class="line">    pkill Xtightvnc</div><div class="line">    echo &quot;vncserver stopped&quot;</div><div class="line">    ;;</div><div class="line">  *)</div><div class="line">    echo &quot;Usage: /etc/init.d/vncserver &#123;start|stop&#125;&quot;</div><div class="line">    exit 1</div><div class="line">    ;;</div><div class="line">esac</div><div class="line">exit 0</div></pre></td></tr></table></figure></p>
-<p>可以在启动参数里设置分辨率、位深、像素格式等，此处设置分辨率为 1024x720。</p>
-<p>然后，启动 vncserver 并设置成开机启动：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo chmod +x /etc/init.d/tightvncserver</div><div class="line">sudo service tightvncserver start</div><div class="line">sudo update-rc.d tightvncserver defaults</div></pre></td></tr></table></figure>
+<h2 id="通过VNC连接【转】"><a href="#通过VNC连接【转】" class="headerlink" title="通过VNC连接【转】"></a>通过VNC连接【转】</h2><p>通过ssh远程登录后，先更新系统，sudo apt-get update<br>安装 tightvncserver：<br><code>sudo apt-get install tightvncserver</code><br>安装完成后，按如下命令运行tightvnc服务器：<br><code>vncserver :1</code><br>这样VNC的编号1的服务就已经设置好了，即树莓派端的VNC已经启动，允许外部设备载入了。</p>
+<p>  我这里已经设置好了密码了，如果第一次运行时要让你设一个密码，这个是vnc密码，和系统用户密码无关，为了方便我这里设置123456，现在设置的树莓派的VNC密码要和后续电脑端的VNC密码一致。因此后续我的电脑端安装的tightvnc软件的密码也是123456。</p>
+<p>到这里树莓派的tightvnc软件已经安装好了，接下来要安装电脑端的tightvnc软件。</p>
+<p>启动电脑端tightvnc软件，  在输入栏中，输入你树莓派登录的IP和之前树莓派安装的tightvnc中，登录码。之前树莓派中释放的登录码是1。然后电脑端VNC需要加5900，因此这个数是5901。所以，按照现在我操作的树莓派IP和处理后的登录码，电脑端tightvnc的输入框中输入：<code>192.168.1.123::5901</code>，输入密码即可登录。</p>
 <h2 id="更换软件源（apt-get-sources）【转】"><a href="#更换软件源（apt-get-sources）【转】" class="headerlink" title="更换软件源（apt-get sources）【转】"></a>更换软件源（apt-get sources）【转】</h2><p>树莓派的官方提供的源服务器访问起来实在太太太太太太慢了！会导致你安装一个几M的东西都要等大半天！肿么办！<br>好在树莓派官方有提供一个镜像列表：<a href="http://www.raspbian.org/RaspbianMirrors" target="_blank" rel="external">http://www.raspbian.org/RaspbianMirrors</a> </p>
 <p>中山大学<br>Raspbian <a href="http://mirror.sysu.edu.cn/raspbian/raspbian/" target="_blank" rel="external">http://mirror.sysu.edu.cn/raspbian/raspbian/</a></p>
 <p>中国科学技术大学<br>Raspbian <a href="http://mirrors.ustc.edu.cn/raspbian/raspbian/" target="_blank" rel="external">http://mirrors.ustc.edu.cn/raspbian/raspbian/</a></p>
@@ -81,11 +112,17 @@
 <li><p>执行 <code>apt-get update</code> 命令更新软件列表</p>
 </li>
 </ol>
-<h2 id="软件安装与卸载"><a href="#软件安装与卸载" class="headerlink" title="软件安装与卸载"></a>软件安装与卸载</h2><p>apt-get<br>安装软件 apt-get install softname1 softname2 softname3……<br>卸载软件 apt-get remove softname1 softname2 softname3……<br>卸载并清除配置 apt-get remove -purge softname1<br>更新软件信息数据库 apt-get update<br>进行系统升级 apt-get upgrade<br>搜索软件包 apt-cache search softname1 softname2 softname3……</p>
-<p>如果使用 apt-get 遇到速度慢或者源不存在等错误，可能需要更换源<br>dpkg<br>安装deb软件包          dpkg -i xxx.deb<br>删除软件包             dpkg -r xxx.deb<br>连同配置文件一起删除   dpkg -r -purge xxx.deb<br>查看软件包信息         dpkg -info xxx.deb<br>查看文件拷贝详情       dpkg -L xxx.deb<br>查看系统中已安装软件包信息     dpkg -l<br>重新配置软件包         dpkg-reconfigure xxx</p>
-<p>常用命令<br>apt-cache search         # ——(package 搜索包)<br>apt-cache show           #——(package 获取包的相关信息，如说明、大小、版本等)<br>sudo apt-get install     # ——(package 安装包)<br>sudo apt-get reinstall     # —–(package - - reinstall 重新安装包)<br>sudo apt-get -f install  # —–(强制安装?#”-f = –fix-missing”当是修复安装吧…)<br>sudo apt-get remove      #—–(package 删除包)<br>sudo apt-get remove –purge # ——(package 删除包，包括删除配置文件等)<br>sudo apt-get autoremove –purge # —-(package 删除包及其依赖的软件包+配置文件等（只对6.10有效，强烈推荐）)</p>
-<p>sudo apt-get update      #——更新源信息数据库<br>sudo apt-get upgrade     #——更新已安装的包<br>sudo apt-get dist-upgrade # ———升级系统</p>
-<p>sudo apt-get dselect-upgrade #——使用 dselect 升级<br>apt-cache depends #——-(package 了解使用依赖)<br>apt-cache rdepends # ——(package 了解某个具体的依赖?#当是查看该包被哪些包依赖吧…)<br>sudo apt-get build-dep # ——(package 安装相关的编译环境)<br>apt-get source #——(package 下载该包的源代码)<br>sudo apt-get clean &amp;&amp; sudo apt-get autoclean # ——–清理下载文件的存档 &amp;&amp; 只清理过时的包<br>sudo apt-get check #——-检查是否有损坏的依赖</p>
+<h2 id="利用ssh传输文件【转】"><a href="#利用ssh传输文件【转】" class="headerlink" title="利用ssh传输文件【转】"></a>利用ssh传输文件【转】</h2><p>在linux下一般用scp这个命令来通过ssh传输文件。<br>Windows下只要有git环境就可以进行相同操作。</p>
+<p>1、从服务器上下载文件<br>scp username@servername:/path/filename /var/www/local_dir（本地目录）</p>
+<p> 例如scp root@192.168.0.101:/var/www/test.txt  把192.168.0.101上的/var/www/test.txt 的文件下载到/var/www/local_dir（本地目录）</p>
+<p>2、上传本地文件到服务器<br>scp /path/filename username@servername:/path   </p>
+<p>例如scp /var/www/test.php  root@192.168.0.101:/var/www/  把本机/var/www/目录下的test.php文件上传到192.168.0.101这台服务器上的/var/www/目录中</p>
+<p>3、从服务器下载整个目录<br>scp -r username@servername:/var/www/remote_dir/（远程目录） /var/www/local_dir（本地目录）</p>
+<p>例如:scp -r root@192.168.0.101:/var/www/test  /var/www/  </p>
+<p>4、上传目录到服务器<br>scp  -r local_dir username@servername:remote_dir<br>例如：scp -r test  root@192.168.0.101:/var/www/   把当前目录下的test目录上传到服务器的/var/www/ 目录</p>
+<p>注：目标服务器要开启写入权限。</p>
+<h2 id="更新源"><a href="#更新源" class="headerlink" title="更新源"></a>更新源</h2><p>编辑/etc/apt/sources.list文件(需要使用sudo), 在文件最前面添加以下条目(操作前请做好相应备份)</p>
+<p>deb <a href="http://mirrors.aliyun.com/raspbian/raspbian/" target="_blank" rel="external">http://mirrors.aliyun.com/raspbian/raspbian/</a> wheezy main non-free contrib<br>deb-src <a href="http://mirrors.aliyun.com/raspbian/raspbian/" target="_blank" rel="external">http://mirrors.aliyun.com/raspbian/raspbian/</a> wheezy main non-free contrib</p>
 ]]></content>
     </entry>
     
@@ -362,6 +399,9 @@
 <h1 id="确定"><a href="#确定" class="headerlink" title="确定"></a>确定</h1><p>[root@test swap]# free -m</p>
 <h1 id="删除随即启动swap"><a href="#删除随即启动swap" class="headerlink" title="删除随即启动swap"></a>删除随即启动swap</h1><p>[root@test swap]# vim /etc/fstab</p>
 <p>扩展阅读（来自百度百科）：<br>    需要说明一点，并不是所有从物理内存中交换出来的数据都会被放到Swap中（如果这样的话，Swap就会不堪重负），有相当一部分数据被直接交换到文件系统。例如，有的程序会打开一些文件，对文件进行读写（其实每个程序都至少要打开一个文件，那就是运行程序本身），当需要将这些程序的内存空间交换出去时，就没有必要将文件部分的数据放到Swap空间中了，而可以直接将其放到文件里去。如果是读文件操作，那么内存数据被直接释放，不需要交换出来，因为下次需要时，可直接从文件系统恢复；如果是写文件，只需要将变化的数据保存到文件中，以便恢复。但是那些用malloc和new函数生成的对象的数据则不同，它们需要Swap空间，因为它们在文件系统中没有相应的“储备”文件，因此被称作“匿名”(Anonymous)内存数据。这类数据还包括堆栈中的一些状态和变量数据等。所以说，Swap空间是“匿名”数据的交换空间。</p>
+<h2 id="如何查找Linux内核代码【转】"><a href="#如何查找Linux内核代码【转】" class="headerlink" title="如何查找Linux内核代码【转】"></a>如何查找Linux内核代码【转】</h2><p>先登录网站  <a href="http://lxr.linux.no/" target="_blank" rel="external">http://lxr.linux.no/</a><br>选择你需要查看的内核版本，LINUX 可以通过“uname -r”来获得这个版本号。 </p>
+<p>然后就是找你需要的东东啦，如果你知道目录结构可以直接去打开目录，个人觉得还是根据函数名称搜索来的比较靠谱。 </p>
+<p>比如要寻找SK_BUFF定义，直接输入，然后找STRUCTURE<br>就可以找到<br><a href="http://lxr.linux.no/linux+v2.6.32.20/include/linux/skbuff.h#L313" target="_blank" rel="external">http://lxr.linux.no/linux+v2.6.32.20/include/linux/skbuff.h#L313</a></p>
 ]]></content>
     </entry>
     

@@ -99,7 +99,7 @@
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/a8fc9690jw1f86v69t6v1j20vj0bg78v.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/a8fc9690jw1f86vebe3kvj20ih0ca0vg.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/a8fc9690gw1f86vgj5o88j20ng05wacw.jpg">
-<meta property="og:updated_time" content="2016-09-27T15:48:08.116Z">
+<meta property="og:updated_time" content="2016-10-05T12:26:52.648Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树莓派使用问题解决">
 <meta name="twitter:description" content="图片链接
@@ -358,7 +358,7 @@
 <p>说明</p>
 </blockquote>
 <a id="more"></a>
-<h2 id="解压-xz压缩包方法"><a href="#解压-xz压缩包方法" class="headerlink" title="解压.xz压缩包方法"></a>解压.xz压缩包方法</h2><p><code>xz -dk ubuntu-16.04-preinstalled-server-armhf+raspi2.img.xz</code><br>-d(解压) -k(保留源文件)</p>
+<h2 id="解压-xz压缩包方法"><a href="#解压-xz压缩包方法" class="headerlink" title="解压.xz压缩包方法"></a>解压.xz压缩包方法</h2><p><code>xz -dk ubuntu-16.04-preinstalled-server-armhf+raspi2.img.xz</code><br>-d(解压) -k(保留源文件)<br>也可以直接<code>tar -xf ubuntu-16.04-preinstalled-server-armhf+raspi2.img.xz</code></p>
 <h2 id="笔记本SSH远程登录"><a href="#笔记本SSH远程登录" class="headerlink" title="笔记本SSH远程登录"></a>笔记本SSH远程登录</h2><ol>
 <li>下载raspbian系统<br><a href="https://www.raspberrypi.org/downloads/" target="_blank" rel="external">raspbian系统下载地址</a></li>
 <li>下载烧写SD卡软件Win32DiskImager</li>
@@ -380,11 +380,10 @@
 <li>找到windows firewall，即防火墙服务</li>
 <li>将防火墙服务设置成启动，自动状态</li>
 </ol>
-<h2 id="通过VNC连接-未实现"><a href="#通过VNC连接-未实现" class="headerlink" title="通过VNC连接(未实现)"></a>通过VNC连接(未实现)</h2><p>安装 tightvncserver：<br><code>sudo apt-get install tightvncserver</code></p>
-<p>写一个简单的启动脚本 /etc/init.d/tightvncserver：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">### BEGIN INIT INFO</div><div class="line"># Provides:          tightvncserver</div><div class="line"># Required-Start:    $syslog</div><div class="line"># Required-Stop:     $syslog</div><div class="line"># Default-Start:     2 3 4 5</div><div class="line"># Default-Stop:      0 1 6</div><div class="line"># Short-Description: vnc server</div><div class="line"># Description:</div><div class="line">#</div><div class="line">### END INIT INFO</div><div class="line"></div><div class="line"># Check the state of the command – this&apos;ll either be start or stop</div><div class="line">case &quot;$1&quot; in</div><div class="line">  start)</div><div class="line">    # if it&apos;s start, then start vncserver using the details below</div><div class="line">    sudo -u pi /usr/bin/vncserver :1 -geometry 1024x720 &gt;/dev/null 2&gt;&amp;1 &amp;</div><div class="line">    echo &quot;vncserver started&quot;</div><div class="line">    ;;</div><div class="line">  stop)</div><div class="line">    # if it&apos;s stop, then just kill the process</div><div class="line">    pkill Xtightvnc</div><div class="line">    echo &quot;vncserver stopped&quot;</div><div class="line">    ;;</div><div class="line">  *)</div><div class="line">    echo &quot;Usage: /etc/init.d/vncserver &#123;start|stop&#125;&quot;</div><div class="line">    exit 1</div><div class="line">    ;;</div><div class="line">esac</div><div class="line">exit 0</div></pre></td></tr></table></figure></p>
-<p>可以在启动参数里设置分辨率、位深、像素格式等，此处设置分辨率为 1024x720。</p>
-<p>然后，启动 vncserver 并设置成开机启动：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo chmod +x /etc/init.d/tightvncserver</div><div class="line">sudo service tightvncserver start</div><div class="line">sudo update-rc.d tightvncserver defaults</div></pre></td></tr></table></figure>
+<h2 id="通过VNC连接【转】"><a href="#通过VNC连接【转】" class="headerlink" title="通过VNC连接【转】"></a>通过VNC连接【转】</h2><p>通过ssh远程登录后，先更新系统，sudo apt-get update<br>安装 tightvncserver：<br><code>sudo apt-get install tightvncserver</code><br>安装完成后，按如下命令运行tightvnc服务器：<br><code>vncserver :1</code><br>这样VNC的编号1的服务就已经设置好了，即树莓派端的VNC已经启动，允许外部设备载入了。</p>
+<p>  我这里已经设置好了密码了，如果第一次运行时要让你设一个密码，这个是vnc密码，和系统用户密码无关，为了方便我这里设置123456，现在设置的树莓派的VNC密码要和后续电脑端的VNC密码一致。因此后续我的电脑端安装的tightvnc软件的密码也是123456。</p>
+<p>到这里树莓派的tightvnc软件已经安装好了，接下来要安装电脑端的tightvnc软件。</p>
+<p>启动电脑端tightvnc软件，  在输入栏中，输入你树莓派登录的IP和之前树莓派安装的tightvnc中，登录码。之前树莓派中释放的登录码是1。然后电脑端VNC需要加5900，因此这个数是5901。所以，按照现在我操作的树莓派IP和处理后的登录码，电脑端tightvnc的输入框中输入：<code>192.168.1.123::5901</code>，输入密码即可登录。</p>
 <h2 id="更换软件源（apt-get-sources）【转】"><a href="#更换软件源（apt-get-sources）【转】" class="headerlink" title="更换软件源（apt-get sources）【转】"></a>更换软件源（apt-get sources）【转】</h2><p>树莓派的官方提供的源服务器访问起来实在太太太太太太慢了！会导致你安装一个几M的东西都要等大半天！肿么办！<br>好在树莓派官方有提供一个镜像列表：<a href="http://www.raspbian.org/RaspbianMirrors" target="_blank" rel="external">http://www.raspbian.org/RaspbianMirrors</a> </p>
 <p>中山大学<br>Raspbian <a href="http://mirror.sysu.edu.cn/raspbian/raspbian/" target="_blank" rel="external">http://mirror.sysu.edu.cn/raspbian/raspbian/</a></p>
 <p>中国科学技术大学<br>Raspbian <a href="http://mirrors.ustc.edu.cn/raspbian/raspbian/" target="_blank" rel="external">http://mirrors.ustc.edu.cn/raspbian/raspbian/</a></p>
@@ -400,11 +399,17 @@
 <li><p>执行 <code>apt-get update</code> 命令更新软件列表</p>
 </li>
 </ol>
-<h2 id="软件安装与卸载"><a href="#软件安装与卸载" class="headerlink" title="软件安装与卸载"></a>软件安装与卸载</h2><p>apt-get<br>安装软件 apt-get install softname1 softname2 softname3……<br>卸载软件 apt-get remove softname1 softname2 softname3……<br>卸载并清除配置 apt-get remove -purge softname1<br>更新软件信息数据库 apt-get update<br>进行系统升级 apt-get upgrade<br>搜索软件包 apt-cache search softname1 softname2 softname3……</p>
-<p>如果使用 apt-get 遇到速度慢或者源不存在等错误，可能需要更换源<br>dpkg<br>安装deb软件包          dpkg -i xxx.deb<br>删除软件包             dpkg -r xxx.deb<br>连同配置文件一起删除   dpkg -r -purge xxx.deb<br>查看软件包信息         dpkg -info xxx.deb<br>查看文件拷贝详情       dpkg -L xxx.deb<br>查看系统中已安装软件包信息     dpkg -l<br>重新配置软件包         dpkg-reconfigure xxx</p>
-<p>常用命令<br>apt-cache search         # ——(package 搜索包)<br>apt-cache show           #——(package 获取包的相关信息，如说明、大小、版本等)<br>sudo apt-get install     # ——(package 安装包)<br>sudo apt-get reinstall     # —–(package - - reinstall 重新安装包)<br>sudo apt-get -f install  # —–(强制安装?#”-f = –fix-missing”当是修复安装吧…)<br>sudo apt-get remove      #—–(package 删除包)<br>sudo apt-get remove –purge # ——(package 删除包，包括删除配置文件等)<br>sudo apt-get autoremove –purge # —-(package 删除包及其依赖的软件包+配置文件等（只对6.10有效，强烈推荐）)</p>
-<p>sudo apt-get update      #——更新源信息数据库<br>sudo apt-get upgrade     #——更新已安装的包<br>sudo apt-get dist-upgrade # ———升级系统</p>
-<p>sudo apt-get dselect-upgrade #——使用 dselect 升级<br>apt-cache depends #——-(package 了解使用依赖)<br>apt-cache rdepends # ——(package 了解某个具体的依赖?#当是查看该包被哪些包依赖吧…)<br>sudo apt-get build-dep # ——(package 安装相关的编译环境)<br>apt-get source #——(package 下载该包的源代码)<br>sudo apt-get clean &amp;&amp; sudo apt-get autoclean # ——–清理下载文件的存档 &amp;&amp; 只清理过时的包<br>sudo apt-get check #——-检查是否有损坏的依赖</p>
+<h2 id="利用ssh传输文件【转】"><a href="#利用ssh传输文件【转】" class="headerlink" title="利用ssh传输文件【转】"></a>利用ssh传输文件【转】</h2><p>在linux下一般用scp这个命令来通过ssh传输文件。<br>Windows下只要有git环境就可以进行相同操作。</p>
+<p>1、从服务器上下载文件<br>scp username@servername:/path/filename /var/www/local_dir（本地目录）</p>
+<p> 例如scp root@192.168.0.101:/var/www/test.txt  把192.168.0.101上的/var/www/test.txt 的文件下载到/var/www/local_dir（本地目录）</p>
+<p>2、上传本地文件到服务器<br>scp /path/filename username@servername:/path   </p>
+<p>例如scp /var/www/test.php  root@192.168.0.101:/var/www/  把本机/var/www/目录下的test.php文件上传到192.168.0.101这台服务器上的/var/www/目录中</p>
+<p>3、从服务器下载整个目录<br>scp -r username@servername:/var/www/remote_dir/（远程目录） /var/www/local_dir（本地目录）</p>
+<p>例如:scp -r root@192.168.0.101:/var/www/test  /var/www/  </p>
+<p>4、上传目录到服务器<br>scp  -r local_dir username@servername:remote_dir<br>例如：scp -r test  root@192.168.0.101:/var/www/   把当前目录下的test目录上传到服务器的/var/www/ 目录</p>
+<p>注：目标服务器要开启写入权限。</p>
+<h2 id="更新源"><a href="#更新源" class="headerlink" title="更新源"></a>更新源</h2><p>编辑/etc/apt/sources.list文件(需要使用sudo), 在文件最前面添加以下条目(操作前请做好相应备份)</p>
+<p>deb <a href="http://mirrors.aliyun.com/raspbian/raspbian/" target="_blank" rel="external">http://mirrors.aliyun.com/raspbian/raspbian/</a> wheezy main non-free contrib<br>deb-src <a href="http://mirrors.aliyun.com/raspbian/raspbian/" target="_blank" rel="external">http://mirrors.aliyun.com/raspbian/raspbian/</a> wheezy main non-free contrib</p>
 
       
     </div>
@@ -448,8 +453,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/09/28/LFS搭建手记/" rel="prev" title="LFS搭建手记">
-                LFS搭建手记 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/09/28/LFS搭建手记/" rel="prev" title="LFS（linux from scratch）搭建手记">
+                LFS（linux from scratch）搭建手记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -541,7 +546,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -630,7 +635,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#解压-xz压缩包方法"><span class="nav-number">1.</span> <span class="nav-text">解压.xz压缩包方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#笔记本SSH远程登录"><span class="nav-number">2.</span> <span class="nav-text">笔记本SSH远程登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过VNC连接-未实现"><span class="nav-number">3.</span> <span class="nav-text">通过VNC连接(未实现)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更换软件源（apt-get-sources）【转】"><span class="nav-number">4.</span> <span class="nav-text">更换软件源（apt-get sources）【转】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件安装与卸载"><span class="nav-number">5.</span> <span class="nav-text">软件安装与卸载</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#解压-xz压缩包方法"><span class="nav-number">1.</span> <span class="nav-text">解压.xz压缩包方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#笔记本SSH远程登录"><span class="nav-number">2.</span> <span class="nav-text">笔记本SSH远程登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过VNC连接【转】"><span class="nav-number">3.</span> <span class="nav-text">通过VNC连接【转】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更换软件源（apt-get-sources）【转】"><span class="nav-number">4.</span> <span class="nav-text">更换软件源（apt-get sources）【转】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用ssh传输文件【转】"><span class="nav-number">5.</span> <span class="nav-text">利用ssh传输文件【转】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新源"><span class="nav-number">6.</span> <span class="nav-text">更新源</span></a></li></ol></div>
             
           </div>
         </section>

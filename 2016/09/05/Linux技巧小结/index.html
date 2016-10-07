@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/a8fc9690gw1f7ipryt5yyj20ff03mdgb.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/a8fc9690gw1f7ipx8k56gj20f40bw0v1.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/a8fc9690gw1f7ipzjlxmyj20jy0bndid.jpg">
-<meta property="og:updated_time" content="2016-09-29T03:07:40.172Z">
+<meta property="og:updated_time" content="2016-10-01T00:55:58.831Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux技巧小结">
 <meta name="twitter:description" content="主要记录Linux使用过程遇到的需要处理的问题">
@@ -415,6 +415,9 @@
 <h1 id="确定"><a href="#确定" class="headerlink" title="确定"></a>确定</h1><p>[root@test swap]# free -m</p>
 <h1 id="删除随即启动swap"><a href="#删除随即启动swap" class="headerlink" title="删除随即启动swap"></a>删除随即启动swap</h1><p>[root@test swap]# vim /etc/fstab</p>
 <p>扩展阅读（来自百度百科）：<br>    需要说明一点，并不是所有从物理内存中交换出来的数据都会被放到Swap中（如果这样的话，Swap就会不堪重负），有相当一部分数据被直接交换到文件系统。例如，有的程序会打开一些文件，对文件进行读写（其实每个程序都至少要打开一个文件，那就是运行程序本身），当需要将这些程序的内存空间交换出去时，就没有必要将文件部分的数据放到Swap空间中了，而可以直接将其放到文件里去。如果是读文件操作，那么内存数据被直接释放，不需要交换出来，因为下次需要时，可直接从文件系统恢复；如果是写文件，只需要将变化的数据保存到文件中，以便恢复。但是那些用malloc和new函数生成的对象的数据则不同，它们需要Swap空间，因为它们在文件系统中没有相应的“储备”文件，因此被称作“匿名”(Anonymous)内存数据。这类数据还包括堆栈中的一些状态和变量数据等。所以说，Swap空间是“匿名”数据的交换空间。</p>
+<h2 id="如何查找Linux内核代码【转】"><a href="#如何查找Linux内核代码【转】" class="headerlink" title="如何查找Linux内核代码【转】"></a>如何查找Linux内核代码【转】</h2><p>先登录网站  <a href="http://lxr.linux.no/" target="_blank" rel="external">http://lxr.linux.no/</a><br>选择你需要查看的内核版本，LINUX 可以通过“uname -r”来获得这个版本号。 </p>
+<p>然后就是找你需要的东东啦，如果你知道目录结构可以直接去打开目录，个人觉得还是根据函数名称搜索来的比较靠谱。 </p>
+<p>比如要寻找SK_BUFF定义，直接输入，然后找STRUCTURE<br>就可以找到<br><a href="http://lxr.linux.no/linux+v2.6.32.20/include/linux/skbuff.h#L313" target="_blank" rel="external">http://lxr.linux.no/linux+v2.6.32.20/include/linux/skbuff.h#L313</a></p>
 
       
     </div>
@@ -551,7 +554,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -640,7 +643,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#修改IP永久生效"><span class="nav-number">1.</span> <span class="nav-text">修改IP永久生效</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#局域网内远程登录Linux系统"><span class="nav-number">2.</span> <span class="nav-text">局域网内远程登录Linux系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redhat-7-0使用CentOS-7-的Yum-网络源"><span class="nav-number">3.</span> <span class="nav-text">Redhat 7.0使用CentOS 7 的Yum 网络源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装linux下的ShadowSocks"><span class="nav-number">4.</span> <span class="nav-text">安装linux下的ShadowSocks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chrome浏览器安装"><span class="nav-number">5.</span> <span class="nav-text">chrome浏览器安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chromium浏览器安装"><span class="nav-number">6.</span> <span class="nav-text">chromium浏览器安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RedHat软件安装小结"><span class="nav-number">7.</span> <span class="nav-text">RedHat软件安装小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ubuntu增加SWAP分区大小【转】"><span class="nav-number">8.</span> <span class="nav-text">Ubuntu增加SWAP分区大小【转】</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看"><span class="nav-number"></span> <span class="nav-text">查看</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#停用"><span class="nav-number"></span> <span class="nav-text">停用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除"><span class="nav-number"></span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#确定"><span class="nav-number"></span> <span class="nav-text">确定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除随即启动swap"><span class="nav-number"></span> <span class="nav-text">删除随即启动swap</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#修改IP永久生效"><span class="nav-number">1.</span> <span class="nav-text">修改IP永久生效</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#局域网内远程登录Linux系统"><span class="nav-number">2.</span> <span class="nav-text">局域网内远程登录Linux系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redhat-7-0使用CentOS-7-的Yum-网络源"><span class="nav-number">3.</span> <span class="nav-text">Redhat 7.0使用CentOS 7 的Yum 网络源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装linux下的ShadowSocks"><span class="nav-number">4.</span> <span class="nav-text">安装linux下的ShadowSocks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chrome浏览器安装"><span class="nav-number">5.</span> <span class="nav-text">chrome浏览器安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chromium浏览器安装"><span class="nav-number">6.</span> <span class="nav-text">chromium浏览器安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RedHat软件安装小结"><span class="nav-number">7.</span> <span class="nav-text">RedHat软件安装小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ubuntu增加SWAP分区大小【转】"><span class="nav-number">8.</span> <span class="nav-text">Ubuntu增加SWAP分区大小【转】</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看"><span class="nav-number"></span> <span class="nav-text">查看</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#停用"><span class="nav-number"></span> <span class="nav-text">停用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除"><span class="nav-number"></span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#确定"><span class="nav-number"></span> <span class="nav-text">确定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除随即启动swap"><span class="nav-number"></span> <span class="nav-text">删除随即启动swap</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何查找Linux内核代码【转】"><span class="nav-number">1.</span> <span class="nav-text">如何查找Linux内核代码【转】</span></a></li></ol></div>
             
           </div>
         </section>
