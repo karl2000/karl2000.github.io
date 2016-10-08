@@ -84,28 +84,23 @@
 
 
 
-<meta name="description" content="图片链接
-
-说明">
+<meta name="description" content="树莓派使用过程中遇到的问题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="树莓派使用问题解决">
 <meta property="og:url" content="owker.pw/2016/09/26/树莓派使用问题解决/index.html">
 <meta property="og:site_name" content="OneWalker's blog">
-<meta property="og:description" content="图片链接
-
-说明">
+<meta property="og:description" content="树莓派使用过程中遇到的问题">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/a8fc9690jw1f8kzog7ya9j21hc111gzv.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/a8fc9690jw1f86vbv3vxnj210q0bw0y1.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/a8fc9690jw1f86v8l4dhnj21180abtd9.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/a8fc9690jw1f86v69t6v1j20vj0bg78v.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/a8fc9690jw1f86vebe3kvj20ih0ca0vg.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/a8fc9690gw1f86vgj5o88j20ng05wacw.jpg">
-<meta property="og:updated_time" content="2016-10-05T12:26:52.648Z">
+<meta property="og:updated_time" content="2016-10-08T09:29:48.136Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树莓派使用问题解决">
-<meta name="twitter:description" content="图片链接
-
-说明">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/a8fc9690jw1f86vbv3vxnj210q0bw0y1.jpg">
+<meta name="twitter:description" content="树莓派使用过程中遇到的问题">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/a8fc9690jw1f8kzog7ya9j21hc111gzv.jpg">
 
 
 
@@ -353,9 +348,9 @@
       
 
       
-        <p>图片链接</p>
+        <p><img src="http://ww1.sinaimg.cn/large/a8fc9690jw1f8kzog7ya9j21hc111gzv.jpg" alt=""></p>
 <blockquote>
-<p>说明</p>
+<p>树莓派使用过程中遇到的问题</p>
 </blockquote>
 <a id="more"></a>
 <h2 id="解压-xz压缩包方法"><a href="#解压-xz压缩包方法" class="headerlink" title="解压.xz压缩包方法"></a>解压.xz压缩包方法</h2><p><code>xz -dk ubuntu-16.04-preinstalled-server-armhf+raspi2.img.xz</code><br>-d(解压) -k(保留源文件)<br>也可以直接<code>tar -xf ubuntu-16.04-preinstalled-server-armhf+raspi2.img.xz</code></p>
@@ -399,6 +394,8 @@
 <li><p>执行 <code>apt-get update</code> 命令更新软件列表</p>
 </li>
 </ol>
+<h2 id="更新源"><a href="#更新源" class="headerlink" title="更新源"></a>更新源</h2><p>编辑/etc/apt/sources.list文件(需要使用sudo), 在文件最前面添加以下条目(操作前请做好相应备份)</p>
+<p>deb <a href="http://mirrors.aliyun.com/raspbian/raspbian/" target="_blank" rel="external">http://mirrors.aliyun.com/raspbian/raspbian/</a> wheezy main non-free contrib<br>deb-src <a href="http://mirrors.aliyun.com/raspbian/raspbian/" target="_blank" rel="external">http://mirrors.aliyun.com/raspbian/raspbian/</a> wheezy main non-free contrib</p>
 <h2 id="利用ssh传输文件【转】"><a href="#利用ssh传输文件【转】" class="headerlink" title="利用ssh传输文件【转】"></a>利用ssh传输文件【转】</h2><p>在linux下一般用scp这个命令来通过ssh传输文件。<br>Windows下只要有git环境就可以进行相同操作。</p>
 <p>1、从服务器上下载文件<br>scp username@servername:/path/filename /var/www/local_dir（本地目录）</p>
 <p> 例如scp root@192.168.0.101:/var/www/test.txt  把192.168.0.101上的/var/www/test.txt 的文件下载到/var/www/local_dir（本地目录）</p>
@@ -408,8 +405,6 @@
 <p>例如:scp -r root@192.168.0.101:/var/www/test  /var/www/  </p>
 <p>4、上传目录到服务器<br>scp  -r local_dir username@servername:remote_dir<br>例如：scp -r test  root@192.168.0.101:/var/www/   把当前目录下的test目录上传到服务器的/var/www/ 目录</p>
 <p>注：目标服务器要开启写入权限。</p>
-<h2 id="更新源"><a href="#更新源" class="headerlink" title="更新源"></a>更新源</h2><p>编辑/etc/apt/sources.list文件(需要使用sudo), 在文件最前面添加以下条目(操作前请做好相应备份)</p>
-<p>deb <a href="http://mirrors.aliyun.com/raspbian/raspbian/" target="_blank" rel="external">http://mirrors.aliyun.com/raspbian/raspbian/</a> wheezy main non-free contrib<br>deb-src <a href="http://mirrors.aliyun.com/raspbian/raspbian/" target="_blank" rel="external">http://mirrors.aliyun.com/raspbian/raspbian/</a> wheezy main non-free contrib</p>
 
       
     </div>
@@ -635,7 +630,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#解压-xz压缩包方法"><span class="nav-number">1.</span> <span class="nav-text">解压.xz压缩包方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#笔记本SSH远程登录"><span class="nav-number">2.</span> <span class="nav-text">笔记本SSH远程登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过VNC连接【转】"><span class="nav-number">3.</span> <span class="nav-text">通过VNC连接【转】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更换软件源（apt-get-sources）【转】"><span class="nav-number">4.</span> <span class="nav-text">更换软件源（apt-get sources）【转】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用ssh传输文件【转】"><span class="nav-number">5.</span> <span class="nav-text">利用ssh传输文件【转】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新源"><span class="nav-number">6.</span> <span class="nav-text">更新源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#解压-xz压缩包方法"><span class="nav-number">1.</span> <span class="nav-text">解压.xz压缩包方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#笔记本SSH远程登录"><span class="nav-number">2.</span> <span class="nav-text">笔记本SSH远程登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过VNC连接【转】"><span class="nav-number">3.</span> <span class="nav-text">通过VNC连接【转】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更换软件源（apt-get-sources）【转】"><span class="nav-number">4.</span> <span class="nav-text">更换软件源（apt-get sources）【转】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新源"><span class="nav-number">5.</span> <span class="nav-text">更新源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用ssh传输文件【转】"><span class="nav-number">6.</span> <span class="nav-text">利用ssh传输文件【转】</span></a></li></ol></div>
             
           </div>
         </section>

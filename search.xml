@@ -6,9 +6,9 @@
     <entry>
       <title><![CDATA[树莓派实践例程]]></title>
       <url>owker.pw/2016/10/05/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%9E%E8%B7%B5%E4%BE%8B%E7%A8%8B/</url>
-      <content type="html"><![CDATA[<p>图片链接</p>
+      <content type="html"><![CDATA[<p><img src="http://ww3.sinaimg.cn/large/a8fc9690jw1f8kznkmxhoj21hc0u0gqa.jpg" alt=""></p>
 <blockquote>
-<p>说明</p>
+<p>利用树莓派做的几个示例</p>
 </blockquote>
 <a id="more"></a>
 <p>前提：在raspbian系统下试验</p>
@@ -51,12 +51,11 @@
     <entry>
       <title><![CDATA[LFS（linux from scratch）搭建手记]]></title>
       <url>owker.pw/2016/09/28/LFS%E6%90%AD%E5%BB%BA%E6%89%8B%E8%AE%B0/</url>
-      <content type="html"><![CDATA[<p>图片链接</p>
+      <content type="html"><![CDATA[<p><img src="http://ww2.sinaimg.cn/large/a8fc9690jw1f8kzroan1uj21hc0zkh23.jpg" alt=""></p>
 <blockquote>
-<p>说明</p>
+<p>根据LFS-BOOK-7.7-systemd.pdf进行搭建</p>
 </blockquote>
 <a id="more"></a>
-<p>参考LFS-BOOK-7.7-systemd .pdf进行搭建</p>
 <h2 id="第二章-准备新分区"><a href="#第二章-准备新分区" class="headerlink" title="第二章 准备新分区"></a>第二章 准备新分区</h2><p>创建新分区，格式化并挂载到/mnt/lfs</p>
 <p>设置环境变量<br>export LFS=/mnt/lfs<br>确保一直设置了  LFS  变量的一个方法是，同时编辑你的主目录下的.bash_profile 和  /root/.bash_profile ，把上方的导出命令输入进去。</p>
 <h2 id="第三章-软件包与补丁"><a href="#第三章-软件包与补丁" class="headerlink" title="第三章 软件包与补丁"></a>第三章 软件包与补丁</h2><p><code>mkdir -v $LFS/sources</code> 该文件夹保存软件包和补丁，同时作为工作目录</p>
@@ -93,9 +92,9 @@
     <entry>
       <title><![CDATA[树莓派使用问题解决]]></title>
       <url>owker.pw/2016/09/26/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
-      <content type="html"><![CDATA[<p>图片链接</p>
+      <content type="html"><![CDATA[<p><img src="http://ww1.sinaimg.cn/large/a8fc9690jw1f8kzog7ya9j21hc111gzv.jpg" alt=""></p>
 <blockquote>
-<p>说明</p>
+<p>树莓派使用过程中遇到的问题</p>
 </blockquote>
 <a id="more"></a>
 <h2 id="解压-xz压缩包方法"><a href="#解压-xz压缩包方法" class="headerlink" title="解压.xz压缩包方法"></a>解压.xz压缩包方法</h2><p><code>xz -dk ubuntu-16.04-preinstalled-server-armhf+raspi2.img.xz</code><br>-d(解压) -k(保留源文件)<br>也可以直接<code>tar -xf ubuntu-16.04-preinstalled-server-armhf+raspi2.img.xz</code></p>
@@ -139,6 +138,8 @@
 <li><p>执行 <code>apt-get update</code> 命令更新软件列表</p>
 </li>
 </ol>
+<h2 id="更新源"><a href="#更新源" class="headerlink" title="更新源"></a>更新源</h2><p>编辑/etc/apt/sources.list文件(需要使用sudo), 在文件最前面添加以下条目(操作前请做好相应备份)</p>
+<p>deb <a href="http://mirrors.aliyun.com/raspbian/raspbian/" target="_blank" rel="external">http://mirrors.aliyun.com/raspbian/raspbian/</a> wheezy main non-free contrib<br>deb-src <a href="http://mirrors.aliyun.com/raspbian/raspbian/" target="_blank" rel="external">http://mirrors.aliyun.com/raspbian/raspbian/</a> wheezy main non-free contrib</p>
 <h2 id="利用ssh传输文件【转】"><a href="#利用ssh传输文件【转】" class="headerlink" title="利用ssh传输文件【转】"></a>利用ssh传输文件【转】</h2><p>在linux下一般用scp这个命令来通过ssh传输文件。<br>Windows下只要有git环境就可以进行相同操作。</p>
 <p>1、从服务器上下载文件<br>scp username@servername:/path/filename /var/www/local_dir（本地目录）</p>
 <p> 例如scp root@192.168.0.101:/var/www/test.txt  把192.168.0.101上的/var/www/test.txt 的文件下载到/var/www/local_dir（本地目录）</p>
@@ -148,8 +149,6 @@
 <p>例如:scp -r root@192.168.0.101:/var/www/test  /var/www/  </p>
 <p>4、上传目录到服务器<br>scp  -r local_dir username@servername:remote_dir<br>例如：scp -r test  root@192.168.0.101:/var/www/   把当前目录下的test目录上传到服务器的/var/www/ 目录</p>
 <p>注：目标服务器要开启写入权限。</p>
-<h2 id="更新源"><a href="#更新源" class="headerlink" title="更新源"></a>更新源</h2><p>编辑/etc/apt/sources.list文件(需要使用sudo), 在文件最前面添加以下条目(操作前请做好相应备份)</p>
-<p>deb <a href="http://mirrors.aliyun.com/raspbian/raspbian/" target="_blank" rel="external">http://mirrors.aliyun.com/raspbian/raspbian/</a> wheezy main non-free contrib<br>deb-src <a href="http://mirrors.aliyun.com/raspbian/raspbian/" target="_blank" rel="external">http://mirrors.aliyun.com/raspbian/raspbian/</a> wheezy main non-free contrib</p>
 ]]></content>
     </entry>
     
@@ -173,9 +172,9 @@
     <entry>
       <title><![CDATA[Cpp深入详解学习总结]]></title>
       <url>owker.pw/2016/09/22/Cpp%E6%B7%B1%E5%85%A5%E8%AF%A6%E8%A7%A3%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</url>
-      <content type="html"><![CDATA[<p>图片链接</p>
+      <content type="html"><![CDATA[<p><img src="http://ww3.sinaimg.cn/large/a8fc9690jw1f8kzmqjshnj20zk0q7whz.jpg" alt=""></p>
 <blockquote>
-<p>说明</p>
+<p>本文为Cpp深入详解的学习笔记</p>
 </blockquote>
 <a id="more"></a>
 <h2 id="第一章-Windows程序内部运行机制"><a href="#第一章-Windows程序内部运行机制" class="headerlink" title="第一章 Windows程序内部运行机制"></a>第一章 Windows程序内部运行机制</h2><p>主要介绍如何创建Win32的应用程序步骤：</p>
@@ -301,7 +300,7 @@
       <url>owker.pw/2016/09/05/Linux%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/</url>
       <content type="html"><![CDATA[<p><img src="http://ww1.sinaimg.cn/large/a8fc9690gw1f7k8vkx117j20zk0nj7i1.jpg" alt=""></p>
 <blockquote>
-<p>说明</p>
+<p>比较常用的linux命令</p>
 </blockquote>
 <a id="more"></a>
 <p>软件安装git(redhat)<br>yum install -y git </p>
