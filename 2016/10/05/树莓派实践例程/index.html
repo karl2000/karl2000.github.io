@@ -97,7 +97,7 @@
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/a8fc9690jw1f8ksj8ye9tj20990b2tb2.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/a8fc9690gw1f8ksu3tjg3j21kw16oax7.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/a8fc9690gw1f8kste7p23j21kw16owv1.jpg">
-<meta property="og:updated_time" content="2016-10-08T09:15:29.171Z">
+<meta property="og:updated_time" content="2016-10-08T09:19:59.305Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树莓派实践例程">
 <meta name="twitter:description" content="图片链接
@@ -357,7 +357,7 @@
 </blockquote>
 <a id="more"></a>
 <p>前提：在raspbian系统下试验</p>
-<h2 id="安装编译器"><a href="#安装编译器" class="headerlink" title="安装编译器"></a>安装编译器</h2><ol>
+<h2 id="安装编译器（在宿主机Ubuntu下）"><a href="#安装编译器（在宿主机Ubuntu下）" class="headerlink" title="安装编译器（在宿主机Ubuntu下）"></a>安装编译器（在宿主机Ubuntu下）</h2><ol>
 <li>下载树莓派交叉编译工具<a href="https://github.com/raspberrypi/tools" target="_blank" rel="external">https://github.com/raspberrypi/tools</a></li>
 <li>将源码放到各用户都能share的文件夹下，如/usr/toolsexe(建议放到tools中，这里我tools有其他用途因此放到toolsexe中)</li>
 <li>将交叉编译工具的路径加到环境变量中，为了以后启动不用再设置，我加到了~/.bashrc中<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$vi ~/.bashrc</div><div class="line">#在文件的末尾加上export PATH=$PATH:/usr/toolsexe/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin</div><div class="line">$source .bashrc</div></pre></td></tr></table></figure>
@@ -388,6 +388,8 @@
 <p>上文是在SHELL下直接控制，接下来介绍如何用C程序通过GPIO2控制指示灯</p>
 <p>C源程序如下(文件命名为led.c)：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#include &lt;unistd.h&gt;</div><div class="line">#include &lt;string.h&gt;</div><div class="line">int main(void)</div><div class="line">&#123;</div><div class="line">	FILE *p=NULL;</div><div class="line">	int i=0;</div><div class="line">	p = fopen(&quot;/sys/class/gpio/export&quot;,&quot;w&quot;);</div><div class="line">	fprintf(p,&quot;%d&quot;,2);</div><div class="line">	fclose(p);</div><div class="line">	p = fopen(&quot;/sys/class/gpio/gpio2/direction&quot;,&quot;w&quot;);</div><div class="line">	fprintf(p,&quot;out&quot;);</div><div class="line">	fclose(p);</div><div class="line">	for(i=0;i&lt;100;i++)</div><div class="line">	&#123;</div><div class="line">		p = fopen(&quot;/sys/class/gpio/gpio2/value&quot;,&quot;w&quot;);</div><div class="line">		fprintf(p,&quot;%d&quot;,1);</div><div class="line">		sleep(1);</div><div class="line">		fclose(p);</div><div class="line">		p = fopen(&quot;/sys/class/gpio/gpio2/value&quot;,&quot;w&quot;);</div><div class="line">		fprintf(p,&quot;%d&quot;,0);</div><div class="line">		sleep(1);</div><div class="line">		fclose(p);</div><div class="line">	&#125;</div><div class="line">	p = fopen(&quot;/sys/class/gpio/unexport&quot;,&quot;w&quot;);</div><div class="line">	fprintf(p,&quot;%d&quot;,2);</div><div class="line">	fclose(p);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>将led.c文件在Ubuntu下编译生成led文件<br><code>arm-linux-gnueabi-gcc led.c -o led</code></p>
+<p>将led文件拷贝到树莓派某一文件夹下输入<code>./led</code>，执行程序，现象为指示灯闪烁100次后结束。</p>
 
       
     </div>
@@ -609,7 +611,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装编译器"><span class="nav-number">1.</span> <span class="nav-text">安装编译器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GPIO控制"><span class="nav-number">2.</span> <span class="nav-text">GPIO控制</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装编译器（在宿主机Ubuntu下）"><span class="nav-number">1.</span> <span class="nav-text">安装编译器（在宿主机Ubuntu下）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GPIO控制"><span class="nav-number">2.</span> <span class="nav-text">GPIO控制</span></a></li></ol></div>
             
           </div>
         </section>
