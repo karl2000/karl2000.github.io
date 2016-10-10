@@ -96,7 +96,7 @@
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/a8fc9690jw1f86v69t6v1j20vj0bg78v.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/a8fc9690jw1f86vebe3kvj20ih0ca0vg.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/a8fc9690gw1f86vgj5o88j20ng05wacw.jpg">
-<meta property="og:updated_time" content="2016-10-08T09:41:54.579Z">
+<meta property="og:updated_time" content="2016-10-10T03:03:41.110Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树莓派使用问题解决">
 <meta name="twitter:description" content="树莓派使用过程中遇到的问题">
@@ -398,6 +398,8 @@
 <p>  我这里已经设置好了密码了，如果第一次运行时要让你设一个密码，这个是vnc密码，和系统用户密码无关，为了方便我这里设置123456，现在设置的树莓派的VNC密码要和后续电脑端的VNC密码一致。因此后续我的电脑端安装的tightvnc软件的密码也是123456。</p>
 <p>到这里树莓派的tightvnc软件已经安装好了，接下来要安装电脑端的tightvnc软件。</p>
 <p>启动电脑端tightvnc软件，  在输入栏中，输入你树莓派登录的IP和之前树莓派安装的tightvnc中，登录码。之前树莓派中释放的登录码是1。然后电脑端VNC需要加5900，因此这个数是5901。所以，按照现在我操作的树莓派IP和处理后的登录码，电脑端tightvnc的输入框中输入：<code>192.168.1.123::5901</code>，输入密码即可登录。</p>
+<p>中文显示乱码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install ttf-wqy-zenhei</div><div class="line">sudo apt-get install scim-pinyin</div><div class="line">sudo raspi-config</div></pre></td></tr></table></figure></p>
+<p>然后选择change_locale，在Default locale for the system environment:中选择（用空格选定）zh_CN.UTF-8,配置完成之后，输入命令<code>sudo reboot</code></p>
 <h2 id="更换软件源（apt-get-sources）【转】"><a href="#更换软件源（apt-get-sources）【转】" class="headerlink" title="更换软件源（apt-get sources）【转】"></a>更换软件源（apt-get sources）【转】</h2><p>树莓派的官方提供的源服务器访问起来实在太太太太太太慢了！会导致你安装一个几M的东西都要等大半天！肿么办！<br>好在树莓派官方有提供一个镜像列表：<a href="http://www.raspbian.org/RaspbianMirrors" target="_blank" rel="external">http://www.raspbian.org/RaspbianMirrors</a> </p>
 <p>中山大学<br>Raspbian <a href="http://mirror.sysu.edu.cn/raspbian/raspbian/" target="_blank" rel="external">http://mirror.sysu.edu.cn/raspbian/raspbian/</a></p>
 <p>中国科学技术大学<br>Raspbian <a href="http://mirrors.ustc.edu.cn/raspbian/raspbian/" target="_blank" rel="external">http://mirrors.ustc.edu.cn/raspbian/raspbian/</a></p>
@@ -424,6 +426,8 @@
 <p>例如:scp -r root@192.168.0.101:/var/www/test  /var/www/  </p>
 <p>4、上传目录到服务器<br>scp  -r local_dir username@servername:remote_dir<br>例如：scp -r test  root@192.168.0.101:/var/www/   把当前目录下的test目录上传到服务器的/var/www/ 目录</p>
 <p>注：目标服务器要开启写入权限。</p>
+<h2 id="树莓派系统备份"><a href="#树莓派系统备份" class="headerlink" title="树莓派系统备份"></a>树莓派系统备份</h2><p>sudo parted raspberrypi.img –script – mklabel msdos<br>sudo parted raspberrypi.img –script – mkpart primary fat32 8192s 122879s<br>sudo parted raspberrypi.img –script – mkpart primary ext4 122880s -1</p>
+<p>loopdevice=<code>sudo losetup -f --show raspberrypi.img</code><br>device=<code>sudo kpartx -va $loopdevice | sed -E &#39;s/.*(loop[0-9])p.*/\1/g&#39; | head -1</code><br>device=”/dev/mapper/${device}”<br>partBoot=”${device}p1”<br>partRoot=”${device}p2”</p>
 
       
     </div>
@@ -560,7 +564,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -649,7 +653,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#解压-xz压缩包方法"><span class="nav-number">1.</span> <span class="nav-text">解压.xz压缩包方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#笔记本SSH远程登录"><span class="nav-number">2.</span> <span class="nav-text">笔记本SSH远程登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过VNC连接【转】"><span class="nav-number">3.</span> <span class="nav-text">通过VNC连接【转】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更换软件源（apt-get-sources）【转】"><span class="nav-number">4.</span> <span class="nav-text">更换软件源（apt-get sources）【转】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新源"><span class="nav-number">5.</span> <span class="nav-text">更新源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用ssh传输文件【转】"><span class="nav-number">6.</span> <span class="nav-text">利用ssh传输文件【转】</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#解压-xz压缩包方法"><span class="nav-number">1.</span> <span class="nav-text">解压.xz压缩包方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#笔记本SSH远程登录"><span class="nav-number">2.</span> <span class="nav-text">笔记本SSH远程登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过VNC连接【转】"><span class="nav-number">3.</span> <span class="nav-text">通过VNC连接【转】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更换软件源（apt-get-sources）【转】"><span class="nav-number">4.</span> <span class="nav-text">更换软件源（apt-get sources）【转】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新源"><span class="nav-number">5.</span> <span class="nav-text">更新源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用ssh传输文件【转】"><span class="nav-number">6.</span> <span class="nav-text">利用ssh传输文件【转】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树莓派系统备份"><span class="nav-number">7.</span> <span class="nav-text">树莓派系统备份</span></a></li></ol></div>
             
           </div>
         </section>

@@ -4,6 +4,43 @@
   
     
     <entry>
+      <title><![CDATA[SourceInsight常用技巧整理]]></title>
+      <url>owker.pw/2016/10/09/SourceInsight%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/</url>
+      <content type="html"><![CDATA[<p>图片链接</p>
+<blockquote>
+<p>说明</p>
+</blockquote>
+<a id="more"></a>
+<p>恢复ctrl+a的全选功能<br>Options -&gt; Key Assignments:通过关键词save 找到save all，更改为ctrl+shift+a，通过关键词select找到select all，更改为ctrl +a</p>
+<p>设置背景色：<br>Options-&gt;preference-&gt;color-&gt;windows background设置背景色（护眼色：“色调”的参数设置为85，“饱和度”参数设置为90，“亮度”参数设置为205）<br>附：豆沙绿的参数 RGB颜色 199；237；204<br>十六位颜色代码 #C7EDCC<br>色调：85；饱和度：123；亮度：205 </p>
+<p>做ARM嵌入式开发时，有时得整汇编代码，但在SI里建立PROJECT并ADD TREE的时候，根据默认设置并不会把该TREE里面所有汇编文件都包含进来，默认只加了.inc和.asm后缀的，.s后缀的没有。而且用SI打开.s的文件时，一片黑白没有色彩, 感觉回到DOS的EDIT时代里了。<br>解决方法是在Options-&gt;Document Options里面，点左上的Document Type下拉菜单，选择x86 Asm Source File，然后在右边的File filter里<em>.asm;</em>.inc;的后面加上<em>.s和</em>.S; 接着CLOSE就可以了。这样就可以ADD TREE时把这些汇编加到PROJECT里面。</p>
+<p>加载.s汇编文件并高亮显示<br>SourceInsight默认不识别.s文件，添加文件时会被忽略，一种方法是取消“show only known document types”,另一种是添加.s文件到C源文件中，让SourceInsight识别.s文件为C文件格式<br><img src="http://ww2.sinaimg.cn/large/a8fc9690jw1f8mx75lnwej20g80e6mzx.jpg" alt=""><br>第二种方法操作：在Options-&gt;Document Options里面，点左上的Document Type下拉菜单，选择C Source File，然后在右边的File filter里补上<em>.s,</em>.S就可以像看C一样看汇编。</p>
+<p>Source Insight常用快捷键</p>
+<ol>
+<li><p>Ctrl + 鼠标单击 进入定义</p>
+</li>
+<li><p>Alt + F12可以切换，让字符宽度变得一致，或者是大小不同地显示</p>
+</li>
+<li><p>Shift + F8 标亮文本中光标所在的单词</p>
+</li>
+<li><p>Ctrl + G (或者F5) 跳转到某一行</p>
+</li>
+<li><p>Ctrl + O 搜索文件，找到回车打开，找不到ESC退出</p>
+</li>
+<li><p>Alt + G (或者F7) 打开Symbol Window</p>
+</li>
+<li><p>Alt +, 后退；Alt+.前进</p>
+</li>
+<li><p>Ctrl + F 查找关键字</p>
+</li>
+<li><p>Ctrl + Shift + F 工程内查找关键字<br>F3　：本文件查找结果的上一个<br>F4　：本文件查找结果的下一个<br>Ctrl+M　：创建或查找书签，方便下次找回此位置</p>
+</li>
+</ol>
+<p>Alt + , 返回上一窗口<br>Alt + . 前进到下一窗口</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[树莓派实践例程]]></title>
       <url>owker.pw/2016/10/05/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%9E%E8%B7%B5%E4%BE%8B%E7%A8%8B/</url>
       <content type="html"><![CDATA[<p><img src="http://ww3.sinaimg.cn/large/a8fc9690jw1f8kznkmxhoj21hc0u0gqa.jpg" alt=""></p>
@@ -22,6 +59,7 @@
 <p>以上方法没有验证</p>
 <p>在Ubuntu下直接用命令行安装<br><code>apt-get install gcc-arm-linux-gnueabi make ncurses-dev</code></p>
 <p><code>arm-linux-gnueabi-gcc led.c -o led</code>执行编译操作，生成的文件led是在树莓派上执行的程序，拷贝到树莓派文件夹下，用<code>./led</code>命令执行</p>
+<p><code>sudo apt install g++-arm-linux-gnueabi</code>安装g++编译器</p>
 <h2 id="GPIO控制"><a href="#GPIO控制" class="headerlink" title="GPIO控制"></a>GPIO控制</h2><ol>
 <li>确定使用的GPIO引脚，这里选择用GPIO2，实现功能为点亮/熄灭指示灯<br><img src="http://ww1.sinaimg.cn/large/a8fc9690jw1f8ksj8ye9tj20990b2tb2.jpg" alt=""></li>
 <li>跳转到<code>cd /sys/class/gpio</code>文件夹，导出相应的gpio，<code>echo 2 &gt; export</code>，执行该命令后gpio文件夹会出现gpio2子目录</li>
@@ -45,6 +83,17 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#include &lt;unistd.h&gt;</div><div class="line">#include &lt;string.h&gt;</div><div class="line">int main(void)</div><div class="line">&#123;</div><div class="line">	FILE *p=NULL;</div><div class="line">	int i=0;</div><div class="line">	p = fopen(&quot;/sys/class/gpio/export&quot;,&quot;w&quot;);</div><div class="line">	fprintf(p,&quot;%d&quot;,2);</div><div class="line">	fclose(p);</div><div class="line">	p = fopen(&quot;/sys/class/gpio/gpio2/direction&quot;,&quot;w&quot;);</div><div class="line">	fprintf(p,&quot;out&quot;);</div><div class="line">	fclose(p);</div><div class="line">	for(i=0;i&lt;100;i++)</div><div class="line">	&#123;</div><div class="line">		p = fopen(&quot;/sys/class/gpio/gpio2/value&quot;,&quot;w&quot;);</div><div class="line">		fprintf(p,&quot;%d&quot;,1);</div><div class="line">		sleep(1);</div><div class="line">		fclose(p);</div><div class="line">		p = fopen(&quot;/sys/class/gpio/gpio2/value&quot;,&quot;w&quot;);</div><div class="line">		fprintf(p,&quot;%d&quot;,0);</div><div class="line">		sleep(1);</div><div class="line">		fclose(p);</div><div class="line">	&#125;</div><div class="line">	p = fopen(&quot;/sys/class/gpio/unexport&quot;,&quot;w&quot;);</div><div class="line">	fprintf(p,&quot;%d&quot;,2);</div><div class="line">	fclose(p);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>将led.c文件在Ubuntu下编译生成led文件<br><code>arm-linux-gnueabi-gcc led.c -o led</code></p>
 <p>将led文件拷贝到树莓派某一文件夹下输入<code>./led</code>，执行程序，现象为指示灯闪烁100次后结束。</p>
+<h2 id="UART操作"><a href="#UART操作" class="headerlink" title="UART操作"></a>UART操作</h2><p>树莓派3的UART串口的使用问题可参考<a href="http://www.briandorey.com/post/Raspberry-Pi-3-UART-Boot-Overlay-Part-Two" target="_blank" rel="external">Raspberry Pi 3 UART Boot Overlay Part Two</a></p>
+<p>对于树莓派3 B+来说，uart 功能有三种： 1、内部蓝牙使用  2、控制终端使用  3、与其他设备进行串口通信；<br>然而 树莓派 3 确只提供一个硬件 uart,对应硬件接口 p14-TX/P15-RX。所有树莓派3 的串口只能是鱼与熊掌不能兼得了。<br>树莓派 官方系统 Raspbian Jessie releases 默认串口是给蓝牙使用。如果想让串口作为控制终端调试口即 serial console，则需要对系统配置进行修改,关闭蓝牙并且映射 pl011 UART 到p14和p15<br>一、使能serial console步骤如下：</p>
+<ol>
+<li><p>安装系统并配置系统<br>Raspbian Jessie releases 系统安装到sd卡上。<br>配置系统：<code>sudo raspi-config</code><br>执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Expand filesystem  and enable serial on advanced page exit and reboot</div><div class="line">sudo apt-get update </div><div class="line">sudo apt-get upgrade</div></pre></td></tr></table></figure>
+</li>
+<li><p>设置 Device tree<br><code>sudo vi /boot/config.txt</code><br>在文件末尾添加：<br>dtoverlay=pi3-miniuart-bt<br><code>sudo reboot</code></p>
+</li>
+<li><p>使能串口终端   serial console<br>编辑 /boot/cmdline.txt 文件<br><code>sudo vi /boot/cmdline.txt</code><br>将文件内容改为<br><code>dwc_otg.lpm_enable=0 console=tty1 console=serial0,115200 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait</code><br>核对一下，可能不需要更改</p>
+</li>
+</ol>
 ]]></content>
     </entry>
     
@@ -86,6 +135,7 @@
 <p>8.4创建grub配置文件（虚拟机sdb1）</p>
 <p>cat &gt; /boot/grub/grub.cfg &lt;&lt; “EOF”</p>
 <h1 id="Begin-boot-grub-grub-cfg"><a href="#Begin-boot-grub-grub-cfg" class="headerlink" title="Begin /boot/grub/grub.cfg"></a>Begin /boot/grub/grub.cfg</h1><p>set default=0<br>set timeout=5<br>insmod ext2<br>set root=(hd1,1)<br>menuentry “GNU/Linux, Linux 3.19-lfs-7.7-systemd” {<br>        linux   /boot/vmlinuz-3.19-lfs-7.7-systemd root=/dev/sdb1 ro<br>}<br>EOF</p>
+<p>要让系统可引导，可以在宿主机Ubuntu的grub.cfg中添加如下代码，启动时就会出现相应菜单：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">### BEGIN /etc/grub.d/40_custom ###</div><div class="line"># This file provides an easy way to add custom menu entries.  Simply type the</div><div class="line"># menu entries you want to add after this comment.  Be careful not to change</div><div class="line"># the &apos;exec tail&apos; line above.</div><div class="line">menuentry &quot;LFS on (/dev/sdb1)&quot; &#123;</div><div class="line">#       savedefault</div><div class="line">#       gfxpayload=1280x1024x32,1280x1024</div><div class="line">        set root=(hd1,1)</div><div class="line">        linux  /boot/vmlinuz-3.19-lfs-7.7-systemd root=/dev/sdb1 ro</div><div class="line">&#125;</div><div class="line">### END /etc/grub.d/40_custom ###</div></pre></td></tr></table></figure></p>
 ]]></content>
     </entry>
     
@@ -123,6 +173,8 @@
 <p>  我这里已经设置好了密码了，如果第一次运行时要让你设一个密码，这个是vnc密码，和系统用户密码无关，为了方便我这里设置123456，现在设置的树莓派的VNC密码要和后续电脑端的VNC密码一致。因此后续我的电脑端安装的tightvnc软件的密码也是123456。</p>
 <p>到这里树莓派的tightvnc软件已经安装好了，接下来要安装电脑端的tightvnc软件。</p>
 <p>启动电脑端tightvnc软件，  在输入栏中，输入你树莓派登录的IP和之前树莓派安装的tightvnc中，登录码。之前树莓派中释放的登录码是1。然后电脑端VNC需要加5900，因此这个数是5901。所以，按照现在我操作的树莓派IP和处理后的登录码，电脑端tightvnc的输入框中输入：<code>192.168.1.123::5901</code>，输入密码即可登录。</p>
+<p>中文显示乱码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install ttf-wqy-zenhei</div><div class="line">sudo apt-get install scim-pinyin</div><div class="line">sudo raspi-config</div></pre></td></tr></table></figure></p>
+<p>然后选择change_locale，在Default locale for the system environment:中选择（用空格选定）zh_CN.UTF-8,配置完成之后，输入命令<code>sudo reboot</code></p>
 <h2 id="更换软件源（apt-get-sources）【转】"><a href="#更换软件源（apt-get-sources）【转】" class="headerlink" title="更换软件源（apt-get sources）【转】"></a>更换软件源（apt-get sources）【转】</h2><p>树莓派的官方提供的源服务器访问起来实在太太太太太太慢了！会导致你安装一个几M的东西都要等大半天！肿么办！<br>好在树莓派官方有提供一个镜像列表：<a href="http://www.raspbian.org/RaspbianMirrors" target="_blank" rel="external">http://www.raspbian.org/RaspbianMirrors</a> </p>
 <p>中山大学<br>Raspbian <a href="http://mirror.sysu.edu.cn/raspbian/raspbian/" target="_blank" rel="external">http://mirror.sysu.edu.cn/raspbian/raspbian/</a></p>
 <p>中国科学技术大学<br>Raspbian <a href="http://mirrors.ustc.edu.cn/raspbian/raspbian/" target="_blank" rel="external">http://mirrors.ustc.edu.cn/raspbian/raspbian/</a></p>
@@ -149,6 +201,8 @@
 <p>例如:scp -r root@192.168.0.101:/var/www/test  /var/www/  </p>
 <p>4、上传目录到服务器<br>scp  -r local_dir username@servername:remote_dir<br>例如：scp -r test  root@192.168.0.101:/var/www/   把当前目录下的test目录上传到服务器的/var/www/ 目录</p>
 <p>注：目标服务器要开启写入权限。</p>
+<h2 id="树莓派系统备份"><a href="#树莓派系统备份" class="headerlink" title="树莓派系统备份"></a>树莓派系统备份</h2><p>sudo parted raspberrypi.img –script – mklabel msdos<br>sudo parted raspberrypi.img –script – mkpart primary fat32 8192s 122879s<br>sudo parted raspberrypi.img –script – mkpart primary ext4 122880s -1</p>
+<p>loopdevice=<code>sudo losetup -f --show raspberrypi.img</code><br>device=<code>sudo kpartx -va $loopdevice | sed -E &#39;s/.*(loop[0-9])p.*/\1/g&#39; | head -1</code><br>device=”/dev/mapper/${device}”<br>partBoot=”${device}p1”<br>partRoot=”${device}p2”</p>
 ]]></content>
     </entry>
     
@@ -428,6 +482,7 @@
 <h2 id="如何查找Linux内核代码【转】"><a href="#如何查找Linux内核代码【转】" class="headerlink" title="如何查找Linux内核代码【转】"></a>如何查找Linux内核代码【转】</h2><p>先登录网站  <a href="http://lxr.linux.no/" target="_blank" rel="external">http://lxr.linux.no/</a><br>选择你需要查看的内核版本，LINUX 可以通过“uname -r”来获得这个版本号。 </p>
 <p>然后就是找你需要的东东啦，如果你知道目录结构可以直接去打开目录，个人觉得还是根据函数名称搜索来的比较靠谱。 </p>
 <p>比如要寻找SK_BUFF定义，直接输入，然后找STRUCTURE<br>就可以找到<br><a href="http://lxr.linux.no/linux+v2.6.32.20/include/linux/skbuff.h#L313" target="_blank" rel="external">http://lxr.linux.no/linux+v2.6.32.20/include/linux/skbuff.h#L313</a></p>
+<h2 id="bash快捷键"><a href="#bash快捷键" class="headerlink" title="bash快捷键"></a>bash快捷键</h2><p>ctrl键组合<br>ctrl+a:光标移到行首。<br>ctrl+b:光标左移一个字母<br>ctrl+c:杀死当前进程。<br>ctrl+d:退出当前 Shell。<br>ctrl+e:光标移到行尾。<br>ctrl+h:删除光标前一个字符，同 backspace 键相同。<br>ctrl+k:清除光标后至行尾的内容。<br>ctrl+l:清屏，相当于clear。<br>ctrl+r:搜索之前打过的命令。会有一个提示，根据你输入的关键字进行搜索bash的history<br>ctrl+u: 清除光标前至行首间的所有内容。<br>ctrl+w: 移除光标前的一个单词<br>ctrl+t: 交换光标位置前的两个字符<br>ctrl+y: 粘贴或者恢复上次的删除<br>ctrl+d: 删除光标所在字母;注意和backspace以及ctrl+h的区别，这2个是删除光标前的字符<br>ctrl+f: 光标右移<br>ctrl+z : 把当前进程转到后台运行，使用’ fg ‘命令恢复。比如top -d1 然后ctrl+z ，到后台，然后fg,重新恢复<br>esc组合<br>esc+d: 删除光标后的一个词<br>esc+f: 往右跳一个词<br>esc+b: 往左跳一个词<br>esc+t: 交换光标位置前的两个单词。</p>
 ]]></content>
     </entry>
     
