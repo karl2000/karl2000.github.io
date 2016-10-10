@@ -13,7 +13,6 @@
 <a id="more"></a>
 <p>恢复ctrl+a的全选功能<br>Options -&gt; Key Assignments:通过关键词save 找到save all，更改为ctrl+shift+a，通过关键词select找到select all，更改为ctrl +a</p>
 <p>设置背景色：<br>Options-&gt;preference-&gt;color-&gt;windows background设置背景色（护眼色：“色调”的参数设置为85，“饱和度”参数设置为90，“亮度”参数设置为205）<br>附：豆沙绿的参数 RGB颜色 199；237；204<br>十六位颜色代码 #C7EDCC<br>色调：85；饱和度：123；亮度：205 </p>
-<p>做ARM嵌入式开发时，有时得整汇编代码，但在SI里建立PROJECT并ADD TREE的时候，根据默认设置并不会把该TREE里面所有汇编文件都包含进来，默认只加了.inc和.asm后缀的，.s后缀的没有。而且用SI打开.s的文件时，一片黑白没有色彩, 感觉回到DOS的EDIT时代里了。<br>解决方法是在Options-&gt;Document Options里面，点左上的Document Type下拉菜单，选择x86 Asm Source File，然后在右边的File filter里<em>.asm;</em>.inc;的后面加上<em>.s和</em>.S; 接着CLOSE就可以了。这样就可以ADD TREE时把这些汇编加到PROJECT里面。</p>
 <p>加载.s汇编文件并高亮显示<br>SourceInsight默认不识别.s文件，添加文件时会被忽略，一种方法是取消“show only known document types”,另一种是添加.s文件到C源文件中，让SourceInsight识别.s文件为C文件格式<br><img src="http://ww2.sinaimg.cn/large/a8fc9690jw1f8mx75lnwej20g80e6mzx.jpg" alt=""><br>第二种方法操作：在Options-&gt;Document Options里面，点左上的Document Type下拉菜单，选择C Source File，然后在右边的File filter里补上<em>.s,</em>.S就可以像看C一样看汇编。</p>
 <p>Source Insight常用快捷键</p>
 <ol>
@@ -392,7 +391,7 @@
 <li>如果局域网内另一台电脑也想通过本电脑进行浏览网页，那么就要在具体的软件设置http代理，这里以IE浏览器为例：<br>设置 - Internet选项 - 连接 - 局域网设置，在代理服务器一栏，勾上为lan使用代理服务器，填法和上面类似。<br>服务器地址填上面电脑的内网IP：192.168.1.57<br>端口填shadowsocks客户端的代理端口：1080</li>
 </ol>
 <h2 id="如何查看某个端口被谁占用"><a href="#如何查看某个端口被谁占用" class="headerlink" title="如何查看某个端口被谁占用"></a><a href="http://jingyan.baidu.com/article/3c48dd34491d47e10be358b8.html" target="_blank" rel="external">如何查看某个端口被谁占用</a></h2><p>开始—-&gt;运行—-&gt;cmd，或者是window+R组合键，调出命令窗口<br>输入命令：netstat -aon|findstr “1080”，查看被占用的端口PID，此例为3056<br><img src="http://ww4.sinaimg.cn/large/a8fc9690gw1f7n7zm6unxj20hr01ewej.jpg" alt=""><br>打开任务管理器，在进程中点击查看—&gt;选择列，将PID(进程标示符)前面的勾打上，点击确定，结束PID为3056的进程。</p>
-<p><a href="http://jingyan.baidu.com/article/455a99 509eb6daa1662778b6.html" target="_blank" rel="external">如何使用Ghost对linux系统进行整盘备份恢复（不实用）</a><br>需要很大的硬盘空间，费时，没有实际使用</p>
+<h2 id="如何使用Ghost对linux系统进行整盘备份恢复（不实用）"><a href="#如何使用Ghost对linux系统进行整盘备份恢复（不实用）" class="headerlink" title="如何使用Ghost对linux系统进行整盘备份恢复（不实用）"></a><a href="http://jingyan.baidu.com/article/455a99 509eb6daa1662778b6.html" target="_blank" rel="external">如何使用Ghost对linux系统进行整盘备份恢复（不实用）</a></h2><p>需要很大的硬盘空间，费时，没有实际使用</p>
 <ol>
 <li>制作大白菜启动盘</li>
 <li>进入Winpe系统界面，双击打开“Ghost32 115.1”程序，点击“local”，点击“Disk”，点击“To Image”</li>
@@ -405,6 +404,8 @@
 <li>挂载U盘mount /dev/sdb1 /mnt/usb<br>以上两步如果系统自动识别优盘，用df命令查看挂载点本例挂载点为<code>/run/media/root/60A7-F683/</code></li>
 </ol>
 <p>备份命令<code>rsync -Pa / /run/media/root/60A7-F683/backup_20160909 --exclude=/media/* --exclude=/sys/* --exclude=/proc/* --exclude=/mnt/* --exclude=/tmp/* --exclude=/run/media/root/60A7-F683/*</code><br>还原命令<code>rsync -Pa /run/media/root/60A7-F683/backup_20160909</code></p>
+<p>在Linux系统中如果使用root用户那么所有文件都是可以读取的，所以还有一个比较简单的方法：把所有系统文件打包为一个压缩文件，不过操作起来略有些繁琐，大致步骤如下：<br>1、备份<br>sudo su 命令解释：获得root的身份运行<br>cd / 命令解释：切换到根目录<br>tar cvpzf backup.tgz / –exclude=/proc –exclude=/lost+found –exclude=/backup.tgz –exclude=/mnt–exclude=/sys<br>解释参数：cvpzf—创建压缩文件，–exclude—排除目录</p>
+<p>2、恢复<br>sudo su<br>cd /<br>tar xvpfz backup.tgz -C /<br>mkdir proc<br>mkdir lost+found<br>mkdir mnt<br>mkdir sys<br>最后四步是创建备份的时候忽略的文件夹。<br>小提示；如果恢复之后还是无法启动系统，那么请在LiveUSB中运行cfdisk看看系统分区是否已经设置为引导分区（boot标志）。有时候还需要重新安装一次GRUB，以单硬盘为例子介绍安装方法。在LiveCD/LiveUSB环境下打开终端窗口，依次输入：1、sudo grub；2、find /boot/grub/stage1，这条命令反馈信息供下一步使用；3、root (hd0,<em>)，</em>的数值由第二步决定；4、setup (hd0)；5、quit。如果不是单硬盘那么请根据第二步的反馈决定hd<em>的数值，而且如果想使用XP的引导器引导Ubuntu，那么第四步应使用 setup (hd0,</em>)这样的命令。</p>
 ]]></content>
     </entry>
     

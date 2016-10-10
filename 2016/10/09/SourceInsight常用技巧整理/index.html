@@ -95,7 +95,7 @@
 
 说明">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/a8fc9690jw1f8mx75lnwej20g80e6mzx.jpg">
-<meta property="og:updated_time" content="2016-10-10T01:37:09.787Z">
+<meta property="og:updated_time" content="2016-10-10T07:01:09.970Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SourceInsight常用技巧整理">
 <meta name="twitter:description" content="图片链接
@@ -356,7 +356,6 @@
 <a id="more"></a>
 <p>恢复ctrl+a的全选功能<br>Options -&gt; Key Assignments:通过关键词save 找到save all，更改为ctrl+shift+a，通过关键词select找到select all，更改为ctrl +a</p>
 <p>设置背景色：<br>Options-&gt;preference-&gt;color-&gt;windows background设置背景色（护眼色：“色调”的参数设置为85，“饱和度”参数设置为90，“亮度”参数设置为205）<br>附：豆沙绿的参数 RGB颜色 199；237；204<br>十六位颜色代码 #C7EDCC<br>色调：85；饱和度：123；亮度：205 </p>
-<p>做ARM嵌入式开发时，有时得整汇编代码，但在SI里建立PROJECT并ADD TREE的时候，根据默认设置并不会把该TREE里面所有汇编文件都包含进来，默认只加了.inc和.asm后缀的，.s后缀的没有。而且用SI打开.s的文件时，一片黑白没有色彩, 感觉回到DOS的EDIT时代里了。<br>解决方法是在Options-&gt;Document Options里面，点左上的Document Type下拉菜单，选择x86 Asm Source File，然后在右边的File filter里<em>.asm;</em>.inc;的后面加上<em>.s和</em>.S; 接着CLOSE就可以了。这样就可以ADD TREE时把这些汇编加到PROJECT里面。</p>
 <p>加载.s汇编文件并高亮显示<br>SourceInsight默认不识别.s文件，添加文件时会被忽略，一种方法是取消“show only known document types”,另一种是添加.s文件到C源文件中，让SourceInsight识别.s文件为C文件格式<br><img src="http://ww2.sinaimg.cn/large/a8fc9690jw1f8mx75lnwej20g80e6mzx.jpg" alt=""><br>第二种方法操作：在Options-&gt;Document Options里面，点左上的Document Type下拉菜单，选择C Source File，然后在右边的File filter里补上<em>.s,</em>.S就可以像看C一样看汇编。</p>
 <p>Source Insight常用快捷键</p>
 <ol>
