@@ -19,6 +19,26 @@
 
     
   <url>
+    <loc>owker.pw/2016/09/04/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BB%91%E5%AE%9A%E7%8B%AC%E7%AB%8B%E5%9F%9F%E5%90%8D/</loc>
+    <lastmod>2016-10-11T11:38:40.622Z</lastmod>
+    <data>
+        <display>
+        <title>个人博客绑定独立域名</title>
+        <pubTime>2016-09-04T08:23:07.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="博客搭建" url="owker.pw/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>owker.pw/2016/09/25/Ubuntu%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</loc>
     <lastmod>2016-10-11T11:24:01.659Z</lastmod>
     <data>
@@ -28,6 +48,71 @@
         
          
            
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>owker.pw/2016/10/09/SourceInsight%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/</loc>
+    <lastmod>2016-10-11T11:23:29.766Z</lastmod>
+    <data>
+        <display>
+        <title>SourceInsight常用技巧整理</title>
+        <pubTime>2016-10-08T23:12:29.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>owker.pw/2016/09/05/RedHat%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</loc>
+    <lastmod>2016-10-11T11:23:29.072Z</lastmod>
+    <data>
+        <display>
+        <title>RedHat7系统安装问题解决</title>
+        <pubTime>2016-09-05T01:59:32.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>owker.pw/2016/09/06/Quartus%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E8%A6%81%E7%82%B9%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2016-10-11T11:23:28.299Z</lastmod>
+    <data>
+        <display>
+        <title>Quartus软件安装要点记录</title>
+        <pubTime>2016-09-06T14:13:43.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>owker.pw/2016/09/02/markdown%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/</loc>
+    <lastmod>2016-10-11T11:23:27.464Z</lastmod>
+    <data>
+        <display>
+        <title>markdown常用语法小结</title>
+        <pubTime>2016-09-02T14:17:32.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="owker.pw/categories/%E6%8A%80%E6%9C%AF/"/>
+          
         </display>
     </data>
     </url>
@@ -49,12 +134,129 @@
 
     
   <url>
+    <loc>owker.pw/2016/09/05/Linux%E6%8A%80%E5%B7%A7%E5%B0%8F%E7%BB%93/</loc>
+    <lastmod>2016-10-11T11:23:25.295Z</lastmod>
+    <data>
+        <display>
+        <title>Linux技巧小结</title>
+        <pubTime>2016-09-05T06:08:56.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>owker.pw/2016/09/05/Linux%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/</loc>
+    <lastmod>2016-10-11T11:23:24.524Z</lastmod>
+    <data>
+        <display>
+        <title>Linux常用语法小结</title>
+        <pubTime>2016-09-05T14:47:00.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>owker.pw/2016/09/07/Linux%E4%B8%8BQuartusII%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%B0%8F%E7%BB%93/</loc>
+    <lastmod>2016-10-11T11:23:23.821Z</lastmod>
+    <data>
+        <display>
+        <title>Linux下QuartusII常用命令小结</title>
+        <pubTime>2016-09-07T10:36:42.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>owker.pw/2016/09/28/LFS%E6%90%AD%E5%BB%BA%E6%89%8B%E8%AE%B0/</loc>
     <lastmod>2016-10-11T11:23:23.165Z</lastmod>
     <data>
         <display>
         <title>LFS（linux from scratch）搭建手记</title>
         <pubTime>2016-09-28T01:16:25.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>owker.pw/2016/09/04/hexo%E4%B8%BB%E9%A2%98%E6%95%88%E6%9E%9C%E4%BC%98%E5%8C%96/</loc>
+    <lastmod>2016-10-11T11:23:21.390Z</lastmod>
+    <data>
+        <display>
+        <title>hexo主题效果优化</title>
+        <pubTime>2016-09-03T17:24:56.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+        <tag>NexT</tag>
+         
+         
+           
+             
+              <breadCrumb title="博客搭建" url="owker.pw/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>owker.pw/2016/09/01/github+hexo%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88Windows%EF%BC%89/</loc>
+    <lastmod>2016-10-11T11:23:20.456Z</lastmod>
+    <data>
+        <display>
+        <title>github+hexo搭建免费个人博客（Windows）</title>
+        <pubTime>2016-09-01T13:14:34.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="博客搭建" url="owker.pw/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>owker.pw/2016/09/03/git%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/</loc>
+    <lastmod>2016-10-11T11:23:19.605Z</lastmod>
+    <data>
+        <display>
+        <title>git常用语法小结</title>
+        <pubTime>2016-09-02T18:48:04.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>owker.pw/2016/09/22/Cpp%E6%B7%B1%E5%85%A5%E8%AF%A6%E8%A7%A3%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</loc>
+    <lastmod>2016-10-11T11:23:19.097Z</lastmod>
+    <data>
+        <display>
+        <title>Cpp深入详解学习总结</title>
+        <pubTime>2016-09-22T01:15:41.000Z</pubTime>
         
          
            
@@ -115,213 +317,8 @@
 
     
   <url>
-    <loc>owker.pw/2016/10/09/SourceInsight%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/</loc>
-    <lastmod>2016-10-10T07:01:09.970Z</lastmod>
-    <data>
-        <display>
-        <title>SourceInsight常用技巧整理</title>
-        <pubTime>2016-10-08T23:12:29.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>owker.pw/2016/09/05/Linux%E6%8A%80%E5%B7%A7%E5%B0%8F%E7%BB%93/</loc>
-    <lastmod>2016-10-10T03:29:06.431Z</lastmod>
-    <data>
-        <display>
-        <title>Linux技巧小结</title>
-        <pubTime>2016-09-05T06:08:56.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>owker.pw/2016/09/06/Quartus%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E8%A6%81%E7%82%B9%E8%AE%B0%E5%BD%95/</loc>
-    <lastmod>2016-10-08T09:36:37.304Z</lastmod>
-    <data>
-        <display>
-        <title>Quartus软件安装要点记录</title>
-        <pubTime>2016-09-06T14:13:43.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>owker.pw/2016/09/05/Linux%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/</loc>
-    <lastmod>2016-10-08T09:33:04.956Z</lastmod>
-    <data>
-        <display>
-        <title>Linux常用语法小结</title>
-        <pubTime>2016-09-05T14:47:00.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>owker.pw/2016/09/22/Cpp%E6%B7%B1%E5%85%A5%E8%AF%A6%E8%A7%A3%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</loc>
-    <lastmod>2016-10-08T09:27:37.272Z</lastmod>
-    <data>
-        <display>
-        <title>Cpp深入详解学习总结</title>
-        <pubTime>2016-09-22T01:15:41.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>owker.pw/2016/09/02/markdown%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/</loc>
-    <lastmod>2016-09-25T03:54:11.922Z</lastmod>
-    <data>
-        <display>
-        <title>markdown常用语法小结</title>
-        <pubTime>2016-09-02T14:17:32.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术" url="owker.pw/categories/%E6%8A%80%E6%9C%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>owker.pw/2016/09/05/RedHat%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</loc>
-    <lastmod>2016-09-22T15:26:45.619Z</lastmod>
-    <data>
-        <display>
-        <title>RedHat7系统安装问题解决</title>
-        <pubTime>2016-09-05T01:59:32.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>owker.pw/2016/09/01/github+hexo%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88Windows%EF%BC%89/</loc>
-    <lastmod>2016-09-09T09:16:38.099Z</lastmod>
-    <data>
-        <display>
-        <title>github+hexo搭建免费个人博客（Windows）</title>
-        <pubTime>2016-09-01T13:14:34.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-         
-           
-             
-              <breadCrumb title="博客搭建" url="owker.pw/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>owker.pw/2016/09/07/Linux%E4%B8%8BQuartusII%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%B0%8F%E7%BB%93/</loc>
-    <lastmod>2016-09-07T10:38:23.897Z</lastmod>
-    <data>
-        <display>
-        <title>Linux下QuartusII常用命令小结</title>
-        <pubTime>2016-09-07T10:36:42.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>owker.pw/2016/09/03/git%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/</loc>
-    <lastmod>2016-09-06T01:25:43.043Z</lastmod>
-    <data>
-        <display>
-        <title>git常用语法小结</title>
-        <pubTime>2016-09-02T18:48:04.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-    
-    
-  <url>
-    <loc>owker.pw/2016/09/04/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BB%91%E5%AE%9A%E7%8B%AC%E7%AB%8B%E5%9F%9F%E5%90%8D/</loc>
-    <lastmod>2016-09-04T12:51:39.931Z</lastmod>
-    <data>
-        <display>
-        <title>个人博客绑定独立域名</title>
-        <pubTime>2016-09-04T08:23:07.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-         
-           
-             
-              <breadCrumb title="博客搭建" url="owker.pw/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-    
-  <url>
-    <loc>owker.pw/2016/09/04/hexo%E4%B8%BB%E9%A2%98%E6%95%88%E6%9E%9C%E4%BC%98%E5%8C%96/</loc>
-    <lastmod>2016-09-04T10:57:28.492Z</lastmod>
-    <data>
-        <display>
-        <title>hexo主题效果优化</title>
-        <pubTime>2016-09-03T17:24:56.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-        <tag>NexT</tag>
-         
-         
-           
-             
-              <breadCrumb title="博客搭建" url="owker.pw/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>owker.pw/2016/09/03/%E4%BD%BF%E7%94%A8hexo%E5%BC%82%E5%9C%B0%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</loc>
-    <lastmod>2016-09-04T03:15:03.752Z</lastmod>
+    <lastmod>2016-10-11T11:23:16.347Z</lastmod>
     <data>
         <display>
         <title>使用hexo异地更新博客解决办法（Windows）</title>
@@ -338,6 +335,9 @@
     </data>
     </url>
 
+    
+    
+    
     
     
     
