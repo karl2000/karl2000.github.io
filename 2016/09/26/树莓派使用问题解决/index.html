@@ -96,7 +96,7 @@
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/a8fc9690jw1f86v69t6v1j20vj0bg78v.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/a8fc9690jw1f86vebe3kvj20ih0ca0vg.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/a8fc9690gw1f86vgj5o88j20ng05wacw.jpg">
-<meta property="og:updated_time" content="2016-10-10T03:03:41.110Z">
+<meta property="og:updated_time" content="2016-10-11T11:23:17.873Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树莓派使用问题解决">
 <meta name="twitter:description" content="树莓派使用过程中遇到的问题">
@@ -388,6 +388,7 @@
 </li>
 </ol>
 <p>执行此命令后系统会提示输入两遍的root密码，输入你想设的密码即可，然后在执行<br><code>sudo passwd --unlock root</code><br>这样就可以解锁root账户了。</p>
+<p>允许root SSH远程登陆：<br>1.备份<br>sudo mv /etc/ssh/sshd_config /etc/ssh/sshd_config.bak<br>2.改写<br>vi /etc/ssh/sshd_config<br>将PermitRootLogin值改yes<br>允许不输入密码登录<br>将PermitEmptyPasswords yes 前面的#号去掉<br>3.重启服务：service sshd restart</p>
 <p><a href="http://jingyan.baidu.com/article/f71d60376a58561ab741d168.html" target="_blank" rel="external">internet连接共享访问被启用时出现错误解决方法</a></p>
 <ol>
 <li>在左下角搜索一栏里面输入“服务”，点击打开</li>

@@ -93,6 +93,46 @@
 <li><p>使能串口终端   serial console<br>编辑 /boot/cmdline.txt 文件<br><code>sudo vi /boot/cmdline.txt</code><br>将文件内容改为<br><code>dwc_otg.lpm_enable=0 console=tty1 console=serial0,115200 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait</code><br>核对一下，可能不需要更改</p>
 </li>
 </ol>
+<h2 id="树莓派内核编译"><a href="#树莓派内核编译" class="headerlink" title="树莓派内核编译"></a>树莓派内核编译</h2><ol>
+<li>下载树莓派内核</li>
+<li>到内核目录执行<code>sudo make mrproper</code>，保证内核树的绝对干净</li>
+<li>执行find ./ -name “<em>bcm</em>defconfig*” 查找下对应的默认配置<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">./arch/mips/configs/bcm47xx_defconfig</div><div class="line">./arch/mips/configs/bcm63xx_defconfig</div><div class="line">./arch/arm/configs/bcm_defconfig</div><div class="line">./arch/arm/configs/bcm2709_defconfig</div><div class="line">./arch/arm/configs/bcmrpi_defconfig</div><div class="line">./arch/arm/configs/bcm2835_defconfig</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>Pi 1 使用bcmrpi_defconfig<br>Pi 2/3 使用bcm2709_defconfig</p>
+<p>sudo make bcm2709_defconfig(默认配置，结果保存在内核源文件夹下.config中)<br>sudo make menuconfig</p>
+<p>目录切换到内核源文件下，配置默认设置：<br>sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-gcc bcm2709_defconfig<br>配置内核模块（可手动修改），执行<br>sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-gcc menuconfig</p>
+<p>显示下图说明参数设置成功<br><img src="http://ww3.sinaimg.cn/large/a8fc9690jw1f8nf0imo6kj20tk0brdmd.jpg" alt=""></p>
+<p>编译内核镜像<br>sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- -j4 modules(要将编译器命令的gcc去掉)<br>-j4：表示多核处理</p>
+<p>将编译好的 Linux 内核复制出來：<br>sudo cp arch/arm/boot/Image ../kernel-new.img</p>
+<p>安装modules:<br>sudo make -j4 ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- INSTALL_MOD_PATH=../modules modules_install(要将编译器命令的gcc去掉)</p>
+<p>将装有树莓派系统的SD卡插在Linux系统电脑上，使用lsblk指令查看硬盘结构如下图，sdd1(boot分区)和sdd2(root分区)为SD卡的分区<br><img src="http://ww3.sinaimg.cn/large/a8fc9690gw1f8nhobz8kdj20fe06jaci.jpg" alt=""><br>挂载SD卡分区：<br>sudo mkdir /mnt/fat32<br>sudo mkdir /mnt/ext4<br>sudo mount /dev/sdd1 /mnt/fat32<br>sudo mount /dev/sdd2 /mnt/ext4</p>
+<p>将kernel-new.img放入boot分区<br>sudo cp kernel-new.img /mnt/fat32/<br>把 modules/lib/modules/ 里面的东西复制到 /lib/modules/<br>sudo cp -r modules/lib/modules/* /mnt/ext4/lib/modules/</p>
+<p>将 modules/lib/firmware/里面的东西复制到 /lib/firmware/</p>
+<p>sudo cp -r modules/lib/firmware/* /mnt/ext4/lib/firmware/</p>
+<p>sudo vi /mnt/fat32/config.txt 编辑 /boot/config.txt，加入一行<br>kernel=kernel-new.img</p>
+<p>这行是用来指令系统要使用的核心，可以同时放置多个不同核心，以便随时切换。<br>这样新编译好的核心就安装好了。</p>
+<p>最后卸载SD卡<br>sudo umount /mnt/fat32<br>sudo umount /mnt/ext4</p>
+<p>一个模块交叉编译的例子<br>hello.c源程序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">#include&lt;linux/module.h&gt;  </div><div class="line">#include&lt;linux/kernel.h&gt;  </div><div class="line">#include&lt;linux/init.h&gt;  </div><div class="line">MODULE_LICENSE(&quot;GPL&quot;);  </div><div class="line">static int __init lkp_init(void)  </div><div class="line">&#123;  </div><div class="line">    printk(KERN_ALERT &quot;Hello World!/n&quot;);  </div><div class="line">    return 0;  </div><div class="line">&#125;  </div><div class="line">static void __exit lkp_cleanup(void)  </div><div class="line">&#123;  </div><div class="line">    printk(KERN_ALERT &quot;Bye World!/n&quot;);  </div><div class="line">&#125;  </div><div class="line">module_init(lkp_init);  </div><div class="line">module_exit(lkp_cleanup);  </div><div class="line">MODULE_AUTHOR(&quot;lin&quot;);  </div><div class="line">MODULE_DESCRIPTION(&quot;hello&quot;);</div></pre></td></tr></table></figure></p>
+<p>Makefile文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">obj-m := hello.o  </div><div class="line">KERNELBUILD :=/home/lin/Downloads/raspdown/linux</div><div class="line">#这里指向树莓派linux内核源文件夹</div><div class="line">default:  </div><div class="line">	make -C $(KERNELBUILD) M=/home/lin/Downloads/raspdown/linux/drivers/testdrive modules </div><div class="line">	#M值指向你的源文件hello.c和Makefile文件夹 </div><div class="line">clean:  </div><div class="line">	rm -rf *.o *.ko *.mod.c .*.cmd *.markers *.order *.symvers .tmp_versions</div></pre></td></tr></table></figure></p>
+<p>执行生成hello.ko文件<br>sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-</p>
+<p><em>如果出现类似“fatal section header offset 32425246532452 in file ‘vmlinux’ is bigger than filesize=35524847”的问题，重新编译内核镜像和modules可以解决</em></p>
+<p>将hello.ko拷贝到树莓派/lib/modules/4.4.23-v7+（对应你自己编译的内核版本）</p>
+<p>sudo insmod hello.ko<br>如果出现“Invalid module format”即为内核版本不一致</p>
+<p>下面是Ubuntu下进行内核模块编译过程，作为上述过程参考对比（跳到后文）：</p>
+<p>Ubuntu版本信息<br>$ uname -a<br>Linux ubuntu 4.4.0-38-generic #57-Ubuntu SMP Tue Sep 6 15:42:33 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux</p>
+<p>下载Ubuntu系统源码<br><a href="https://www.kernel.org/pub/linux/kernel" target="_blank" rel="external">https://www.kernel.org/pub/linux/kernel</a><br>配置内核<br>$ sudo make x86_64_defconfig（根据电脑默认架构配置）<br>$ sudo make menuconfig # 进入后直接选exit。<br>编译内核<br>$ sudo make<br>$ sudo make modules  </p>
+<p>如果出现“error: unrecognized command line option ‘-fstack-protector-strong”，则升级gcc<br>sudo apt-get install gcc</p>
+<p>如果出现“scripts/sign-file.c:23:30: fatal error: openssl/opensslv.h: No such file or directory”，是编译用到的工具没有安装，执行如下命令安装上相应的工具再进行编译就可以了：<br>sudo apt-get install git fakeroot build-essential ncurses-dev xz-utils libssl-dev bc</p>
+<p>安装内核</p>
+<p>此步类似于安装操作系统文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ sudo make modules_install  </div><div class="line">$ sudo make install  </div><div class="line">$ cd /boot  </div><div class="line">$ sudo mkinitramfs -o initrd.img-4.4.0 4.4.0</div></pre></td></tr></table></figure></p>
+<p>配置开机启动菜单<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ sudo vi /etc/default/grub # 行“GRUB_HIDDEN_TIMEOUT=0”，由0改为30  </div><div class="line">##没操作$ sudo vi /etc/grub.d/30_os-prober # 行“timeout = 0”，由0改为30  </div><div class="line"># update-grub  </div><div class="line">$ sudo reboot (开机选项选择相应的内核，这里操作后系统只出现命令行，存疑)</div></pre></td></tr></table></figure></p>
+<p>参考<a href="http://blog.csdn.net/heyutao007/article/details/5737861" target="_blank" rel="external">http://blog.csdn.net/heyutao007/article/details/5737861</a></p>
+<p>$ uname -a<br>Linux ubuntu 4.4.0-42-generic #62-Ubuntu SMP Fri Oct 7 23:11:45 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux</p>
+<p>在此系统上加载一个简单模块步骤(用于入门)：<br>hello.c源程序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">#include&lt;linux/module.h&gt;  </div><div class="line">#include&lt;linux/kernel.h&gt;  </div><div class="line">#include&lt;linux/init.h&gt;  </div><div class="line">MODULE_LICENSE(&quot;GPL&quot;);  </div><div class="line">static int __init lkp_init(void)  </div><div class="line">&#123;  </div><div class="line">    printk(KERN_ALERT &quot;Hello World!/n&quot;);  </div><div class="line">    return 0;  </div><div class="line">&#125;  </div><div class="line">static void __exit lkp_cleanup(void)  </div><div class="line">&#123;  </div><div class="line">    printk(KERN_ALERT &quot;Bye World!/n&quot;);  </div><div class="line">&#125;  </div><div class="line">module_init(lkp_init);  </div><div class="line">module_exit(lkp_cleanup);  </div><div class="line">MODULE_AUTHOR(&quot;lin&quot;);  </div><div class="line">MODULE_DESCRIPTION(&quot;hello&quot;);</div></pre></td></tr></table></figure></p>
+<p>Makefile文件，注意TAB<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">obj-m := hello.o  </div><div class="line">KERNELBUILD :=/lib/modules/$(shell uname -r)/build  </div><div class="line">default:  </div><div class="line">	make -C $(KERNELBUILD) M=$(shell pwd) modules  </div><div class="line">clean:  </div><div class="line">	rm -rf *.o *.ko *.mod.c .*.cmd *.markers *.order *.symvers .tmp_versions</div></pre></td></tr></table></figure></p>
+<p>执行sudo make，可以生成hello.ko文件</p>
+<p>插入模块，让其工作<br>sudo insmod ./hello.ko<br>卸载模块<br>sudo rmmod ./hello.ko<br>用dmesg可以看到生成信息类似<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[  901.467267] Hello World!/n</div><div class="line">[ 1279.121072] Bye World!/n</div></pre></td></tr></table></figure></p>
 ]]></content>
     </entry>
     
@@ -162,6 +202,7 @@
 </li>
 </ol>
 <p>执行此命令后系统会提示输入两遍的root密码，输入你想设的密码即可，然后在执行<br><code>sudo passwd --unlock root</code><br>这样就可以解锁root账户了。</p>
+<p>允许root SSH远程登陆：<br>1.备份<br>sudo mv /etc/ssh/sshd_config /etc/ssh/sshd_config.bak<br>2.改写<br>vi /etc/ssh/sshd_config<br>将PermitRootLogin值改yes<br>允许不输入密码登录<br>将PermitEmptyPasswords yes 前面的#号去掉<br>3.重启服务：service sshd restart</p>
 <p><a href="http://jingyan.baidu.com/article/f71d60376a58561ab741d168.html" target="_blank" rel="external">internet连接共享访问被启用时出现错误解决方法</a></p>
 <ol>
 <li>在左下角搜索一栏里面输入“服务”，点击打开</li>
@@ -217,7 +258,7 @@
 <li>更新源列表<code>sudo apt-get update</code></li>
 <li>安装SSH<code>sudo apt-get install openssh-server</code></li>
 <li>查看SSH是否启动：打开”终端窗口”，输入”sudo ps -e |grep ssh”–&gt;回车–&gt;有sshd,说明ssh服务已经启动，如果没有启动，输入”sudo service ssh start”–&gt;回车–&gt;ssh服务就会启动</li>
-<li>使用gedit修改配置文件”/etc/ssh/sshd_config”<br>打开”终端窗口”，输入”sudo gedit /etc/ssh/sshd_config”–&gt;回车–&gt;把配置文件中的”PermitRootLogin without-password”加一个”#”号,把它注释掉–&gt;再增加一句”PermitRootLogin yes”–&gt;保存，修改成功。</li>
+<li>使用gedit修改配置文件”/etc/ssh/sshd_config”<br>打开”终端窗口”，输入”sudo gedit /etc/ssh/sshd_config”–&gt;回车–&gt;把配置文件中的”PermitRootLogin without-password”改为“PermitRootLogin yes”,把它注释掉–&gt;再增加一句”PermitRootLogin yes”–&gt;保存，修改成功。</li>
 </ol>
 ]]></content>
     </entry>
@@ -311,7 +352,7 @@
 <ol>
 <li>文件系统管理<br>9.1<br>分区：主分区总共4个，扩展分区1个（占用主分区数量），逻辑分区不限（在扩展分区中）<br>硬盘硬件接口：<br>IDE（淘汰hda）<br>SCSI(sda1,sda2,sda5（扩展分区）等)<br>9.2<br>df -h；查看分区情况<br>du -sh 目录名：统计目录大小<br>dumpe2fs /dev/sda1：看详细信息<br>挂载<br>建立挂载点 mkdir /mnt/cdrom<br>挂载命令<code>mount [-t 文件系统（iso9660/vfat）] [-o 特殊选项] 设备文件名（dev/cdrom） 挂载点（mnt/cdrom)</code><br>卸载 umount 设备文件名或挂载点（/mnt/cdrom或/dev/cdrom）</li>
 </ol>
-<p>fdisk -l :查看有多少可被识别的硬盘或优盘</p>
+<p>fdisk -l :查看有多少可被识别的硬盘或优盘<br>lsblk:查看系统硬盘结构，更直观</p>
 <p>9.3<br>fdisk /dev/sdb(对新硬盘进行分区)<br>(参数n新建,d删除,t更改分区，l查看类型83为linux，5为extended，82为swap，最后记得w)<br>partprobe重新读取分区表信息<br>mkfs -t ext4 /dev/sdb1(格式化，格式化swap分区用mkswap /dev/sdb1,swapon /dev/sdb1加入，swapoff /dev/sdb1取消  )<br>分区自动挂载要修改/etc/fstab<br>（swap要这么写：/dev/sdb1    swap    swap  defaults  0  0）<br>(编写过程可能用到的指令dumpe2fs -h /dev/sdb1，fdisk -l，mount，df)<br>修改好文件后需测试文件是否错误(一定不能错)<br>mount -a</p>
 <p>实例：</p>
 <ol>
@@ -405,7 +446,7 @@
 </ol>
 <p>备份命令<code>rsync -Pa / /run/media/root/60A7-F683/backup_20160909 --exclude=/media/* --exclude=/sys/* --exclude=/proc/* --exclude=/mnt/* --exclude=/tmp/* --exclude=/run/media/root/60A7-F683/*</code><br>还原命令<code>rsync -Pa /run/media/root/60A7-F683/backup_20160909</code></p>
 <p>在Linux系统中如果使用root用户那么所有文件都是可以读取的，所以还有一个比较简单的方法：把所有系统文件打包为一个压缩文件，不过操作起来略有些繁琐，大致步骤如下：<br>1、备份<br>sudo su 命令解释：获得root的身份运行<br>cd / 命令解释：切换到根目录<br>tar cvpzf backup.tgz / –exclude=/proc –exclude=/lost+found –exclude=/backup.tgz –exclude=/mnt–exclude=/sys<br>解释参数：cvpzf—创建压缩文件，–exclude—排除目录</p>
-<p>2、恢复<br>sudo su<br>cd /<br>tar xvpfz backup.tgz -C /<br>mkdir proc<br>mkdir lost+found<br>mkdir mnt<br>mkdir sys<br>最后四步是创建备份的时候忽略的文件夹。<br>小提示；如果恢复之后还是无法启动系统，那么请在LiveUSB中运行cfdisk看看系统分区是否已经设置为引导分区（boot标志）。有时候还需要重新安装一次GRUB，以单硬盘为例子介绍安装方法。在LiveCD/LiveUSB环境下打开终端窗口，依次输入：1、sudo grub；2、find /boot/grub/stage1，这条命令反馈信息供下一步使用；3、root (hd0,<em>)，</em>的数值由第二步决定；4、setup (hd0)；5、quit。如果不是单硬盘那么请根据第二步的反馈决定hd<em>的数值，而且如果想使用XP的引导器引导Ubuntu，那么第四步应使用 setup (hd0,</em>)这样的命令。</p>
+<p>2、恢复<br>sudo su<br>cd /<br>tar -zxvf backup.tgz -C /media/pi/sdcard/<br>压缩包解压到SD卡<br>mkdir proc<br>mkdir lost+found<br>mkdir mnt<br>mkdir sys<br>最后四步是创建备份的时候忽略的文件夹。<br>小提示；如果恢复之后还是无法启动系统，那么请在LiveUSB中运行cfdisk看看系统分区是否已经设置为引导分区（boot标志）。有时候还需要重新安装一次GRUB，以单硬盘为例子介绍安装方法。在LiveCD/LiveUSB环境下打开终端窗口，依次输入：1、sudo grub；2、find /boot/grub/stage1，这条命令反馈信息供下一步使用；3、root (hd0,<em>)，</em>的数值由第二步决定；4、setup (hd0)；5、quit。如果不是单硬盘那么请根据第二步的反馈决定hd<em>的数值，而且如果想使用XP的引导器引导Ubuntu，那么第四步应使用 setup (hd0,</em>)这样的命令。</p>
 ]]></content>
     </entry>
     
