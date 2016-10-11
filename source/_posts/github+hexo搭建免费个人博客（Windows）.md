@@ -111,6 +111,17 @@ Global Options:
 For more help, you can use 'hexo help [command]' for the detailed information
 or you can check the docs: http://hexo.io/docs/
 ```
+
+
+新建草稿
+hexo new draft "文章名称"
+
+
+把草稿变成文章，或者页面：
+hexo publish [layout] <filename>
+
+
+
 思维导图
 
 

@@ -60,8 +60,11 @@ git merge dev
 * 删除dev分支
 git branch -d dev
 
-
-
+* git强制覆盖本地文件
+``
+git fetch --all  
+git reset --hard origin/master (远程分支名)
+``
 
 ---
 
