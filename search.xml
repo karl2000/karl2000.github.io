@@ -611,6 +611,38 @@
     </entry>
     
     <entry>
+      <title><![CDATA[openwrt 7688 Duo平台使用问题与解决]]></title>
+      <url>owker.pw/2016/09/03/openwrt%207688%20Duo%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3/</url>
+      <content type="html"><![CDATA[<p><img src="http://ww2.sinaimg.cn/large/a8fc9690jw1f8kzutgmdvj21hc0zbqh4.jpg" alt=""></p>
+<blockquote>
+<p>对openwrt 7688 Duo平台的应用</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="无法安装BSP包或在线下载慢问题"><a href="#无法安装BSP包或在线下载慢问题" class="headerlink" title="无法安装BSP包或在线下载慢问题"></a>无法安装BSP包或在线下载慢问题</h2><p>正常操作参考“MediaTek_LinkIt_Smart_7688_Duo_Get_Started_v1_0.pdf”，在下载过程之前可以在浏览器中打开.json文件，但并不直接下载（个人感觉保持通路状态）<br><img src="http://ww1.sinaimg.cn/large/a8fc9690jw1f85rxaw6l0j20in0d7wh4.jpg" alt=""><br>然后再去安装7688 BSP安装包</p>
+<h2 id="WIN7-64位安装串口驱动问题"><a href="#WIN7-64位安装串口驱动问题" class="headerlink" title="WIN7 64位安装串口驱动问题"></a>WIN7 64位安装串口驱动问题</h2><p>安装串口驱动时提示“windows已找到设备的驱动程序软件  但在试图安装它时遇到错误”问题有如下解决办法：</p>
+<ol>
+<li>将usbser.sys放到系统驱动目录C:\Windows\System32\drivers下面</li>
+<li><p>在 C:\Windows\System32\DriverStore\FileRepository下面创建一个mdmcpq.inf_amd64_neutral_b53453733bd795bc 目录把mdmcpq.zip中的全部内容放进去</p>
+</li>
+<li><p>卸载之前安装的驱动，然后重新安装一次即可</p>
+</li>
+</ol>
+<p><a href="https://yunpan.cn/cktu7nrvbCp7u" target="_blank" rel="external">usbser</a>  访问密码 faa4</p>
+<p><a href="https://yunpan.cn/cktuhztVjIaMD" target="_blank" rel="external">mdmcpq.inf</a>  访问密码 53fd</p>
+<h2 id="更新固件命令"><a href="#更新固件命令" class="headerlink" title="更新固件命令"></a>更新固件命令</h2><p>如果SSH连接不上，用telnet连接，然后用passwd改root密码（通过网页设置的密码<strong>可能</strong>不是root密码）</p>
+<ol>
+<li>cd /etc/arduino</li>
+<li>avrdude -c linuxgpio -p atmega32u4 -e -U flash:w:Caterina-smart7688.hex –U lock:w:0x0f:m</li>
+</ol>
+<p>步骤：</p>
+<ol>
+<li>长按wifi按钮20s</li>
+<li>浏览器连接<a href="http://mylinkit.local" target="_blank" rel="external">http://mylinkit.local</a></li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[使用hexo异地更新博客解决办法（Windows）]]></title>
       <url>owker.pw/2016/09/03/%E4%BD%BF%E7%94%A8hexo%E5%BC%82%E5%9C%B0%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
       <content type="html"><![CDATA[<p><img src="http://ww4.sinaimg.cn/large/a8fc9690gw1f7he0wwox9j21hc0zk4qp.jpg" alt=""></p>
