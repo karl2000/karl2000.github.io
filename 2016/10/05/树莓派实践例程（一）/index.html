@@ -1,0 +1,1105 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="OneWalker's blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="利用树莓派做的几个示例">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树莓派实践例程（一）">
+<meta property="og:url" content="owker.pw/2016/10/05/树莓派实践例程（一）/index.html">
+<meta property="og:site_name" content="OneWalker's blog">
+<meta property="og:description" content="利用树莓派做的几个示例">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/a8fc9690jw1f8kznkmxhoj21hc0u0gqa.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/a8fc9690jw1f8ksj8ye9tj20990b2tb2.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/a8fc9690gw1f8ksu3tjg3j21kw16oax7.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/a8fc9690gw1f8kste7p23j21kw16owv1.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/a8fc9690jw1f8nf0imo6kj20tk0brdmd.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/a8fc9690gw1f8nhobz8kdj20fe06jaci.jpg">
+<meta property="og:updated_time" content="2016-10-12T08:43:33.904Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="树莓派实践例程（一）">
+<meta name="twitter:description" content="利用树莓派做的几个示例">
+<meta name="twitter:image" content="http://ww3.sinaimg.cn/large/a8fc9690jw1f8kznkmxhoj21hc0u0gqa.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 2835125904,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="owker.pw/2016/10/05/树莓派实践例程（一）/"/>
+
+  <title> 树莓派实践例程（一） | OneWalker's blog  - 博观而约取，厚积而薄发 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="http://s95.cnzz.com/z_stat.php?id=1260309017&web_id=1260309017" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">OneWalker's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">爱技术 爱生活</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar-check-o"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-commenting"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                树莓派实践例程（一）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-05T21:15:30+08:00" content="2016-10-05">
+              2016-10-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/树莓派/" itemprop="url" rel="index">
+                    <span itemprop="name">树莓派</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/05/树莓派实践例程（一）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/05/树莓派实践例程（一）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/10/05/树莓派实践例程（一）/" class="leancloud_visitors" data-flag-title="树莓派实践例程（一）">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://ww3.sinaimg.cn/large/a8fc9690jw1f8kznkmxhoj21hc0u0gqa.jpg" alt=""></p>
+<blockquote>
+<p>利用树莓派做的几个示例</p>
+</blockquote>
+<a id="more"></a>
+<p>前提：在raspbian系统下试验</p>
+<h2 id="安装编译器（在宿主机Ubuntu下）"><a href="#安装编译器（在宿主机Ubuntu下）" class="headerlink" title="安装编译器（在宿主机Ubuntu下）"></a>安装编译器（在宿主机Ubuntu下）</h2><ol>
+<li>下载树莓派交叉编译工具<a href="https://github.com/raspberrypi/tools" target="_blank" rel="external">https://github.com/raspberrypi/tools</a></li>
+<li>将源码放到各用户都能share的文件夹下，如/usr/toolsexe(建议放到tools中，这里我tools有其他用途因此放到toolsexe中)</li>
+<li>将交叉编译工具的路径加到环境变量中，为了以后启动不用再设置，我加到了~/.bashrc中<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$vi ~/.bashrc</div><div class="line">#在文件的末尾加上export PATH=$PATH:/usr/toolsexe/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin</div><div class="line">$source .bashrc</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>更改文件夹内所有文件属性<br>chmod -R 777 ./toolsexe</p>
+<p>以上方法没有验证</p>
+<p>在Ubuntu下直接用命令行安装<br><code>apt-get install gcc-arm-linux-gnueabi make ncurses-dev</code></p>
+<p><code>arm-linux-gnueabi-gcc led.c -o led</code>执行编译操作，生成的文件led是在树莓派上执行的程序，拷贝到树莓派文件夹下，用<code>./led</code>命令执行</p>
+<p><code>sudo apt install g++-arm-linux-gnueabi</code>安装g++编译器</p>
+<h2 id="GPIO控制"><a href="#GPIO控制" class="headerlink" title="GPIO控制"></a>GPIO控制</h2><ol>
+<li>确定使用的GPIO引脚，这里选择用GPIO2，实现功能为点亮/熄灭指示灯<br><img src="http://ww1.sinaimg.cn/large/a8fc9690jw1f8ksj8ye9tj20990b2tb2.jpg" alt=""></li>
+<li>跳转到<code>cd /sys/class/gpio</code>文件夹，导出相应的gpio，<code>echo 2 &gt; export</code>，执行该命令后gpio文件夹会出现gpio2子目录</li>
+<li>设置gpio方向为输出<br><code>echo out &gt; /sys/class/gpio/gpio2/direction</code></li>
+<li><code>echo 1 &gt; /sys/class/gpio/gpio2/value</code>输出高电平或者<code>echo 0 &gt; /sys/class/gpio/gpio2/value</code>输出低电平<br>效果图：<br><img src="http://ww2.sinaimg.cn/large/a8fc9690gw1f8ksu3tjg3j21kw16oax7.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/a8fc9690gw1f8kste7p23j21kw16owv1.jpg" alt=""></li>
+</ol>
+<p>/sys/class/gpio 的使用说明（转）：<br>gpio_operation 通过/sys/文件接口操作IO端口 GPIO到文件系统的映射</p>
+<ul>
+<li>控制GPIO的目录位于/sys/class/gpio</li>
+<li>/sys/class/gpio/export文件用于通知系统需要导出控制的GPIO引脚编号</li>
+<li>/sys/class/gpio/unexport 用于通知系统取消导出</li>
+<li>/sys/class/gpio/gpiochipX目录保存系统中GPIO寄存器的信息，包括每个寄存器控制引脚的起始编号base，寄存器名称，引脚总数 导出一个引脚的操作步骤</li>
+<li>首先计算此引脚编号，引脚编号 = 控制引脚的寄存器基数 + 控制引脚寄存器位数</li>
+<li>向/sys/class/gpio/export写入此编号，比如12号引脚，在shell中可以通过以下命令实现，命令成功后生成/sys/class/gpio/gpio12目录，如果没有出现相应的目录，说明此引脚不可导出：<br>echo 12 &gt; /sys/class/gpio/export</li>
+<li>direction文件，定义输入输入方向，可以通过下面命令定义为输出<br>echo out &gt; direction</li>
+<li>direction接受的参数：in, out, high, low。high/low同时设置方向为输出，并将value设置为相应的1/0。</li>
+<li>value文件是端口的数值，为1或0.<br>echo 1 &gt; value</li>
+</ul>
+<p>上文是在SHELL下直接控制，接下来介绍如何用C程序通过GPIO2控制指示灯</p>
+<p>C源程序如下(文件命名为led.c)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#include &lt;unistd.h&gt;</div><div class="line">#include &lt;string.h&gt;</div><div class="line">int main(void)</div><div class="line">&#123;</div><div class="line">	FILE *p=NULL;</div><div class="line">	int i=0;</div><div class="line">	p = fopen(&quot;/sys/class/gpio/export&quot;,&quot;w&quot;);</div><div class="line">	fprintf(p,&quot;%d&quot;,2);</div><div class="line">	fclose(p);</div><div class="line">	p = fopen(&quot;/sys/class/gpio/gpio2/direction&quot;,&quot;w&quot;);</div><div class="line">	fprintf(p,&quot;out&quot;);</div><div class="line">	fclose(p);</div><div class="line">	for(i=0;i&lt;100;i++)</div><div class="line">	&#123;</div><div class="line">		p = fopen(&quot;/sys/class/gpio/gpio2/value&quot;,&quot;w&quot;);</div><div class="line">		fprintf(p,&quot;%d&quot;,1);</div><div class="line">		sleep(1);</div><div class="line">		fclose(p);</div><div class="line">		p = fopen(&quot;/sys/class/gpio/gpio2/value&quot;,&quot;w&quot;);</div><div class="line">		fprintf(p,&quot;%d&quot;,0);</div><div class="line">		sleep(1);</div><div class="line">		fclose(p);</div><div class="line">	&#125;</div><div class="line">	p = fopen(&quot;/sys/class/gpio/unexport&quot;,&quot;w&quot;);</div><div class="line">	fprintf(p,&quot;%d&quot;,2);</div><div class="line">	fclose(p);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>将led.c文件在Ubuntu下编译生成led文件<br><code>arm-linux-gnueabi-gcc led.c -o led</code></p>
+<p>将led文件拷贝到树莓派某一文件夹下输入<code>./led</code>，执行程序，现象为指示灯闪烁100次后结束。</p>
+<h2 id="UART操作"><a href="#UART操作" class="headerlink" title="UART操作"></a>UART操作</h2><p>树莓派3的UART串口的使用问题可参考<a href="http://www.briandorey.com/post/Raspberry-Pi-3-UART-Boot-Overlay-Part-Two" target="_blank" rel="external">Raspberry Pi 3 UART Boot Overlay Part Two</a></p>
+<p>对于树莓派3 B+来说，uart 功能有三种： 1、内部蓝牙使用  2、控制终端使用  3、与其他设备进行串口通信；<br>然而 树莓派 3 确只提供一个硬件 uart,对应硬件接口 p14-TX/P15-RX。所有树莓派3 的串口只能是鱼与熊掌不能兼得了。<br>树莓派 官方系统 Raspbian Jessie releases 默认串口是给蓝牙使用。如果想让串口作为控制终端调试口即 serial console，则需要对系统配置进行修改,关闭蓝牙并且映射 pl011 UART 到p14和p15<br>一、使能serial console步骤如下：</p>
+<ol>
+<li><p>安装系统并配置系统<br>Raspbian Jessie releases 系统安装到sd卡上。<br>配置系统：<code>sudo raspi-config</code><br>执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Expand filesystem  and enable serial on advanced page exit and reboot</div><div class="line">sudo apt-get update </div><div class="line">sudo apt-get upgrade</div></pre></td></tr></table></figure>
+</li>
+<li><p>设置 Device tree<br><code>sudo vi /boot/config.txt</code><br>在文件末尾添加：<br>dtoverlay=pi3-miniuart-bt<br><code>sudo reboot</code></p>
+</li>
+<li><p>使能串口终端   serial console<br>编辑 /boot/cmdline.txt 文件<br><code>sudo vi /boot/cmdline.txt</code><br>将文件内容改为<br><code>dwc_otg.lpm_enable=0 console=tty1 console=serial0,115200 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait</code><br>核对一下，可能不需要更改</p>
+</li>
+</ol>
+<h2 id="树莓派内核编译"><a href="#树莓派内核编译" class="headerlink" title="树莓派内核编译"></a>树莓派内核编译</h2><p>参考<a href="https://www.raspberrypi.org/documentation/linux/kernel/building.md" target="_blank" rel="external">https://www.raspberrypi.org/documentation/linux/kernel/building.md</a></p>
+<ol>
+<li>下载树莓派内核</li>
+<li>到内核目录执行<code>sudo make mrproper</code>，保证内核树的绝对干净</li>
+<li>执行find ./ -name “<em>bcm</em>defconfig*” 查找下对应的默认配置<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">./arch/mips/configs/bcm47xx_defconfig</div><div class="line">./arch/mips/configs/bcm63xx_defconfig</div><div class="line">./arch/arm/configs/bcm_defconfig</div><div class="line">./arch/arm/configs/bcm2709_defconfig</div><div class="line">./arch/arm/configs/bcmrpi_defconfig</div><div class="line">./arch/arm/configs/bcm2835_defconfig</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>Pi 1 使用bcmrpi_defconfig<br>Pi 2/3 使用bcm2709_defconfig<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">KERNEL=kernel7</div><div class="line">#目录切换到内核源文件下，配置默认设置：</div><div class="line">sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-gcc bcm2709_defconfig(默认配置，结果保存在内核源文件夹下.config中)</div><div class="line">#配置内核模块（可手动修改），执行</div><div class="line">sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-gcc menuconfig</div></pre></td></tr></table></figure></p>
+<p>显示下图说明参数设置成功<br><img src="http://ww3.sinaimg.cn/large/a8fc9690jw1f8nf0imo6kj20tk0brdmd.jpg" alt=""></p>
+<p>编译内核镜像<br>sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- -j4 zImage modules dtbs(要将编译器命令的gcc去掉，zImage dtbs不能省，要编译很久)<br>-j4：表示多核处理</p>
+<p>将编译好的 Linux 内核复制出來：<br>sudo scripts/mkknlimg arch/arm/boot/zImage ../kernel-new.img（安装好tools）</p>
+<p>#sudo cp arch/arm/boot/Image ../kernel-new.img</p>
+<p>安装modules:<br>sudo make -j4 ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- INSTALL_MOD_PATH=../modules modules_install(要将编译器命令的gcc去掉)</p>
+<p>另外有三个文件目录：<br>sudo cp arch/arm/boot/dts/<em>.dtb /boot/<br>sudo cp arch/arm/boot/dts/overlays/</em>.dtb* /boot/overlays/<br>sudo cp arch/arm/boot/dts/overlays/README /boot/overlays/</p>
+<p>小结：要将编译后拷贝到树莓派SD卡上的文件有：</p>
+<ol>
+<li>生成的kernel-new.img复制到/boot/</li>
+<li>将modules/lib/modules/*文件夹复制到/lib/modules/</li>
+<li>arch/arm/boot/dts/*.dtb复制到/boot/</li>
+<li>arch/arm/boot/dts/overlays/<em>.dtb</em>复制到/boot/overlays/</li>
+<li>arch/arm/boot/dts/overlays/README复制到/boot/overlays/</li>
+</ol>
+<p>将装有树莓派系统的SD卡插在Linux系统电脑上，使用lsblk指令查看硬盘结构如下图，sdd1(boot分区)和sdd2(root分区)为SD卡的分区<br><img src="http://ww3.sinaimg.cn/large/a8fc9690gw1f8nhobz8kdj20fe06jaci.jpg" alt=""><br>挂载SD卡分区：<br>sudo mkdir /mnt/fat32<br>sudo mkdir /mnt/ext4<br>sudo mount /dev/sdd1 /mnt/fat32<br>sudo mount /dev/sdd2 /mnt/ext4</p>
+<ol>
+<li>将kernel-new.img放入boot分区<br>sudo cp kernel-new.img /mnt/fat32/</li>
+<li>把 modules/lib/modules/ 里面的东西复制到 /lib/modules/<br>sudo cp -r modules/lib/modules/* /mnt/ext4/lib/modules/</li>
+</ol>
+<p>将 modules/lib/firmware/里面的东西复制到 /lib/firmware/<br>sudo cp -r modules/lib/firmware/* /mnt/ext4/lib/firmware/</p>
+<p>转到内核源文件目录<br>cd linux/</p>
+<ol>
+<li>arch/arm/boot/dts/<em>.dtb复制到/boot/<br>sudo cp -r arch/arm/boot/dts/</em>.dtb  /mnt/fat32/(原本也有，可不操作)</li>
+<li>arch/arm/boot/dts/overlays/<em>.dtb</em>复制到/boot/overlays/<br>sudo cp -r arch/arm/boot/dts/overlays/<em>.dtb</em>  /mnt/fat32/overlays/</li>
+<li>arch/arm/boot/dts/overlays/README复制到/boot/overlays/<br>sudo cp -r arch/arm/boot/dts/overlays/README  /mnt/fat32/overlays/</li>
+</ol>
+<p>sudo vi /mnt/fat32/config.txt 编辑 /boot/config.txt，加入一行<br>kernel=kernel-new.img</p>
+<p>这行是用来指令系统要使用的核心，可以同时放置多个不同核心，以便随时切换。<br>这样新编译好的核心就安装好了。</p>
+<p>最后卸载SD卡<br>sudo umount /mnt/fat32<br>sudo umount /mnt/ext4</p>
+<p>一个模块交叉编译的例子<br>hello.c源程序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">#include&lt;linux/module.h&gt;  </div><div class="line">#include&lt;linux/kernel.h&gt;  </div><div class="line">#include&lt;linux/init.h&gt;  </div><div class="line">MODULE_LICENSE(&quot;GPL&quot;);  </div><div class="line">static int __init lkp_init(void)  </div><div class="line">&#123;  </div><div class="line">    printk(KERN_ALERT &quot;Hello World!/n&quot;);  </div><div class="line">    return 0;  </div><div class="line">&#125;  </div><div class="line">static void __exit lkp_cleanup(void)  </div><div class="line">&#123;  </div><div class="line">    printk(KERN_ALERT &quot;Bye World!/n&quot;);  </div><div class="line">&#125;  </div><div class="line">module_init(lkp_init);  </div><div class="line">module_exit(lkp_cleanup);  </div><div class="line">MODULE_AUTHOR(&quot;lin&quot;);  </div><div class="line">MODULE_DESCRIPTION(&quot;hello&quot;);</div></pre></td></tr></table></figure></p>
+<p>Makefile文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">obj-m := hello.o  </div><div class="line">KERNELBUILD :=/home/lin/Downloads/raspdown/linux</div><div class="line">#这里指向树莓派linux内核源文件夹</div><div class="line">default:  </div><div class="line">	make -C $(KERNELBUILD) M=/home/lin/Downloads/raspdown/linux/drivers/testdrive modules </div><div class="line">	#M值指向你的源文件hello.c和Makefile文件夹 </div><div class="line">clean:  </div><div class="line">	rm -rf *.o *.ko *.mod.c .*.cmd *.markers *.order *.symvers .tmp_versions</div></pre></td></tr></table></figure></p>
+<p>执行生成hello.ko文件<br>sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-</p>
+<p><em>如果出现类似“fatal section header offset 32425246532452 in file ‘vmlinux’ is bigger than filesize=35524847”的问题，重新编译内核镜像和modules可以解决</em></p>
+<p>拷贝内核源文件到树莓派<br>cp -av /usr/src/linux/ <sdcard-ext4-root>/home/pi/<br>例如：cp -av linux/ /mnt/ext4/home/pi/<br>设置好相应链接<br>sudo cd /lib/modules/<code>uname -r</code>/<br>$ sudo rm build source<br>$ ln -s /home/pi/linux build<br>$ ln -s /home/pi/linux source</sdcard-ext4-root></p>
+<p>最后一步：<br>Now, we need to fix one more problem: During the cross-compilation build, a couple scripts were compiled for the host. We also need them for the Raspberry Pi. Still on the Pi, this can be checked with e.g.</p>
+<p>$ file /home/pi/linux/scripts/recordmcount (returns something with x86-64)<br>$ cd /home/pi/linux/<br>$ make scripts（一直敲回车）<br>$ file /home/pi/linux/scripts/recordmcount (now returns something with 32-bit and ARM)</p>
+<p>将hello.ko拷贝到树莓派/home/pi/linux/对应的文件夹<br>转到该文件夹执行<br>sudo insmod hello.ko<br>sudo rmmod hello.ko</p>
+<p>dmesg查看消息，如果正常应会出现类似下面显示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[ 1205.051527] Hello World!/n</div><div class="line">[ 1261.434964] Bye World!/n</div></pre></td></tr></table></figure></p>
+<p>如果出现“Invalid module format”，可能没有安装header（不确定）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo apt-cache search linux-headers</div><div class="line">#查看安装的header</div><div class="line">执行命令安装相应的header包</div><div class="line">sudo dpkg -i linux-headers-4.4.23-v7+_4.4.23-v7+-2_armhf.deb</div></pre></td></tr></table></figure></p>
+<p>下面是Ubuntu下进行内核模块编译过程，作为上述过程参考对比（跳到后文）：</p>
+<p>Ubuntu版本信息<br>$ uname -a<br>Linux ubuntu 4.4.0-38-generic #57-Ubuntu SMP Tue Sep 6 15:42:33 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux</p>
+<p>下载Ubuntu系统源码<br><a href="https://www.kernel.org/pub/linux/kernel" target="_blank" rel="external">https://www.kernel.org/pub/linux/kernel</a><br>配置内核<br>$ sudo make x86_64_defconfig（根据电脑默认架构配置）<br>$ sudo make menuconfig # 进入后直接选exit。<br>编译内核<br>$ sudo make<br>$ sudo make modules  </p>
+<p>如果出现“error: unrecognized command line option ‘-fstack-protector-strong”，则升级gcc<br>sudo apt-get install gcc</p>
+<p>如果出现“scripts/sign-file.c:23:30: fatal error: openssl/opensslv.h: No such file or directory”，是编译用到的工具没有安装，执行如下命令安装上相应的工具再进行编译就可以了：<br>sudo apt-get install git fakeroot build-essential ncurses-dev xz-utils libssl-dev bc</p>
+<p>安装内核</p>
+<p>此步类似于安装操作系统文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ sudo make modules_install  </div><div class="line">$ sudo make install  </div><div class="line">$ cd /boot  </div><div class="line">$ sudo mkinitramfs -o initrd.img-4.4.0 4.4.0</div></pre></td></tr></table></figure></p>
+<p>配置开机启动菜单<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ sudo vi /etc/default/grub # 行“GRUB_HIDDEN_TIMEOUT=0”，由0改为30  </div><div class="line">##没操作$ sudo vi /etc/grub.d/30_os-prober # 行“timeout = 0”，由0改为30  </div><div class="line"># update-grub  </div><div class="line">$ sudo reboot (开机选项选择相应的内核，这里操作后系统只出现命令行，存疑)</div></pre></td></tr></table></figure></p>
+<p>参考<a href="http://blog.csdn.net/heyutao007/article/details/5737861" target="_blank" rel="external">http://blog.csdn.net/heyutao007/article/details/5737861</a></p>
+<p>$ uname -a<br>Linux ubuntu 4.4.0-42-generic #62-Ubuntu SMP Fri Oct 7 23:11:45 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux</p>
+<p>在此系统上加载一个简单模块步骤(用于入门)：<br>hello.c源程序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">#include&lt;linux/module.h&gt;  </div><div class="line">#include&lt;linux/kernel.h&gt;  </div><div class="line">#include&lt;linux/init.h&gt;  </div><div class="line">MODULE_LICENSE(&quot;GPL&quot;);  </div><div class="line">static int __init lkp_init(void)  </div><div class="line">&#123;  </div><div class="line">    printk(KERN_ALERT &quot;Hello World!/n&quot;);  </div><div class="line">    return 0;  </div><div class="line">&#125;  </div><div class="line">static void __exit lkp_cleanup(void)  </div><div class="line">&#123;  </div><div class="line">    printk(KERN_ALERT &quot;Bye World!/n&quot;);  </div><div class="line">&#125;  </div><div class="line">module_init(lkp_init);  </div><div class="line">module_exit(lkp_cleanup);  </div><div class="line">MODULE_AUTHOR(&quot;lin&quot;);  </div><div class="line">MODULE_DESCRIPTION(&quot;hello&quot;);</div></pre></td></tr></table></figure></p>
+<p>Makefile文件，注意TAB<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">obj-m := hello.o  </div><div class="line">KERNELBUILD :=/lib/modules/$(shell uname -r)/build  </div><div class="line">default:  </div><div class="line">	make -C $(KERNELBUILD) M=$(shell pwd) modules  </div><div class="line">clean:  </div><div class="line">	rm -rf *.o *.ko *.mod.c .*.cmd *.markers *.order *.symvers .tmp_versions</div></pre></td></tr></table></figure></p>
+<p>执行sudo make，可以生成hello.ko文件</p>
+<p>插入模块，让其工作<br>sudo insmod ./hello.ko<br>卸载模块<br>sudo rmmod ./hello.ko<br>用dmesg可以看到生成信息类似<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[  901.467267] Hello World!/n</div><div class="line">[ 1279.121072] Bye World!/n</div></pre></td></tr></table></figure></p>
+<p>参考<a href="http://elinux.org/Raspberry_Pi_Kernel_Compilation" target="_blank" rel="external">http://elinux.org/Raspberry_Pi_Kernel_Compilation</a></p>
+
+      
+    </div>
+
+	<div>
+      
+        
+<div style="text-align:center;color: #ccc;font-size:14px;">------------------------------ 本文结束 ------------------------------</div>
+
+      
+    </div>
+	
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+	
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/28/LFS搭建手记/" rel="next" title="LFS（linux from scratch）搭建手记">
+                <i class="fa fa-chevron-left"></i> LFS（linux from scratch）搭建手记
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/09/SourceInsight常用技巧整理/" rel="prev" title="SourceInsight常用技巧整理">
+                SourceInsight常用技巧整理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/10/05/树莓派实践例程（一）/"
+     data-title="树莓派实践例程（一）"
+     data-content=""
+     data-url="owker.pw/2016/10/05/树莓派实践例程（一）/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/10/05/树莓派实践例程（一）/"
+           data-title="树莓派实践例程（一）" data-url="owker.pw/2016/10/05/树莓派实践例程（一）/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ww3.sinaimg.cn/large/a8fc9690gw1f7eopfxshdj20zk0qot9x.jpg"
+               alt="一行" />
+          <p class="site-author-name" itemprop="name">一行</p>
+          <p class="site-description motion-element" itemprop="description">博观而约取，厚积而薄发</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/karl2000" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/owker" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-link"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+				<span class="links-of-author-item" style="text-align:left">
+					<a href="http://xiaoke.tech" title="xiaoke" target="_blank">
+						xiaoke
+					</a>
+				</span>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装编译器（在宿主机Ubuntu下）"><span class="nav-number">1.</span> <span class="nav-text">安装编译器（在宿主机Ubuntu下）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GPIO控制"><span class="nav-number">2.</span> <span class="nav-text">GPIO控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UART操作"><span class="nav-number">3.</span> <span class="nav-text">UART操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树莓派内核编译"><span class="nav-number">4.</span> <span class="nav-text">树莓派内核编译</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">一行</span>
+  
+   <span style="margin-left:8px;">
+   <script src="http://s6.cnzz.com/stat.php?id=1260309017&web_id=1260309017" type="text/javascript"></script>
+   </span>
+
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+	
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up fa-2x"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"onewalker"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("QImiFijLSOHYufsazlBVlwLg-gzGzoHsz", "AMcYaNHy9Y5OdH42k0d4uSED");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
