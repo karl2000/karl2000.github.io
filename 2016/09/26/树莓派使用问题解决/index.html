@@ -96,7 +96,7 @@
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/a8fc9690jw1f86v69t6v1j20vj0bg78v.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/a8fc9690jw1f86vebe3kvj20ih0ca0vg.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/a8fc9690gw1f86vgj5o88j20ng05wacw.jpg">
-<meta property="og:updated_time" content="2016-10-11T11:23:17.873Z">
+<meta property="og:updated_time" content="2016-10-12T01:21:13.064Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树莓派使用问题解决">
 <meta name="twitter:description" content="树莓派使用过程中遇到的问题">
@@ -388,7 +388,7 @@
 </li>
 </ol>
 <p>执行此命令后系统会提示输入两遍的root密码，输入你想设的密码即可，然后在执行<br><code>sudo passwd --unlock root</code><br>这样就可以解锁root账户了。</p>
-<p>允许root SSH远程登陆：<br>1.备份<br>sudo mv /etc/ssh/sshd_config /etc/ssh/sshd_config.bak<br>2.改写<br>vi /etc/ssh/sshd_config<br>将PermitRootLogin值改yes<br>允许不输入密码登录<br>将PermitEmptyPasswords yes 前面的#号去掉<br>3.重启服务：service sshd restart</p>
+<p>允许root SSH远程登陆：<br>1.备份<br>sudo mv /etc/ssh/sshd_config /etc/ssh/sshd_config.bak<br>2.改写<br>sudo vi /etc/ssh/sshd_config<br>将PermitRootLogin值改yes<br>允许不输入密码登录<br>将PermitEmptyPasswords yes 前面的#号去掉<br>3.重启服务：sudo service sshd restart</p>
 <p><a href="http://jingyan.baidu.com/article/f71d60376a58561ab741d168.html" target="_blank" rel="external">internet连接共享访问被启用时出现错误解决方法</a></p>
 <ol>
 <li>在左下角搜索一栏里面输入“服务”，点击打开</li>
@@ -413,10 +413,10 @@
 <li><p><code>sudo vi /etc/apt/sources.list</code>增加如下两行代码，注释掉其他的</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">deb http://mirrors.ustc.edu.cn/raspbian/raspbian/ wheezy main non-free contrib</div><div class="line">deb-src http://mirrors.ustc.edu.cn/raspbian/raspbian/ wheezy main non-free contrib</div></pre></td></tr></table></figure>
 </li>
-<li><p>执行 <code>apt-get update</code> 命令更新软件列表</p>
+<li><p>执行 <code>sudo apt-get update</code> 命令更新软件列表</p>
 </li>
 </ol>
-<h2 id="更新源"><a href="#更新源" class="headerlink" title="更新源"></a>更新源</h2><p>编辑/etc/apt/sources.list文件(需要使用sudo), 在文件最前面添加以下条目(操作前请做好相应备份)</p>
+<p>或者编辑/etc/apt/sources.list文件(需要使用sudo), 在文件最前面添加以下条目(操作前请做好相应备份)</p>
 <p>deb <a href="http://mirrors.aliyun.com/raspbian/raspbian/" target="_blank" rel="external">http://mirrors.aliyun.com/raspbian/raspbian/</a> wheezy main non-free contrib<br>deb-src <a href="http://mirrors.aliyun.com/raspbian/raspbian/" target="_blank" rel="external">http://mirrors.aliyun.com/raspbian/raspbian/</a> wheezy main non-free contrib</p>
 <h2 id="利用ssh传输文件【转】"><a href="#利用ssh传输文件【转】" class="headerlink" title="利用ssh传输文件【转】"></a>利用ssh传输文件【转】</h2><p>在linux下一般用scp这个命令来通过ssh传输文件。<br>Windows下只要有git环境就可以进行相同操作。</p>
 <p>1、从服务器上下载文件<br>scp username@servername:/path/filename /var/www/local_dir（本地目录）</p>
@@ -427,6 +427,8 @@
 <p>例如:scp -r root@192.168.0.101:/var/www/test  /var/www/  </p>
 <p>4、上传目录到服务器<br>scp  -r local_dir username@servername:remote_dir<br>例如：scp -r test  root@192.168.0.101:/var/www/   把当前目录下的test目录上传到服务器的/var/www/ 目录</p>
 <p>注：目标服务器要开启写入权限。</p>
+<h2 id="连接WIFI"><a href="#连接WIFI" class="headerlink" title="连接WIFI"></a>连接WIFI</h2><p>sudo vi /etc/network/interfaces查看<br>编辑wifi文件</p>
+<p>sudo vi /etc/wpa_supplicant/wpa_supplicant.conf<br>在该文件最后添加下面的话<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">network=&#123;</div><div class="line">ssid=&quot;WiFi-name1&quot;</div><div class="line">psk=&quot;WiFi-password1&quot;</div><div class="line">priority=5</div><div class="line">#(设置优先级)</div><div class="line">&#125;</div><div class="line"># 引号部分分别为wifi的名字和密码</div><div class="line"># 保存文件后几秒钟应该就会自动连接到该wifi</div><div class="line"># 查看是否连接成功</div><div class="line">sudo ifup wlan0</div><div class="line"># 断开连接</div><div class="line">sudo ifdown wlan0</div></pre></td></tr></table></figure></p>
 <h2 id="树莓派系统备份"><a href="#树莓派系统备份" class="headerlink" title="树莓派系统备份"></a>树莓派系统备份</h2><p>sudo parted raspberrypi.img –script – mklabel msdos<br>sudo parted raspberrypi.img –script – mkpart primary fat32 8192s 122879s<br>sudo parted raspberrypi.img –script – mkpart primary ext4 122880s -1</p>
 <p>loopdevice=<code>sudo losetup -f --show raspberrypi.img</code><br>device=<code>sudo kpartx -va $loopdevice | sed -E &#39;s/.*(loop[0-9])p.*/\1/g&#39; | head -1</code><br>device=”/dev/mapper/${device}”<br>partBoot=”${device}p1”<br>partRoot=”${device}p2”</p>
 
@@ -654,7 +656,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#解压-xz压缩包方法"><span class="nav-number">1.</span> <span class="nav-text">解压.xz压缩包方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#笔记本SSH远程登录"><span class="nav-number">2.</span> <span class="nav-text">笔记本SSH远程登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过VNC连接【转】"><span class="nav-number">3.</span> <span class="nav-text">通过VNC连接【转】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更换软件源（apt-get-sources）【转】"><span class="nav-number">4.</span> <span class="nav-text">更换软件源（apt-get sources）【转】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新源"><span class="nav-number">5.</span> <span class="nav-text">更新源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用ssh传输文件【转】"><span class="nav-number">6.</span> <span class="nav-text">利用ssh传输文件【转】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树莓派系统备份"><span class="nav-number">7.</span> <span class="nav-text">树莓派系统备份</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#解压-xz压缩包方法"><span class="nav-number">1.</span> <span class="nav-text">解压.xz压缩包方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#笔记本SSH远程登录"><span class="nav-number">2.</span> <span class="nav-text">笔记本SSH远程登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过VNC连接【转】"><span class="nav-number">3.</span> <span class="nav-text">通过VNC连接【转】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更换软件源（apt-get-sources）【转】"><span class="nav-number">4.</span> <span class="nav-text">更换软件源（apt-get sources）【转】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用ssh传输文件【转】"><span class="nav-number">5.</span> <span class="nav-text">利用ssh传输文件【转】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连接WIFI"><span class="nav-number">6.</span> <span class="nav-text">连接WIFI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树莓派系统备份"><span class="nav-number">7.</span> <span class="nav-text">树莓派系统备份</span></a></li></ol></div>
             
           </div>
         </section>
