@@ -96,7 +96,7 @@
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/a8fc9690gw1f8kste7p23j21kw16owv1.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/a8fc9690jw1f8nf0imo6kj20tk0brdmd.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/a8fc9690gw1f8nhobz8kdj20fe06jaci.jpg">
-<meta property="og:updated_time" content="2016-10-12T08:43:33.904Z">
+<meta property="og:updated_time" content="2016-10-16T04:20:57.879Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树莓派实践例程（一）">
 <meta name="twitter:description" content="利用树莓派做的几个示例">
@@ -428,11 +428,11 @@
 <p>Pi 1 使用bcmrpi_defconfig<br>Pi 2/3 使用bcm2709_defconfig<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">KERNEL=kernel7</div><div class="line">#目录切换到内核源文件下，配置默认设置：</div><div class="line">sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-gcc bcm2709_defconfig(默认配置，结果保存在内核源文件夹下.config中)</div><div class="line">#配置内核模块（可手动修改），执行</div><div class="line">sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-gcc menuconfig</div></pre></td></tr></table></figure></p>
 <p>显示下图说明参数设置成功<br><img src="http://ww3.sinaimg.cn/large/a8fc9690jw1f8nf0imo6kj20tk0brdmd.jpg" alt=""></p>
 <p>编译内核镜像<br>sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- -j4 zImage modules dtbs(要将编译器命令的gcc去掉，zImage dtbs不能省，要编译很久)<br>-j4：表示多核处理</p>
-<p>将编译好的 Linux 内核复制出來：<br>sudo scripts/mkknlimg arch/arm/boot/zImage ../kernel-new.img（安装好tools）</p>
-<p>#sudo cp arch/arm/boot/Image ../kernel-new.img</p>
+<p>将编译好的 Linux 内核复制出來：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo scripts/mkknlimg arch/arm/boot/zImage ../kernel-new.img（安装好tools）</div><div class="line">#sudo cp arch/arm/boot/Image ../kernel-new.img</div></pre></td></tr></table></figure></p>
 <p>安装modules:<br>sudo make -j4 ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- INSTALL_MOD_PATH=../modules modules_install(要将编译器命令的gcc去掉)</p>
-<p>另外有三个文件目录：<br>sudo cp arch/arm/boot/dts/<em>.dtb /boot/<br>sudo cp arch/arm/boot/dts/overlays/</em>.dtb* /boot/overlays/<br>sudo cp arch/arm/boot/dts/overlays/README /boot/overlays/</p>
+<p>另外有三个文件目录：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo cp arch/arm/boot/dts/*.dtb /boot/</div><div class="line">sudo cp arch/arm/boot/dts/overlays/*.dtb* /boot/overlays/</div><div class="line">sudo cp arch/arm/boot/dts/overlays/README /boot/overlays/</div></pre></td></tr></table></figure></p>
 <p>小结：要将编译后拷贝到树莓派SD卡上的文件有：</p>
+<blockquote>
 <ol>
 <li>生成的kernel-new.img复制到/boot/</li>
 <li>将modules/lib/modules/*文件夹复制到/lib/modules/</li>
@@ -440,18 +440,9 @@
 <li>arch/arm/boot/dts/overlays/<em>.dtb</em>复制到/boot/overlays/</li>
 <li>arch/arm/boot/dts/overlays/README复制到/boot/overlays/</li>
 </ol>
-<p>将装有树莓派系统的SD卡插在Linux系统电脑上，使用lsblk指令查看硬盘结构如下图，sdd1(boot分区)和sdd2(root分区)为SD卡的分区<br><img src="http://ww3.sinaimg.cn/large/a8fc9690gw1f8nhobz8kdj20fe06jaci.jpg" alt=""><br>挂载SD卡分区：<br>sudo mkdir /mnt/fat32<br>sudo mkdir /mnt/ext4<br>sudo mount /dev/sdd1 /mnt/fat32<br>sudo mount /dev/sdd2 /mnt/ext4</p>
-<ol>
-<li>将kernel-new.img放入boot分区<br>sudo cp kernel-new.img /mnt/fat32/</li>
-<li>把 modules/lib/modules/ 里面的东西复制到 /lib/modules/<br>sudo cp -r modules/lib/modules/* /mnt/ext4/lib/modules/</li>
-</ol>
-<p>将 modules/lib/firmware/里面的东西复制到 /lib/firmware/<br>sudo cp -r modules/lib/firmware/* /mnt/ext4/lib/firmware/</p>
-<p>转到内核源文件目录<br>cd linux/</p>
-<ol>
-<li>arch/arm/boot/dts/<em>.dtb复制到/boot/<br>sudo cp -r arch/arm/boot/dts/</em>.dtb  /mnt/fat32/(原本也有，可不操作)</li>
-<li>arch/arm/boot/dts/overlays/<em>.dtb</em>复制到/boot/overlays/<br>sudo cp -r arch/arm/boot/dts/overlays/<em>.dtb</em>  /mnt/fat32/overlays/</li>
-<li>arch/arm/boot/dts/overlays/README复制到/boot/overlays/<br>sudo cp -r arch/arm/boot/dts/overlays/README  /mnt/fat32/overlays/</li>
-</ol>
+</blockquote>
+<p>将装有树莓派系统的SD卡插在Linux系统电脑上，使用lsblk指令查看硬盘结构如下图，sdd1(boot分区)和sdd2(root分区)为SD卡的分区<br><img src="http://ww3.sinaimg.cn/large/a8fc9690gw1f8nhobz8kdj20fe06jaci.jpg" alt=""><br>挂载SD卡分区：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo mkdir /mnt/fat32</div><div class="line">sudo mkdir /mnt/ext4</div><div class="line">sudo mount /dev/sdd1 /mnt/fat32</div><div class="line">sudo mount /dev/sdd2 /mnt/ext4</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">1. 将kernel-new.img放入boot分区</div><div class="line">sudo cp kernel-new.img /mnt/fat32/</div><div class="line">2. 把 modules/lib/modules/ 里面的东西复制到 /lib/modules/</div><div class="line">sudo cp -r modules/lib/modules/* /mnt/ext4/lib/modules/</div><div class="line">将 modules/lib/firmware/里面的东西复制到 /lib/firmware/</div><div class="line">sudo cp -r modules/lib/firmware/* /mnt/ext4/lib/firmware/</div><div class="line">转到内核源文件目录</div><div class="line">cd linux/</div><div class="line">3. arch/arm/boot/dts/*.dtb复制到/boot/</div><div class="line">sudo cp -r arch/arm/boot/dts/*.dtb  /mnt/fat32/(原本也有，可不操作)</div><div class="line">4. arch/arm/boot/dts/overlays/*.dtb*复制到/boot/overlays/</div><div class="line">sudo cp -r arch/arm/boot/dts/overlays/*.dtb*  /mnt/fat32/overlays/</div><div class="line">5. arch/arm/boot/dts/overlays/README复制到/boot/overlays/</div><div class="line">sudo cp -r arch/arm/boot/dts/overlays/README  /mnt/fat32/overlays/</div></pre></td></tr></table></figure>
 <p>sudo vi /mnt/fat32/config.txt 编辑 /boot/config.txt，加入一行<br>kernel=kernel-new.img</p>
 <p>这行是用来指令系统要使用的核心，可以同时放置多个不同核心，以便随时切换。<br>这样新编译好的核心就安装好了。</p>
 <p>最后卸载SD卡<br>sudo umount /mnt/fat32<br>sudo umount /mnt/ext4</p>
@@ -460,11 +451,11 @@
 <p>执行生成hello.ko文件<br>sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-</p>
 <p><em>如果出现类似“fatal section header offset 32425246532452 in file ‘vmlinux’ is bigger than filesize=35524847”的问题，重新编译内核镜像和modules可以解决</em></p>
 <p>拷贝内核源文件到树莓派<br>cp -av /usr/src/linux/ <sdcard-ext4-root>/home/pi/<br>例如：cp -av linux/ /mnt/ext4/home/pi/<br>设置好相应链接<br>sudo cd /lib/modules/<code>uname -r</code>/<br>$ sudo rm build source<br>$ ln -s /home/pi/linux build<br>$ ln -s /home/pi/linux source</sdcard-ext4-root></p>
-<p>最后一步：<br>Now, we need to fix one more problem: During the cross-compilation build, a couple scripts were compiled for the host. We also need them for the Raspberry Pi. Still on the Pi, this can be checked with e.g.</p>
+<p>最后一步(重要)：<br>Now, we need to fix one more problem: During the cross-compilation build, a couple scripts were compiled for the host. We also need them for the Raspberry Pi. Still on the Pi, this can be checked with e.g.</p>
 <p>$ file /home/pi/linux/scripts/recordmcount (returns something with x86-64)<br>$ cd /home/pi/linux/<br>$ make scripts（一直敲回车）<br>$ file /home/pi/linux/scripts/recordmcount (now returns something with 32-bit and ARM)</p>
 <p>将hello.ko拷贝到树莓派/home/pi/linux/对应的文件夹<br>转到该文件夹执行<br>sudo insmod hello.ko<br>sudo rmmod hello.ko</p>
 <p>dmesg查看消息，如果正常应会出现类似下面显示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[ 1205.051527] Hello World!/n</div><div class="line">[ 1261.434964] Bye World!/n</div></pre></td></tr></table></figure></p>
-<p>如果出现“Invalid module format”，可能没有安装header（不确定）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo apt-cache search linux-headers</div><div class="line">#查看安装的header</div><div class="line">执行命令安装相应的header包</div><div class="line">sudo dpkg -i linux-headers-4.4.23-v7+_4.4.23-v7+-2_armhf.deb</div></pre></td></tr></table></figure></p>
+<p>如果出现“Invalid module format”，可能没有安装header（不确定）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo apt-cache search linux-headers</div><div class="line">#查看安装的header</div><div class="line">执行命令安装相应的header包(在这之前要装bc:apt-get install bc)</div><div class="line">sudo dpkg -i linux-headers-4.4.23-v7+_4.4.23-v7+-2_armhf.deb</div></pre></td></tr></table></figure></p>
 <p>下面是Ubuntu下进行内核模块编译过程，作为上述过程参考对比（跳到后文）：</p>
 <p>Ubuntu版本信息<br>$ uname -a<br>Linux ubuntu 4.4.0-38-generic #57-Ubuntu SMP Tue Sep 6 15:42:33 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux</p>
 <p>下载Ubuntu系统源码<br><a href="https://www.kernel.org/pub/linux/kernel" target="_blank" rel="external">https://www.kernel.org/pub/linux/kernel</a><br>配置内核<br>$ sudo make x86_64_defconfig（根据电脑默认架构配置）<br>$ sudo make menuconfig # 进入后直接选exit。<br>编译内核<br>$ sudo make<br>$ sudo make modules  </p>
